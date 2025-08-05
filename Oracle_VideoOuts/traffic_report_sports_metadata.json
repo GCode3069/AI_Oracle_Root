@@ -1,0 +1,9 @@
+{
+  "VoiceFile": "traffic_report.mp3",
+  "Template": "sports",
+  "FileSizeMB": 0.0,
+  "Status": "Success",
+  "Duration": "00:00:30",
+  "CreatedAt": "2025-08-05T12:44:56.7228237+00:00",
+  "OutputFile": "traffic_report_sports.mp4"
+}

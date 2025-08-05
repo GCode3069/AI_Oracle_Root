@@ -1,0 +1,9 @@
+{
+  "VoiceFile": "weather_update.wav",
+  "Template": "news",
+  "FileSizeMB": 0.0,
+  "Status": "Success",
+  "Duration": "00:00:30",
+  "CreatedAt": "2025-08-05T12:44:57.2282141+00:00",
+  "OutputFile": "weather_update_news.mp4"
+}

@@ -1,0 +1,61 @@
+# Chimera Orchestrator v3.2 Configuration (YAML format)
+VoiceInputDirectory: "Oracle_VoiceOuts"
+VideoOutputDirectory: "Oracle_VideoOuts" 
+MinDiskSpaceGB: 8
+MaxConcurrentJobs: 4
+LogLevel: "Info"
+BatchSize: 15
+
+# Audio format support
+SupportedAudioFormats:
+  - "*.wav"
+  - "*.mp3" 
+  - "*.m4a"
+  - "*.aac"
+
+# Video template configuration
+VideoTemplates:
+  emergency:
+    Style: "Emergency Broadcast"
+    BackgroundColor: "#CC0000"
+    TextColor: "#FFFFFF"
+  
+  news:
+    Style: "News Update" 
+    BackgroundColor: "#003366"
+    TextColor: "#FFFFFF"
+    
+  weather:
+    Style: "Weather Report"
+    BackgroundColor: "#228B22"
+    TextColor: "#FFFFFF"
+    
+  traffic:
+    Style: "Traffic Alert"
+    BackgroundColor: "#FF8C00"
+    TextColor: "#000000"
+    
+  psa:
+    Style: "Public Information"
+    BackgroundColor: "#800080"
+    TextColor: "#FFFFFF"
+
+  sports:
+    Style: "Sports News"
+    BackgroundColor: "#DC143C"
+    TextColor: "#FFFFFF"
+    
+  entertainment:
+    Style: "Entertainment Update"
+    BackgroundColor: "#FF4500"
+    TextColor: "#FFFFFF"
+    
+  tech:
+    Style: "Technology News"
+    BackgroundColor: "#4682B4"
+    TextColor: "#FFFFFF"
+    
+  health:
+    Style: "Health Information"
+    BackgroundColor: "#32CD32"
+    TextColor: "#FFFFFF"
