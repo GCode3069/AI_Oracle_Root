@@ -1,0 +1,10 @@
+{
+  "type": "Oracle Horror Demo",
+  "campaign": "awakening",
+  "format": "shorts",
+  "title": "Cyber Terror: The Awakening - Into the Digital Void",
+  "script": "Boot sequence initiated. But this time... something different awakens.",
+  "audio_file": "output/audio/horror_narration_ominous_whisper_af36ab07.wav",
+  "image_file": "output/oracle_horror_awakening_shorts_20250809_020758_demo.png",
+  "note": "This is a demo version. Full video generation is available with more time."
+}
