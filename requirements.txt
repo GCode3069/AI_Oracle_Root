@@ -1,0 +1,24 @@
+librosa
+fastapi
+uvicorn
+httpx
+numpy
+soundfile
+dash
+plotly
+matplotlib
+pydub
+Pillow
+slack-sdk
+pandas
+psutil
+watchdog
+# Additional production dependencies for video processing, monitoring, and notifications
+opencv-python
+requests
+scikit-learn
+imageio
+ffmpeg-python
+pyyaml
+setuptools
+# Add any other required packages here
