@@ -21,6 +21,7 @@ imageio
 ffmpeg-python
 pyyaml
 setuptools
+python-dotenv
 # Google Sheets Integration dependencies
 gspread
 oauth2client
