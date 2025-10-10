@@ -21,4 +21,14 @@ imageio
 ffmpeg-python
 pyyaml
 setuptools
+# Google Sheets Integration dependencies
+gspread
+oauth2client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+# Google Cloud Text-to-Speech dependencies
+google-cloud-texttospeech
+# Audio playback dependencies
+IPython
 # Add any other required packages here
