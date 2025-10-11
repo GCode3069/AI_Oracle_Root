@@ -1,0 +1,65 @@
+{
+  "VoiceInputDirectory": "Oracle_VoiceOuts",
+  "VideoOutputDirectory": "Oracle_VideoOuts",
+  "SupportedAudioFormats": ["*.wav", "*.mp3", "*.m4a", "*.flac"],
+  "MinDiskSpaceGB": 10,
+  "MaxConcurrentJobs": 6,
+  "LogLevel": "Debug",
+  "BatchSize": 25,
+  "VideoTemplates": [
+    {
+      "Name": "emergency",
+      "Style": "Emergency Alert",
+      "BackgroundColor": "#FF4444",
+      "TextColor": "#FFFFFF"
+    },
+    {
+      "Name": "news",
+      "Style": "Breaking News",
+      "BackgroundColor": "#0066CC",
+      "TextColor": "#FFFFFF"
+    },
+    {
+      "Name": "weather",
+      "Style": "Weather Alert",
+      "BackgroundColor": "#4CAF50",
+      "TextColor": "#FFFFFF"
+    },
+    {
+      "Name": "traffic",
+      "Style": "Traffic Report",
+      "BackgroundColor": "#FF9800",
+      "TextColor": "#000000"
+    },
+    {
+      "Name": "psa",
+      "Style": "Public Service Announcement",
+      "BackgroundColor": "#9C27B0",
+      "TextColor": "#FFFFFF"
+    },
+    {
+      "Name": "sports",
+      "Style": "Sports Update",
+      "BackgroundColor": "#E91E63",
+      "TextColor": "#FFFFFF"
+    },
+    {
+      "Name": "entertainment",
+      "Style": "Entertainment News",
+      "BackgroundColor": "#FF5722",
+      "TextColor": "#FFFFFF"
+    },
+    {
+      "Name": "tech",
+      "Style": "Technology Alert",
+      "BackgroundColor": "#607D8B",
+      "TextColor": "#FFFFFF"
+    },
+    {
+      "Name": "health",
+      "Style": "Health Advisory",
+      "BackgroundColor": "#4CAF50",
+      "TextColor": "#FFFFFF"
+    }
+  ]
+}
