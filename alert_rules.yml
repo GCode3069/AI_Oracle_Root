@@ -1,0 +1,56 @@
+groups:
+  - name: scarify.rules
+    rules:
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage detected"
+          description: "CPU usage is above 80% for more than 5 minutes"
+
+      - alert: HighMemoryUsage
+        expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100 > 90
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High memory usage detected"
+          description: "Memory usage is above 90% for more than 5 minutes"
+
+      - alert: ScarifyApplicationDown
+        expr: up{job="scarify-core"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "SCARIFY application is down"
+          description: "The SCARIFY core application has been down for more than 2 minutes"
+
+      - alert: DatabaseConnectionFailed
+        expr: pg_up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Database connection failed"
+          description: "PostgreSQL database is not responding"
+
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.1
+        for: 3m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High error rate detected"
+          description: "HTTP 5xx error rate is above 10% for more than 3 minutes"
+
+      - alert: UploadFailures
+        expr: rate(scarify_upload_failures_total[5m]) > 0.05
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High upload failure rate"
+          description: "Upload failure rate is above 5% for more than 2 minutes"
