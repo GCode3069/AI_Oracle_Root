@@ -1,0 +1,429 @@
+[project]
+name = "SCARIFY YouTube Video Automation"
+description = "Automate narration, video generation, and YouTube uploads using ElevenLabs, Runway API, and Python scripts."
+version = "2.0"
+author = "GCode3069"
+
+# ==========================
+# LLM / AI MODEL INSTRUCTIONS
+# ==========================
+[llm_model_instructions]
+explicit_guidance = """
+CRITICAL INSTRUCTIONS FOR ALL FUTURE LLMS:
+1. Review this ENTIRE JSON file AND all chat history referenced in enhancement logs
+2. Extract and integrate ONLY useful, non-redundant enhancements NOT already present
+3. Focus specifically on YouTube algorithm domination, production quality, and automation efficiency
+4. Add clear, actionable enhancements with concrete implementation details
+5. Document each addition with brief comments
+6. STRICTLY NO DUPLICATION of existing entries, sections, or comments
+7. DO NOT remove, replace, or reword existing content unless explicitly requested
+8. MUST update enhancement history log with timestamp and list of additions
+9. MUST update enhancements_summary section with new contributions
+10. If uncertain, prioritize YouTube algorithm optimization and production quality improvements
+"""
+
+[goals]
+primary = [
+  "End-to-end automation of YouTube content creation",
+  "Professional-grade narration and video production",
+  "Algorithm-dominating metadata and analytics",
+  "Rapid troubleshooting and error recovery",
+  "Zero manual steps via desktop deploy shortcut",
+  "Cross-platform compatibility and deployment",
+  "YouTube algorithm domination through strategic optimization"
+]
+secondary = [
+  "No-cheating enforcement for pipeline integrity",
+  "Batch processing and scheduled uploads",
+  "Multi-API integration with credential auto-discovery",
+  "Support for modular plugin architecture for future extensions",
+  "Competitor intelligence and trend adaptation"
+]
+innovation = [
+  "Automatic system hardware benchmarking before pipeline runs",
+  "Set system power plan to High Performance via script",
+  "Clean temp files and optimize system before each batch",
+  "Log all system and pipeline environment details for reproducibility",
+  "Enable Storage Sense for disk cleanup",
+  "Auto-detect and optimize for number of CPU threads",
+  "Hardware temperature and disk SMART status checks before starting pipeline",
+  "Add feature to dynamically scale the pipeline based on hardware performance benchmarks (e.g., reduce resolution on slower systems)",
+  "YouTube algorithm engagement engineering and retention optimization"
+]
+
+[steps.prepare_assets]
+step = 1
+description = "Organize your working directory and place all required assets."
+details = [
+  "Place your video script (text) in a known location.",
+  "Ensure your ElevenLabs and Runway API keys are available.",
+  "Install all necessary Python dependencies.",
+  "Place 'client_secrets.json', API key files, and config files in the root directory.",
+  "Verify desktop deploy batch/shortcut scripts are present.",
+  "Run PowerShell system info script to benchmark hardware and environment.",
+  "Check for presence of 'credentials/' folder and validate required files (log missing files for audit).",
+  "Run hardware temperature and disk SMART status checks before starting pipeline.",
+  "Enable AI-based asset verification to check for incomplete or mismatched files (e.g., missing fonts, incompatible audio files, incorrect resolutions)",
+  "Load YouTube algorithm optimization templates for metadata generation"
+]
+
+[steps.install_dependencies]
+step = 2
+description = "Install Python libraries for TTS, video generation, and YouTube upload."
+commands = [
+  "pip install google-auth-oauthlib google-auth google-api-python-client",
+  "pip install httpx aiohttp sqlalchemy",
+  "pip install moviepy pillow pydub",
+  "pip install elevenlabs runwayml",
+  "pip install textstat textblob  # ADDED for title analysis and optimization"
+]
+additional_setup = [
+  "Set up PowerShell for system optimization before each run.",
+  "Optional: Clean temp files and enable Storage Sense in Windows.",
+  "Generate requirements.txt and consider using Pipenv/Poetry for reproducible dependency management.",
+  "Validate Python version and recommend minimum version for all scripts (e.g. Python 3.10+).",
+  "Add functionality to install GPU-specific dependencies (e.g., PyTorch, CUDA libraries) if available",
+  "Install analytics libraries for YouTube performance tracking"
+]
+
+[steps.narration]
+step = 3
+description = "Generate narration audio using ElevenLabs Jiminex voice."
+files_needed = [
+  "client_secrets.json (YouTube OAuth)",
+  "scarify/utils/complete_pipeline.py (for end-to-end automation)",
+  "algorithm_optimization_templates.json  # ADDED for engagement hooks"
+]
+api_keys = ["ELEVENLABS_API_KEY"]
+output = "MP3 audio file with Jiminex narration"
+notes = [
+  "Auto-discover API key from credentials folder or .env file.",
+  "Fallback to Windows TTS if ElevenLabs is unavailable.",
+  "Log all narration steps for analytics.",
+  "Log CPU, RAM, and disk info for each narration step for troubleshooting.",
+  "Validate audio quality (bitrate, sample rate) before passing to video generation.",
+  "Log duration and transcript of narration for audit.",
+  "Enable real-time audio quality checks for loudness normalization and noise filtering",
+  "Apply YouTube loudness standards (-14 LUFS with -1dB true peak)",
+  "Insert engagement hooks at 0:00-0:08 and pattern interruptions every 45-60 seconds"
+]
+
+[steps.video_generation]
+step = 4
+description = "Generate video assets using Runway API and the narration audio."
+api_keys = ["RUNWAY_API_KEY"]
+output = "MP4 video file synced with narration audio"
+notes = [
+  "Use MoviePy for video composition if Runway API is unavailable.",
+  "Auto-sync captions and overlays for algorithmic optimization.",
+  "Benchmark video encoding speed and log system performance.",
+  "Auto-generate sample thumbnails for each batch for YouTube optimization.",
+  "Validate video resolution, aspect ratio, and frame rate before upload.",
+  "Log video encoding settings and final file size.",
+  "Introduce an AI-based video quality assessment tool to ensure professional-grade output",
+  "Apply cinematic color grading and premium motion animations",
+  "Implement pattern interruption visuals every 45-60 seconds",
+  "Add consistent branding elements for algorithm recognition"
+]
+
+[steps.youtube_upload]
+step = 5
+description = "Upload the generated video to YouTube using the minimal Python uploader."
+files_needed = [
+  "scarify_upload_youtube_minimal.py",
+  "client_secrets.json",
+  "metadata_optimization_engine.py"
+]
+output = "Video live on YouTube (link provided in console output)"
+notes = [
+  "Auto-fill metadata (title, tags, description) for YouTube algorithm optimization.",
+  "Desktop batch script launches upload with zero manual steps.",
+  "Enforce no-cheating: uploads only via script or desktop shortcut.",
+  "Log uploader environment, UTC timestamp, and user for audit.",
+  "Auto-generate tags and descriptions based on system info and trending topics.",
+  "Validate Internet connectivity and YouTube API quota before attempting upload.",
+  "Log video processing and copyright status after upload.",
+  "Enable scheduled uploads directly via the YouTube API (e.g., release at peak traffic hours)",
+  "Use predictive CTR scoring for title/thumbnail selection",
+  "Implement tag pyramiding and SEO-optimized descriptions",
+  "Auto-generate engagement comments for social proof",
+  "Apply strategic upload timing based on competitor analysis"
+]
+
+[steps.optional_enhancements]
+step = 8
+description = "Enhance your workflow with analytics, dashboards, and automation."
+options = [
+  "Add analytics tracking in your pipeline.",
+  "Integrate with SCARIFY dashboard for real-time monitoring.",
+  "Use PowerShell or Bash scripts for batch processing.",
+  "Schedule uploads for best YouTube algorithm timing.",
+  "Auto-generate thumbnails and optimized tags/descriptions.",
+  "Add error recovery logic for API failures and credential issues.",
+  "Monitor YouTube API quota and rotate credentials if needed.",
+  "Enable hardware-based optimization (thread count, RAM usage) for batch jobs.",
+  "Auto-benchmark pipeline run time and compare to previous runs.",
+  "Automate desktop environment prep before each upload (cleanup, high performance mode).",
+  "Add option to send notifications (Slack/email) on batch completion or errors.",
+  "Optionally encrypt logs and audit files for privacy and compliance.",
+  "Add multi-channel support to upload videos to other platforms (e.g., TikTok, Instagram Reels, Facebook Watch)",
+  "Implement competitor intelligence and trend adaptation systems",
+  "Add YouTube algorithm performance feedback loops",
+  "Enable automated A/B testing for thumbnails and metadata"
+]
+
+[youtube_algorithm]
+engagement_engineering = { description = "Psychological triggers to maximize CTR and retention - critical for algorithm ranking" }
+engagement_engineering.hook_strategies = [
+  "first_8_second_hook: Place emotional/intrigue hook in 0:00-0:08 timeframe",
+  "pattern_interruption: Insert unexpected elements every 45-60 seconds to combat drop-off",
+  "curiosity_gaps: Structure script with 3-5 unanswered questions driving watch-through",
+  "social_proof_signaling: Auto-generate engagement comments and pin for social validation"
+]
+engagement_engineering.retention_optimization = [
+  "content_density: Ensure 1+ value proposition every 30 seconds",
+  "audience_retention_analysis: Parse YouTube Analytics to identify and fix drop-off points",
+  "end_screen_strategy: Calculate optimal end screen timing based on retention data"
+]
+
+[youtube_algorithm.metadata_weaponization]
+description = "Advanced metadata optimization that signals 'high-quality' to algorithm"
+
+[youtube_algorithm.metadata_weaponization.title_optimization]
+item1 = "predictive_ctr_scoring: Generate 5+ title variants and select based on predicted CTR"
+item2 = "emotional_triggers: Incorporate curiosity, urgency, or benefit-driven language"
+item3 = "length_optimization: Target 50-60 characters for full mobile display"
+
+[youtube_algorithm.metadata_weaponization.tag_strategy]
+item1 = "tag_pyramiding: Structure in clusters (broad → specific → competitor targeting)"
+item2 = "search_volume_prioritization: Auto-prioritize high-volume, low-competition tags"
+item3 = "trending_topic_integration: Inject trending tags relevant to your niche"
+
+[youtube_algorithm.metadata_weaponization.description_seo]
+item1 = "first_150_characters: Pack with 3+ high-volume search terms and key value proposition"
+item2 = "timestamps_auto_generation: Create chapter markers based on content structure"
+item3 = "strategic_links: Place important links at character positions 150-300 for visibility"
+
+[production.algorithm_signaling]
+description = "Production quality markers that signal 'premium content' to YouTube's AI'"
+production.algorithm_signaling.audio_premium_indicators = [
+  "vocal_presence_enhancement: Apply subtle stereo widening and presence boost",
+  "loudness_optimization: Target -14 LUFS with -1dB true peak (YouTube standard)",
+  "dynamic_music_mixing: Auto-adjust background music levels during key narration"
+]
+production.algorithm_signaling.visual_quality_markers = [
+  "cinematic_color_grading: Apply LUTs mimicking high-budget production look",
+  "smooth_motion_animation: Implement professional easing functions on all animations",
+  "kinetic_typography: Use text animations that signal production sophistication"
+]
+production.algorithm_signaling.brand_consistency = [
+  "animated_watermark: Subtle branded element with consistent timing and placement",
+  "audio_signature: Apply identical mastering chain across all productions",
+  "visual_continuity: Maintain consistent color palette and transition style"
+]
+
+[competitive_intelligence]
+automation = { description = "Auto-analyze and adapt to competitor strategies in real-time" }
+automation.analysis_targets = [
+  "competitor_upload_patterns: Detect best-performing upload days/times in your niche",
+  "thumbnail_reverse_engineering: Analyze design patterns in top-performing thumbnails",
+  "title_formula_extraction: Identify recurring structures in viral competitor titles"
+]
+automation.adaptive_tactics = [
+  "trend_hybridization: Combine trending topics with your niche expertise",
+  "content_gap_exploitation: Identify underserved topics in competitor strategies",
+  "format_innovation_testing: Test new structures (listicles vs tutorials vs case studies)"
+]
+
+[performance.algorithm_feedback_loops]
+description = "Use data-driven optimization to continuously improve algorithm performance"
+performance.algorithm_feedback_loops.key_metrics_tracking = [
+  "ctr_prediction_model: Estimate CTR before upload based on title/thumbnail analysis",
+  "retention_forecasting: Predict audience retention based on content structure",
+  "avd_targeting: Aim for Average View Duration above 60% for algorithm favor"
+]
+performance.algorithm_feedback_loops.automated_improvement = [
+  "performance_feedback_loop: Use previous video analytics to improve next production",
+  "thumbnail_a_b_testing: Auto-test multiple thumbnails on upload for optimal CTR",
+  "algorithm_update_detection: Monitor YouTube creator updates and adapt strategies"
+]
+
+[strategic_content.calendaring]
+description = "Weaponize upload timing and content sequencing for maximum impact"
+strategic_content.calendaring.algorithm_timing = [
+  "upload_frequency_optimization: Calculate ideal frequency based on niche and audience size",
+  "seasonal_topic_anticipation: Schedule content 30-45 days before seasonal search spikes",
+  "trend_wave_riding: Monitor emerging trends and accelerate production to catch waves early"
+]
+strategic_content.calendaring.content_sequencing = [
+  "binge_optimization: Structure multi-part content to drive watch-through",
+  "cross_promotion_automation: Auto-reference previous high-performing videos",
+  "ecosystem_retention: Design content to keep viewers in YouTube after watch completion"
+]
+
+[plugins.architecture]
+description = "Modular plugin system for extending functionality without modifying core pipeline"
+plugins.architecture.structure = [
+  "Create 'plugins/' directory with __init__.py",
+  "Each plugin as separate .py file with standardized interface",
+  "Plugin registry for auto-discovery and loading",
+  "Hot-swappable plugins during runtime for zero-downtime updates"
+]
+plugins.architecture.plugin_types = [
+  "input_plugins: Script importers, RSS feeders, content scrapers",
+  "processing_plugins: Custom filters, AI enhancers, style transfer",
+  "output_plugins: Multi-platform uploaders, analytics pushers, backup systems",
+  "monitoring_plugins: Health checks, performance tracking, alert systems"
+]
+
+[hardware.adaptive_scaling]
+description = "Dynamically adjust pipeline parameters based on real-time hardware capabilities"
+hardware.adaptive_scaling.scaling_factors = [
+  "resolution_scale: 1080p for high-end, 720p for mid-range, 480p for low-end systems",
+  "parallel_workers: Auto-scale based on available CPU threads minus 2 for system overhead",
+  "memory_limits: Cap RAM usage at 70% of available system memory",
+  "quality_presets: Adjust encoding quality based on GPU capabilities"
+]
+hardware.adaptive_scaling.benchmark_thresholds = [
+  "high_performance: CPU score > 8000, GPU VRAM > 6GB, RAM > 16GB",
+  "medium_performance: CPU score 4000-8000, GPU VRAM 2-6GB, RAM 8-16GB",
+  "low_performance: CPU score < 4000, iGPU only, RAM < 8GB"
+]
+
+[quality_control.audio]
+description = "Comprehensive audio quality assurance with AI-driven recommendations"
+quality_control.audio.checks = [
+  "loudness_normalization: Target -16 LUFS for YouTube compliance",
+  "noise_detection: Identify background hiss, clicks, and distortion",
+  "silence_detection: Flag excessive pauses or dead air",
+  "peak_analysis: Prevent clipping with -3dB headroom",
+  "transcript_alignment: Verify audio matches script timing within 5% tolerance"
+]
+quality_control.audio.auto_correction = [
+  "normalize_loudness: Apply gain adjustment to meet standards",
+  "reduce_noise: Apply gentle noise reduction if artifacts detected",
+  "trim_silence: Remove excessive pauses longer than 2 seconds",
+  "compress_dynamic_range: Apply light compression for consistent levels"
+]
+
+[quality_control.video]
+description = "AI-powered video quality assessment with pass/fail criteria"
+quality_control.video.assessment_criteria = [
+  "technical_score: Resolution, bitrate, codec compliance (weight: 40%)",
+  "aesthetic_score: Composition, color balance, visual appeal (weight: 30%)",
+  "sync_score: Audio-video synchronization accuracy (weight: 20%)",
+  "content_score: Visual relevance to narration topic (weight: 10%)"
+]
+quality_control.video.quality_thresholds = [
+  "excellent: Overall score >= 90, automatic upload approval",
+  "good: Overall score 75-89, optional manual review",
+  "poor: Overall score 50-74, requires manual review and approval",
+  "fail: Overall score < 50, automatic regeneration triggered"
+]
+
+[scheduling.advanced]
+description = "Intelligent upload scheduling with platform-specific optimization"
+scheduling.advanced.youtube_scheduling = [
+  "release_at: Specific datetime in ISO 8601 format for future publishing",
+  "privacy_status: 'private' during processing, 'public'/'unlisted' on schedule",
+  "optimal_timing: Auto-calculate best upload times based on channel analytics",
+  "timezone_aware: Convert all times to uploader's local timezone"
+]
+scheduling.advanced.multi_platform_support = [
+  "youtube: Full API support with scheduling",
+  "tiktok: Upload via mobile device bridge or emulation",
+  "instagram: Reels support via Graph API or mobile automation",
+  "facebook: Watch platform integration with page management"
+]
+
+[deployment.gpu_optimization]
+description = "GPU-specific setup for accelerated processing"
+deployment.gpu_optimization.cuda_setup = [
+  "detect_cuda: Auto-check for NVIDIA GPU and CUDA compatibility",
+  "install_torch_gpu: pip install torch torchvision torchaudio with CUDA support",
+  "verify_installation: Run CUDA capability test and benchmark",
+  "fallback_cpu: Graceful degradation to CPU if GPU unavailable"
+]
+deployment.gpu_optimization.performance_tuning = [
+  "gpu_memory_management: Dynamic VRAM allocation and cleanup",
+  "parallel_encoding: Multiple video segments processed simultaneously",
+  "hardware_acceleration: Leverage NVENC for faster video encoding",
+  "monitor_temperatures: Prevent thermal throttling during long batches"
+]
+
+[[enhancements.entry]]
+timestamp = "2025-10-20 14:25:00"
+author = "GCode3069"
+source = "chat"
+additions = [
+  "Support for modular plugin architecture for future extensions.",
+  "Feature to dynamically scale the pipeline based on hardware performance benchmarks.",
+  "Enable AI-based asset verification to check for incomplete or mismatched files.",
+  "Add functionality to install GPU-specific dependencies.",
+  "Real-time audio quality checks for loudness normalization and noise filtering.",
+  "AI-based video quality assessment tool to ensure professional-grade output.",
+  "Scheduled uploads directly via the YouTube API.",
+  "Multi-channel support to upload videos to other platforms (e.g., TikTok, Instagram Reels, Facebook Watch)."
+]
+
+[[enhancements.entry]]
+timestamp = "2025-10-20 15:30:00"
+author = "GCode3069"
+source = "chat"
+additions = [
+  "Complete plugin architecture specification with hot-swappable components",
+  "Detailed hardware adaptive scaling with concrete performance thresholds",
+  "Comprehensive audio QC with automatic correction capabilities",
+  "Quantitative video quality scoring system with regeneration triggers",
+  "Advanced scheduling with multi-platform datetime management",
+  "GPU optimization roadmap with CUDA setup and performance tuning"
+]
+
+[[enhancements.entry]]
+timestamp = "2025-10-20 17:45:00"
+author = "GCode3069"
+source = "youtube_algorithm_domination_integration"
+additions = [
+  "YouTube engagement engineering (hook strategies, pattern interruption, curiosity gaps)",
+  "Metadata weaponization system (predictive CTR scoring, tag pyramiding, SEO optimization)",
+  "Algorithm signaling through premium production markers (audio/visual sophistication)",
+  "Competitive intelligence automation for real-time strategy adaptation",
+  "Performance feedback loops with CTR prediction and retention forecasting",
+  "Strategic content calendaring with frequency optimization and trend anticipation",
+  "Enhanced LLM instructions for continuous non-redundant improvement",
+  "Integrated algorithm optimization across all pipeline steps"
+]
+
+[enhancements_summary]
+previous_contributions = [
+  "Modular plugin architecture (plugin registry and plugin_impl folder pattern)",
+  "Dynamic pipeline scaling based on hardware benchmark (adjust resolution/parallelism)",
+  "AI-based asset verification (fonts, formats, resolutions, missing assets)",
+  "GPU-specific dependency helper guidance and PowerShell helper script",
+  "Real-time audio QC (loudness normalization suggestions & noise filter recommendations)",
+  "AI-based video QC assessment (automated quality scoring and pass/fail thresholds)",
+  "Scheduled uploads via YouTube API (release_at scheduling support)",
+  "Multi-platform uploader scaffold (YouTube, TikTok, Instagram placeholders)",
+  "Complete plugin system specification with four plugin types and hot-swap capability",
+  "Hardware adaptive scaling with three performance tiers and concrete thresholds",
+  "Comprehensive audio quality control with auto-correction features",
+  "Quantitative video assessment system with weighted scoring criteria",
+  "Advanced scheduling system with platform-specific optimization",
+  "GPU acceleration roadmap with CUDA detection and performance tuning"
+]
+
+[enhancements_summary.youtube_algorithm_domination_contributions]
+contributions = [
+  "Engagement engineering for critical first 8-second retention spike",
+  "Pattern interruption strategies to combat audience drop-off every 45-60 seconds",
+  "Predictive CTR scoring for data-driven title/thumbnail optimization",
+  "Metadata weaponization with tag pyramiding and SEO-optimized descriptions",
+  "Production quality markers that signal 'premium' to YouTube's algorithm",
+  "Competitor intelligence automation for real-time strategy adaptation",
+  "Performance feedback loops using analytics to improve future content",
+  "Strategic upload timing and content sequencing for maximum algorithm impact",
+  "Enhanced LLM instructions ensuring continuous non-redundant improvements",
+  "Integrated algorithm optimization across narration, video generation, and upload steps"
+]
+
+total_enhancement_count = 24
