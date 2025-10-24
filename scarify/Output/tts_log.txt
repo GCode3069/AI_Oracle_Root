@@ -1,0 +1,4 @@
+2025-10-24 19:10:25,180 - INFO - Generating TTS for text: This is a test of the SCARIFY TTS system...
+2025-10-24 19:10:25,181 - WARNING - ElevenLabs API key not configured, using fallback
+2025-10-24 19:10:25,186 - INFO - Using gTTS fallback
+2025-10-24 19:10:25,572 - INFO - ✅ Fallback TTS successful: scarify/Output/test_audio.mp3
