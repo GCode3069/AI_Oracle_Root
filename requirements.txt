@@ -22,3 +22,5 @@ ffmpeg-python
 pyyaml
 setuptools
 # Add any other required packages here
+moviepy
+gTTS
