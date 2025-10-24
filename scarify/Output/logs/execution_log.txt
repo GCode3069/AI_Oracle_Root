@@ -1,0 +1,3 @@
+2025-10-24 19:10:20,741 - INFO - 🧪 TEST MODE - Script generation only
+2025-10-24 19:10:20,741 - INFO - 🎬 Generating script for theme: NightmareCity
+2025-10-24 19:10:20,743 - INFO - ✅ Script generated: scarify/Output/script_1761333020.json
