@@ -1,0 +1,9 @@
+{
+  "VoiceFile": "emergency_alert.wav",
+  "Template": "emergency",
+  "FileSizeMB": 0.0,
+  "Status": "Success",
+  "Duration": "00:00:30",
+  "CreatedAt": "2025-08-05T12:44:49.1272552+00:00",
+  "OutputFile": "emergency_alert_emergency.mp4"
+}

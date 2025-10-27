@@ -1,0 +1,9 @@
+{
+  "VoiceFile": "weather_update.wav",
+  "Template": "psa",
+  "FileSizeMB": 0.0,
+  "Status": "Success",
+  "Duration": "00:00:30",
+  "CreatedAt": "2025-08-05T12:44:57.5316528+00:00",
+  "OutputFile": "weather_update_psa.mp4"
+}
