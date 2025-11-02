@@ -1,0 +1,50 @@
+{
+  "runs": [
+    {
+      "llm": "chatgpt",
+      "round": 1,
+      "videos": 3,
+      "start_episode": 30000,
+      "end_episode": 30002,
+      "dry_run": true,
+      "timestamp": "2025-11-02T06:46:20.165115Z",
+      "status": "completed"
+    }
+  ],
+  "proofs": [
+    {
+      "llm": "chatgpt",
+      "round": 1,
+      "episode": 30000,
+      "timestamp": "2025-11-02T06:46:20.165159Z",
+      "proof_type": "generation_log",
+      "notes": "Generated script for episode 30000"
+    },
+    {
+      "llm": "chatgpt",
+      "round": 1,
+      "episode": 30001,
+      "timestamp": "2025-11-02T06:46:20.165169Z",
+      "proof_type": "generation_log",
+      "notes": "Generated script for episode 30001"
+    },
+    {
+      "llm": "chatgpt",
+      "round": 1,
+      "episode": 30002,
+      "timestamp": "2025-11-02T06:46:20.165174Z",
+      "proof_type": "generation_log",
+      "notes": "Generated script for episode 30002"
+    }
+  ],
+  "pending_submissions": [],
+  "llm_summary": {
+    "chatgpt": {
+      "total_videos": 3,
+      "rounds": [
+        1
+      ]
+    }
+  },
+  "generated_at": "2025-11-02T06:46:20.165199Z"
+}

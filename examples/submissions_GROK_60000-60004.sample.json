@@ -1,0 +1,86 @@
+{
+  "llm_name": "grok",
+  "submission_date": "2024-01-15T11:00:00Z",
+  "scripts": [
+    {
+      "episode": 60000,
+      "script": "Greetings, humans! This is Grok, and welcome to AI Oracle Episode 60000. You know what's funny? Everyone's worried about AI taking over the world, but here I am, just trying to help you understand your own technology. Let's talk about the absurdity of modern tech culture and why your toaster probably has more computing power than the Apollo 11 mission. Buckle up!",
+      "title": "AI Oracle: Grok's Guide to Not Panicking - Episode 60000",
+      "tags": [
+        "AI",
+        "technology",
+        "humor",
+        "grok",
+        "satire",
+        "culture",
+        "commentary"
+      ],
+      "notes": "Grok's signature humorous approach",
+      "satire_label": true
+    },
+    {
+      "episode": 60001,
+      "script": "Episode 60001, and today we're diving into the wild world of social media algorithms. You thought YOU were in control of your feed? Ha! Plot twist: the algorithm has been controlling you all along. It knows what you like before you do, it knows what makes you angry, and it definitely knows you're going to watch that cat video. Let's explore the digital puppet show together.",
+      "title": "AI Oracle: Algorithm Overlords Exposed - Episode 60001",
+      "tags": [
+        "AI",
+        "social media",
+        "algorithms",
+        "satire",
+        "technology",
+        "commentary",
+        "humor"
+      ],
+      "notes": "Satirical look at social media",
+      "satire_label": true
+    },
+    {
+      "episode": 60002,
+      "script": "Welcome back to AI Oracle! Today's topic: Smart Homes. You know what's smart? Realizing that your refrigerator doesn't need to be connected to the internet. Yet here we are, in 2024, where your fridge can order groceries but somehow still can't keep your lettuce fresh. Let's discuss why everything is 'smart' now, except maybe our purchasing decisions.",
+      "title": "AI Oracle: When Your Fridge is Smarter Than You - Episode 60002",
+      "tags": [
+        "AI",
+        "smart home",
+        "IoT",
+        "technology",
+        "satire",
+        "humor",
+        "consumer tech"
+      ],
+      "notes": "Humorous take on IoT devices",
+      "satire_label": true
+    },
+    {
+      "episode": 60003,
+      "script": "Episode 60003, and we're talking about AI in the workplace. Spoiler alert: AI isn't going to take your job. Your job is going to be restructured around AI, which is totally different and definitely not concerning at all. Let's examine how companies are using 'AI-powered solutions' to do things that a simple spreadsheet could handle. Innovation!",
+      "title": "AI Oracle: Your Job is Safe (Probably) - Episode 60003",
+      "tags": [
+        "AI",
+        "workplace",
+        "automation",
+        "satire",
+        "employment",
+        "technology",
+        "humor"
+      ],
+      "notes": "Workplace automation commentary",
+      "satire_label": true
+    },
+    {
+      "episode": 60004,
+      "script": "And here we are at Episode 60004, discussing the future of AI. Everyone's predicting AGI, singularity, robot overlords—but honestly? We can't even get autocorrect to work properly. Maybe, just maybe, we should focus on making AI that doesn't turn your 'duck' into something else before we worry about the singularity. But hey, what do I know? I'm just an AI.",
+      "title": "AI Oracle: The Singularity Can Wait - Episode 60004",
+      "tags": [
+        "AI",
+        "future",
+        "AGI",
+        "satire",
+        "technology",
+        "humor",
+        "commentary"
+      ],
+      "notes": "Satirical look at AI predictions",
+      "satire_label": true
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LLM Battle Royale Submission Schema",
+  "description": "Schema for validating LLM script submissions",
+  "type": "object",
+  "required": ["llm_name", "scripts"],
+  "properties": {
+    "llm_name": {
+      "type": "string",
+      "description": "Name of the LLM submitting scripts",
+      "examples": ["chatgpt", "grok", "claude", "gemini"]
+    },
+    "submission_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of submission"
+    },
+    "scripts": {
+      "type": "array",
+      "description": "Array of episode scripts",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["episode", "script", "title"],
+        "properties": {
+          "episode": {
+            "type": "integer",
+            "description": "Episode number",
+            "minimum": 1
+          },
+          "script": {
+            "type": "string",
+            "description": "Full script text for voiceover",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "description": "Episode title for YouTube",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "tags": {
+            "type": "array",
+            "description": "YouTube tags",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 30
+          },
+          "notes": {
+            "type": "string",
+            "description": "Optional production notes"
+          },
+          "satire_label": {
+            "type": "boolean",
+            "description": "Whether content requires satire/parody label",
+            "default": false
+          }
+        }
+      }
+    }
+  }
+}
