@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LLM Battle Royale Submission",
+  "description": "Schema for LLM script submissions for the Battle Royale project",
+  "type": "object",
+  "required": ["llm_name", "scripts", "submitter", "submitted_at"],
+  "properties": {
+    "llm_name": {
+      "type": "string",
+      "description": "Name of the LLM submitting scripts (e.g., CHATGPT, GROK, CLAUDE)",
+      "minLength": 1
+    },
+    "submitter": {
+      "type": "string",
+      "description": "Name or identifier of the person/entity submitting",
+      "minLength": 1
+    },
+    "submitted_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of submission"
+    },
+    "scripts": {
+      "type": "array",
+      "description": "Array of script submissions",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["episode", "script", "title"],
+        "properties": {
+          "episode": {
+            "type": "integer",
+            "description": "Episode number (unique per LLM)",
+            "minimum": 0
+          },
+          "script": {
+            "type": "string",
+            "description": "Full script content for the episode",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "description": "Episode title",
+            "minLength": 1
+          },
+          "tags": {
+            "type": "array",
+            "description": "Optional tags for categorization",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string",
+            "description": "Optional notes or special instructions"
+          },
+          "satire_label": {
+            "type": "boolean",
+            "description": "Whether this episode is clearly labeled as satire/parody",
+            "default": false
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional metadata",
+      "properties": {
+        "contact": {
+          "type": "string",
+          "description": "Contact information for submitter"
+        },
+        "notes": {
+          "type": "string",
+          "description": "General notes about this submission batch"
+        }
+      }
+    }
+  }
+}
