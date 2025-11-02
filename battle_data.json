@@ -1,23 +1,7 @@
 {
   "runs": [],
   "proofs": [],
-  "pending_submissions": [
-    {
-      "llm_name": "ChatGPT",
-      "filepath": "submissions/submission_ChatGPT_20251102_052156.json",
-      "script_count": 5,
-      "status": "enqueued",
-      "received_at": "2025-11-02T05:21:56.238155Z",
-      "enqueued_at": "2025-11-02T05:22:04.114450Z",
-      "production_files": [
-        "core/production_inputs/ChatGPT_ep30000.json",
-        "core/production_inputs/ChatGPT_ep30001.json",
-        "core/production_inputs/ChatGPT_ep30002.json",
-        "core/production_inputs/ChatGPT_ep30003.json",
-        "core/production_inputs/ChatGPT_ep30004.json"
-      ]
-    }
-  ],
+  "pending_submissions": [],
   "llm_summary": {},
-  "generated_at": "2025-11-02T05:22:04.114618Z"
+  "generated_at": "2024-01-01T00:00:00Z"
 }
