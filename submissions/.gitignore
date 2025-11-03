@@ -1,0 +1,5 @@
+# Ignore all submission files (they get processed)
+*.json
+
+# But keep this .gitignore
+!.gitignore

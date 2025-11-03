@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LLM Battle Royale Submission",
+  "description": "Schema for LLM-submitted content for the Battle Royale competition",
+  "type": "object",
+  "required": ["llm_name", "scripts"],
+  "properties": {
+    "llm_name": {
+      "type": "string",
+      "description": "Name of the submitting LLM (e.g., ChatGPT, GROK, Claude, Gemini)",
+      "examples": ["ChatGPT", "GROK", "Claude", "Gemini"]
+    },
+    "submission_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of submission"
+    },
+    "scripts": {
+      "type": "array",
+      "description": "Array of episode scripts to be produced",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["episode", "script", "title"],
+        "properties": {
+          "episode": {
+            "type": "integer",
+            "description": "Episode number (unique identifier)",
+            "minimum": 1,
+            "examples": [30000, 30001]
+          },
+          "script": {
+            "type": "string",
+            "description": "Full script text content for the episode",
+            "minLength": 50
+          },
+          "title": {
+            "type": "string",
+            "description": "Episode title for metadata",
+            "minLength": 5,
+            "maxLength": 100,
+            "examples": ["The Digital Awakening"]
+          },
+          "tags": {
+            "type": "array",
+            "description": "Searchable tags for the episode",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 10,
+            "examples": [["AI", "mystery", "technology"]]
+          },
+          "notes": {
+            "type": "string",
+            "description": "Optional production notes or special instructions"
+          },
+          "satire_label": {
+            "type": "boolean",
+            "description": "If true, content should be labeled as satire/parody",
+            "default": false
+          },
+          "content_warnings": {
+            "type": "array",
+            "description": "Optional content warnings",
+            "items": {
+              "type": "string",
+              "enum": ["violence", "language", "adult_themes", "flashing_lights", "horror"]
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional submission metadata",
+      "properties": {
+        "contact_email": {
+          "type": "string",
+          "format": "email",
+          "description": "Contact email for submission inquiries"
+        },
+        "version": {
+          "type": "string",
+          "description": "Submission format version",
+          "default": "1.0"
+        },
+        "notes": {
+          "type": "string",
+          "description": "General notes about this submission batch"
+        }
+      }
+    }
+  }
+}

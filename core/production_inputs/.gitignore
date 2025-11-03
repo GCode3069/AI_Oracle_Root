@@ -1,0 +1,8 @@
+# Ignore all production input files
+episode_*
+*.mp4
+*.mp3
+*.wav
+
+# But keep this .gitignore
+!.gitignore
