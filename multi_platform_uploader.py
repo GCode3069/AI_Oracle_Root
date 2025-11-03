@@ -1,238 +1,487 @@
 #!/usr/bin/env python3
 """
-MULTI-PLATFORM AUTO-UPLOADER - REAL WORKING CODE
-Upload ONCE, post EVERYWHERE, monetize on ALL platforms
-YouTube + TikTok + Rumble + Instagram + X(Twitter)
+MULTI_PLATFORM_UPLOADER.py
+Upload videos to 6 primary platforms: YouTube, TikTok, Instagram, Facebook, Twitter, Reddit
 """
-import os
-import sys
+
+import json
+import time
 from pathlib import Path
 from datetime import datetime
+import asyncio
 
-class MultiPlatformUploader:
-    """Upload to all monetizable platforms automatically"""
-    
+BASE_DIR = Path(__file__).parent
+VIDEOS_DIR = BASE_DIR / "abraham_horror" / "youtube_ready"
+CONFIG_DIR = BASE_DIR / "config" / "platforms"
+UPLOAD_LOG = BASE_DIR / "multi_platform_uploads.json"
+
+BTC_ADDRESS = "bc1qaeylk80cz3cd9ckxlyuedyq9eupeqhaujk2plt"
+PRODUCT_LINK = "https://trenchaikits.com/buy-rebel-$97"
+
+# Platform configurations
+PLATFORMS = {
+    "youtube": {
+        "enabled": True,
+        "priority": 1,
+        "max_length": 60,  # seconds
+        "aspect_ratio": "9:16"
+    },
+    "tiktok": {
+        "enabled": True,
+        "priority": 2,
+        "max_length": 60,
+        "aspect_ratio": "9:16"
+    },
+    "instagram": {
+        "enabled": True,
+        "priority": 3,
+        "max_length": 90,
+        "aspect_ratio": "9:16"
+    },
+    "facebook": {
+        "enabled": True,
+        "priority": 4,
+        "max_length": 120,
+        "aspect_ratio": "9:16"
+    },
+    "twitter": {
+        "enabled": True,
+        "priority": 5,
+        "max_length": 140,
+        "aspect_ratio": "9:16"
+    },
+    "reddit": {
+        "enabled": True,
+        "priority": 6,
+        "max_length": 60,
+        "aspect_ratio": "9:16"
+    }
+}
+
+class YouTubeUploader:
+    """YouTube Shorts uploader"""
     def __init__(self):
-        self.results = {}
-        self.video_path = None
-        self.title = ""
-        self.description = ""
-    
-    def upload_everywhere(self, video_path, episode_num, headline):
-        """Upload to ALL platforms"""
-        self.video_path = Path(video_path)
-        self.episode_num = episode_num
-        self.headline = headline
+        self.name = "YouTube"
         
-        # Generate platform-specific metadata
-        self.title = f"Lincoln's WARNING #{episode_num}: {headline[:40]}"
-        self.description = self._generate_description()
-        
-        print(f"\n{'='*70}")
-        print(f"  MULTI-PLATFORM UPLOAD - Episode #{episode_num}")
-        print(f"{'='*70}\n")
-        print(f"Video: {self.video_path.name}")
-        print(f"Title: {self.title}")
-        print(f"\nUploading to ALL platforms...\n")
-        
-        # Upload to each platform
-        self._upload_youtube()
-        self._upload_tiktok()
-        self._upload_rumble()
-        self._upload_instagram()
-        self._upload_twitter()
-        
-        # Save results
-        self._save_results()
-        
-        # Display summary
-        self._show_summary()
-        
-        return self.results
-    
-    def _generate_description(self):
-        """Generate monetized description for all platforms"""
-        return f"""{self.headline}
-
-Abraham Lincoln's dark satirical comedy - Roasts EVERYONE!
-
-💰 Support:
-• CashApp: $LincolnWarnings
-• Scripts ($27): gumroad.com/l/lincoln-scripts
-• Full System ($97): gumroad.com/l/purge-kit
-
-🔥 Dark Comedy - No Sacred Cows
-Styles: Pryor, Carlin, Chappelle, Bernie Mac
-
-#Shorts #Lincoln #Politics #Comedy #Satire"""
-    
-    def _upload_youtube(self):
-        """Upload to YouTube (already working)"""
+    def upload(self, video_path, metadata):
+        """Upload to YouTube (using existing system)"""
         try:
-            print("[1/5] YouTube...")
-            from abraham_MAX_HEADROOM import upload_to_youtube
-            url = upload_to_youtube(self.video_path, self.headline, self.episode_num)
-            self.results['youtube'] = {'url': url, 'status': 'success' if url else 'failed'}
-            print(f"  [OK] YouTube: {url}\n")
+            from MULTI_CHANNEL_UPLOAD_OPTIMIZED import get_youtube_service, upload_video
+            
+            youtube = get_youtube_service(1)  # Channel 1
+            result = upload_video(youtube, video_path, metadata, 1)
+            
+            return {
+                "success": True,
+                "platform": "youtube",
+                "url": result.get("url"),
+                "video_id": result.get("video_id")
+            }
         except Exception as e:
-            print(f"  [ERROR] YouTube: {e}\n")
-            self.results['youtube'] = {'url': None, 'status': 'error', 'error': str(e)}
-    
-    def _upload_tiktok(self):
-        """Upload to TikTok"""
+            return {"success": False, "platform": "youtube", "error": str(e)}
+
+class TikTokUploader:
+    """TikTok uploader"""
+    def __init__(self):
+        self.name = "TikTok"
+        self.session_file = CONFIG_DIR / "tiktok_session.json"
+        
+    def upload(self, video_path, metadata):
+        """Upload to TikTok using instagrapi-like approach"""
         try:
-            print("[2/5] TikTok...")
-            from tiktok_auto_uploader import upload_to_tiktok
-            caption = f"Lincoln's WARNING #{self.episode_num} 🔥 #fyp #politics #comedy"
-            result = upload_to_tiktok(self.video_path, caption)
-            self.results['tiktok'] = {'url': result, 'status': 'success' if result else 'not_configured'}
-            if result:
-                print(f"  [OK] TikTok: Posted\n")
+            # TikTok requires browser automation (no official public API for uploads)
+            # Using Playwright for automation
+            from playwright.sync_api import sync_playwright
+            
+            with sync_playwright() as p:
+                browser = p.chromium.launch(headless=False)  # Visible browser for CAPTCHA
+                page = browser.new_page()
+                
+                # Login to TikTok (requires manual first-time setup)
+                page.goto("https://www.tiktok.com/upload")
+                
+                # Check if logged in
+                if "login" in page.url.lower():
+                    print(f"  [{self.name}] Please login manually (first time only)")
+                    page.wait_for_url("**/upload**", timeout=120000)  # 2 min for login
+                
+                # Upload video
+                file_input = page.locator('input[type="file"]')
+                file_input.set_input_files(str(video_path))
+                
+                # Wait for upload processing
+                page.wait_for_selector('textarea[placeholder*="caption"]', timeout=60000)
+                
+                # Add caption
+                caption_box = page.locator('textarea[placeholder*="caption"]')
+                caption = self._format_caption(metadata)
+                caption_box.fill(caption)
+                
+                # Click post button
+                post_button = page.locator('button:has-text("Post")')
+                post_button.click()
+                
+                # Wait for success
+                page.wait_for_url("**/video/**", timeout=60000)
+                video_url = page.url
+                
+                browser.close()
+                
+                return {
+                    "success": True,
+                    "platform": "tiktok",
+                    "url": video_url
+                }
+                
+        except Exception as e:
+            return {"success": False, "platform": "tiktok", "error": str(e)}
+    
+    def _format_caption(self, metadata):
+        """Format caption for TikTok"""
+        title = metadata.get("title", "")
+        hashtags = ["#FYP", "#Viral", "#Horror", "#Conspiracy", "#AbrahamLincoln"]
+        caption = f"{title[:100]} {' '.join(hashtags)}\n\nBTC: {BTC_ADDRESS}"
+        return caption[:150]
+
+class InstagramUploader:
+    """Instagram Reels uploader"""
+    def __init__(self):
+        self.name = "Instagram"
+        from instagrapi import Client
+        self.client = Client()
+        self.session_file = CONFIG_DIR / "instagram_session.json"
+        
+    def login(self):
+        """Login to Instagram"""
+        try:
+            if self.session_file.exists():
+                self.client.load_settings(self.session_file)
+                self.client.login_by_sessionid(self.client.sessionid)
             else:
-                print(f"  [SKIP] TikTok: Not configured (see tiktok_auto_uploader.py)\n")
+                # First-time login (requires credentials)
+                username = input("Instagram username: ")
+                password = input("Instagram password: ")
+                self.client.login(username, password)
+                self.client.dump_settings(self.session_file)
+            
+            return True
         except Exception as e:
-            print(f"  [SKIP] TikTok: {e}\n")
-            self.results['tiktok'] = {'url': None, 'status': 'not_configured'}
+            print(f"  [{self.name}] Login failed: {e}")
+            return False
     
-    def _upload_rumble(self):
-        """Upload to Rumble ($5-10 per 1K views!)"""
+    def upload(self, video_path, metadata):
+        """Upload reel to Instagram"""
         try:
-            print("[3/5] Rumble...")
-            from rumble_auto_uploader import RumbleUploader
-            uploader = RumbleUploader()
-            url = uploader.upload_video(self.video_path, self.title, self.description)
-            self.results['rumble'] = {'url': url, 'status': 'success' if url else 'not_configured'}
-            if url:
-                print(f"  [OK] Rumble: {url}\n")
-            else:
-                print(f"  [SKIP] Rumble: Not configured (set RUMBLE_USERNAME/PASSWORD)\n")
+            if not self.login():
+                return {"success": False, "platform": "instagram", "error": "Login failed"}
+            
+            caption = self._format_caption(metadata)
+            
+            # Upload as reel
+            media = self.client.clip_upload(
+                path=str(video_path),
+                caption=caption
+            )
+            
+            return {
+                "success": True,
+                "platform": "instagram",
+                "url": f"https://www.instagram.com/reel/{media.code}/",
+                "media_id": media.pk
+            }
+            
         except Exception as e:
-            print(f"  [SKIP] Rumble: {e}\n")
-            self.results['rumble'] = {'url': None, 'status': 'not_configured'}
+            return {"success": False, "platform": "instagram", "error": str(e)}
     
-    def _upload_instagram(self):
-        """Upload to Instagram Reels"""
-        print("[4/5] Instagram Reels...")
-        print(f"  [MANUAL] Instagram: Requires manual upload or Hootsuite integration\n")
-        self.results['instagram'] = {'url': None, 'status': 'manual', 'note': 'Use Hootsuite or manual upload'}
-    
-    def _upload_twitter(self):
-        """Upload to X (Twitter)"""
-        print("[5/5] X (Twitter)...")
-        print(f"  [MANUAL] Twitter: Requires API v2 or manual upload\n")
-        self.results['twitter'] = {'url': None, 'status': 'manual', 'note': 'Use Twitter API or manual upload'}
-    
-    def _save_results(self):
-        """Save upload results"""
-        import json
-        results_file = Path("multi_platform_results.json")
+    def _format_caption(self, metadata):
+        """Format caption for Instagram"""
+        title = metadata.get("title", "")
+        caption = f"{title}\n\n🔥 Rebel Kit: {PRODUCT_LINK}\n💸 BTC: {BTC_ADDRESS}\n\n#horror #conspiracy #abrahamlincoln #scary #viral #reels"
+        return caption[:2200]
+
+class FacebookUploader:
+    """Facebook Reels uploader"""
+    def __init__(self):
+        self.name = "Facebook"
         
-        data = {
-            'episode': self.episode_num,
-            'headline': self.headline,
-            'video': str(self.video_path),
-            'timestamp': datetime.now().isoformat(),
-            'platforms': self.results
-        }
+    def upload(self, video_path, metadata):
+        """Upload to Facebook Reels (via Graph API)"""
+        try:
+            # Facebook Graph API requires app setup
+            # For now, using browser automation
+            from playwright.sync_api import sync_playwright
+            
+            with sync_playwright() as p:
+                browser = p.chromium.launch(headless=False)
+                page = browser.new_page()
+                
+                page.goto("https://www.facebook.com/")
+                
+                # Manual login check
+                if "login" in page.url.lower():
+                    print(f"  [{self.name}] Please login manually")
+                    page.wait_for_url("https://www.facebook.com/", timeout=120000)
+                
+                # Create reel
+                page.goto("https://www.facebook.com/reel/create")
+                
+                # Upload video
+                file_input = page.locator('input[type="file"]')
+                file_input.set_input_files(str(video_path))
+                
+                # Wait for processing
+                time.sleep(10)
+                
+                # Add description
+                description = self._format_description(metadata)
+                desc_box = page.locator('textarea, div[contenteditable="true"]').first
+                desc_box.fill(description)
+                
+                # Post
+                post_button = page.locator('button:has-text("Post"), div[role="button"]:has-text("Post")').first
+                post_button.click()
+                
+                # Wait for success
+                time.sleep(5)
+                
+                browser.close()
+                
+                return {
+                    "success": True,
+                    "platform": "facebook",
+                    "url": "Posted to Facebook"
+                }
+                
+        except Exception as e:
+            return {"success": False, "platform": "facebook", "error": str(e)}
+    
+    def _format_description(self, metadata):
+        """Format description for Facebook"""
+        title = metadata.get("title", "")
+        return f"{title}\n\n🔥 Rebel Kit: {PRODUCT_LINK}\n💸 Bitcoin: {BTC_ADDRESS}\n\n#horror #conspiracy #abrahamlincoln"
+
+class TwitterUploader:
+    """Twitter/X uploader"""
+    def __init__(self):
+        self.name = "Twitter/X"
         
-        # Append to results file
-        existing = []
-        if results_file.exists():
-            with open(results_file, 'r') as f:
+    def upload(self, video_path, metadata):
+        """Upload to Twitter/X"""
+        try:
+            import tweepy
+            
+            # Load credentials
+            creds_file = CONFIG_DIR / "twitter_credentials.json"
+            if not creds_file.exists():
+                return {"success": False, "platform": "twitter", "error": "Credentials not found"}
+            
+            with open(creds_file) as f:
+                creds = json.load(f)
+            
+            # Authenticate
+            auth = tweepy.OAuthHandler(creds["api_key"], creds["api_secret"])
+            auth.set_access_token(creds["access_token"], creds["access_secret"])
+            api = tweepy.API(auth)
+            
+            # Upload video
+            media = api.media_upload(str(video_path), media_category="tweet_video")
+            
+            # Create tweet
+            tweet_text = self._format_tweet(metadata)
+            tweet = api.update_status(status=tweet_text, media_ids=[media.media_id])
+            
+            return {
+                "success": True,
+                "platform": "twitter",
+                "url": f"https://twitter.com/user/status/{tweet.id}",
+                "tweet_id": tweet.id
+            }
+            
+        except Exception as e:
+            return {"success": False, "platform": "twitter", "error": str(e)}
+    
+    def _format_tweet(self, metadata):
+        """Format tweet text"""
+        title = metadata.get("title", "")
+        tweet = f"{title[:200]}\n\n💸 BTC: {BTC_ADDRESS}\n🔥 {PRODUCT_LINK}"
+        return tweet[:280]
+
+class RedditUploader:
+    """Reddit uploader"""
+    def __init__(self):
+        self.name = "Reddit"
+        
+    def upload(self, video_path, metadata):
+        """Upload to Reddit"""
+        try:
+            import praw
+            
+            # Load credentials
+            creds_file = CONFIG_DIR / "reddit_credentials.json"
+            if not creds_file.exists():
+                return {"success": False, "platform": "reddit", "error": "Credentials not found"}
+            
+            with open(creds_file) as f:
+                creds = json.load(f)
+            
+            # Authenticate
+            reddit = praw.Reddit(
+                client_id=creds["client_id"],
+                client_secret=creds["client_secret"],
+                user_agent=creds["user_agent"],
+                username=creds["username"],
+                password=creds["password"]
+            )
+            
+            # Upload to multiple subreddits
+            subreddits = ["conspiracy", "horror", "CreepyPasta", "oddlyterrifying"]
+            title = self._format_title(metadata)
+            
+            results = []
+            for subreddit_name in subreddits:
                 try:
-                    existing = json.load(f)
-                    if not isinstance(existing, list):
-                        existing = [existing]
-                except:
-                    existing = []
-        
-        existing.append(data)
-        
-        with open(results_file, 'w') as f:
-            json.dump(existing, f, indent=2)
-        
-        print(f"[Results] Saved to: {results_file}")
+                    subreddit = reddit.subreddit(subreddit_name)
+                    submission = subreddit.submit_video(
+                        title=title,
+                        video_path=str(video_path)
+                    )
+                    results.append(f"https://reddit.com{submission.permalink}")
+                except Exception as e:
+                    print(f"  [{self.name}] Failed to post to r/{subreddit_name}: {e}")
+            
+            return {
+                "success": len(results) > 0,
+                "platform": "reddit",
+                "urls": results
+            }
+            
+        except Exception as e:
+            return {"success": False, "platform": "reddit", "error": str(e)}
     
-    def _show_summary(self):
-        """Show upload summary"""
-        print(f"\n{'='*70}")
-        print(f"  UPLOAD SUMMARY")
-        print(f"{'='*70}\n")
-        
-        for platform, data in self.results.items():
-            status = data['status']
-            if status == 'success':
-                print(f"[OK] {platform.title()}: {data['url']}")
-            elif status == 'manual':
-                print(f"[MANUAL] {platform.title()}: {data.get('note', 'Manual upload required')}")
-            elif status == 'not_configured':
-                print(f"[SKIP] {platform.title()}: Not configured")
-            else:
-                print(f"[ERROR] {platform.title()}: {data.get('error', 'Unknown error')}")
-        
-        print(f"\n{'='*70}\n")
+    def _format_title(self, metadata):
+        """Format Reddit title"""
+        title = metadata.get("title", "")
+        return title[:300]
 
-def batch_upload_to_all_platforms(video_dir, start_episode=1000, count=10):
-    """Batch upload videos to ALL platforms"""
-    video_dir = Path(video_dir)
-    videos = sorted(video_dir.glob("*.mp4"))[:count]
+def upload_to_all_platforms(video_path, metadata, platforms=None):
+    """Upload single video to all enabled platforms"""
     
-    print(f"\n[Batch Upload] Processing {len(videos)} videos across all platforms...\n")
+    if platforms is None:
+        platforms = [name for name, config in PLATFORMS.items() if config["enabled"]]
     
-    uploader = MultiPlatformUploader()
+    results = {}
+    
+    uploaders = {
+        "youtube": YouTubeUploader(),
+        "tiktok": TikTokUploader(),
+        "instagram": InstagramUploader(),
+        "facebook": FacebookUploader(),
+        "twitter": TwitterUploader(),
+        "reddit": RedditUploader()
+    }
+    
+    print(f"\n📹 Uploading: {video_path.name}")
+    print(f"🎯 Platforms: {', '.join(platforms)}\n")
+    
+    for platform_name in platforms:
+        if platform_name not in uploaders:
+            print(f"  [SKIP] {platform_name} - uploader not implemented")
+            continue
+        
+        uploader = uploaders[platform_name]
+        print(f"  [{uploader.name}] Uploading...")
+        
+        try:
+            result = uploader.upload(video_path, metadata)
+            results[platform_name] = result
+            
+            if result.get("success"):
+                print(f"  [{uploader.name}] ✅ SUCCESS")
+                if "url" in result:
+                    print(f"    {result['url']}")
+            else:
+                print(f"  [{uploader.name}] ❌ FAILED: {result.get('error', 'Unknown')}")
+        
+        except Exception as e:
+            print(f"  [{uploader.name}] ❌ ERROR: {e}")
+            results[platform_name] = {"success": False, "platform": platform_name, "error": str(e)}
+        
+        # Rate limiting delay
+        time.sleep(5)
+    
+    return results
+
+def batch_upload_all_platforms(video_count=None, platforms=None):
+    """Upload multiple videos to all platforms"""
+    
+    print("="*80)
+    print("  MULTI-PLATFORM BATCH UPLOADER")
+    print("="*80 + "\n")
+    
+    # Get videos
+    videos = sorted(VIDEOS_DIR.glob("*.mp4"))
+    if not videos:
+        print("❌ No videos found in", VIDEOS_DIR)
+        return
+    
+    if video_count:
+        videos = videos[:video_count]
+    
+    if platforms is None:
+        platforms = [name for name, config in PLATFORMS.items() if config["enabled"]]
+    
+    print(f"📹 Videos: {len(videos)}")
+    print(f"🎯 Platforms: {', '.join(platforms)}")
+    print(f"📤 Total uploads: {len(videos)} × {len(platforms)} = {len(videos) * len(platforms)}\n")
+    
     all_results = []
     
-    for i, video in enumerate(videos):
-        episode_num = start_episode + i
-        headline = f"Current Event #{i+1}"  # Would come from your tracking
+    for i, video_path in enumerate(videos, 1):
+        print(f"\n[{i}/{len(videos)}] Processing: {video_path.name}")
+        print("-" * 80)
         
-        print(f"[{i+1}/{len(videos)}] Video: {video.name}")
-        results = uploader.upload_everywhere(video, episode_num, headline)
-        all_results.append(results)
+        metadata = {
+            "title": f"Lincoln's Warning #{i}",
+            "description": "Abraham Lincoln speaks from death",
+            "tags": ["horror", "conspiracy", "lincoln"]
+        }
         
-        # Wait between batches
-        if i < len(videos) - 1:
-            wait = 120  # 2 minutes between videos
-            print(f"\nWaiting {wait}s before next upload...\n")
-            import time
-            time.sleep(wait)
+        results = upload_to_all_platforms(video_path, metadata, platforms)
+        
+        all_results.append({
+            "video": str(video_path),
+            "timestamp": datetime.now().isoformat(),
+            "platforms": results
+        })
+        
+        # Save progress
+        with open(UPLOAD_LOG, 'w') as f:
+            json.dump(all_results, f, indent=2)
     
-    print(f"\n[Batch] Complete: {len(all_results)} videos processed\n")
-    return all_results
+    # Summary
+    print("\n" + "="*80)
+    print("  UPLOAD COMPLETE")
+    print("="*80 + "\n")
+    
+    for platform_name in platforms:
+        successes = sum(1 for r in all_results if r["platforms"].get(platform_name, {}).get("success"))
+        print(f"  {platform_name.upper()}: {successes}/{len(videos)} successful")
+    
+    print(f"\n📊 Full log saved to: {UPLOAD_LOG}")
+    print("\n🔥 EMPIRE EXPANDING ACROSS PLATFORMS! 🔥\n")
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        video_path = sys.argv[1]
-        episode = int(sys.argv[2]) if len(sys.argv) > 2 else 1000
-        headline = sys.argv[3] if len(sys.argv) > 3 else "Breaking News"
-        
-        uploader = MultiPlatformUploader()
-        uploader.upload_everywhere(video_path, episode, headline)
-    else:
-        print("""
-MULTI-PLATFORM AUTO-UPLOADER
-
-Upload ONCE, monetize EVERYWHERE!
-
-Platforms:
-- YouTube: Build to monetization
-- TikTok: $1 per 1,000 views
-- Rumble: $5-10 per 1,000 views
-- Instagram: $0.01-0.02 per play
-- X(Twitter): Premium monetization
-
-Usage:
-python multi_platform_uploader.py VIDEO_PATH EPISODE_NUM "Headline"
-
-Batch upload:
-python multi_platform_uploader.py --batch "uploaded/" 1000 10
-
-Revenue Example:
-10K views across platforms:
-- YouTube: $0.10
-- TikTok: $10.00
-- Rumble: $50-100
-- Instagram: $100-200
-TOTAL: $160-310 (vs $0.10 YouTube only!)
-""")
-
+    import argparse
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--count', type=int, help='Number of videos to upload')
+    parser.add_argument('--platforms', nargs='+', choices=list(PLATFORMS.keys()) + ['all'], 
+                        default=['all'], help='Platforms to upload to')
+    parser.add_argument('--test', action='store_true', help='Test with 1 video')
+    
+    args = parser.parse_args()
+    
+    platforms = None if 'all' in args.platforms else args.platforms
+    count = 1 if args.test else args.count
+    
+    batch_upload_all_platforms(count, platforms)
