@@ -1,0 +1,136 @@
+{
+  "runs": [
+    {
+      "llm": "ChatGPT",
+      "round": 1,
+      "episode_count": 3,
+      "start_episode": 30005,
+      "episodes": [
+        {
+          "llm": "ChatGPT",
+          "round": 1,
+          "episode_number": 30005,
+          "title": "ChatGPT Battle Round 1 - Episode 30005",
+          "script_path": "./core/production_inputs/episode_30005_script.txt",
+          "status": "dry_run",
+          "generated_at": "2025-11-03T16:12:48.255876"
+        },
+        {
+          "llm": "ChatGPT",
+          "round": 1,
+          "episode_number": 30006,
+          "title": "ChatGPT Battle Round 1 - Episode 30006",
+          "script_path": "./core/production_inputs/episode_30006_script.txt",
+          "status": "dry_run",
+          "generated_at": "2025-11-03T16:12:48.255905"
+        },
+        {
+          "llm": "ChatGPT",
+          "round": 1,
+          "episode_number": 30007,
+          "title": "ChatGPT Battle Round 1 - Episode 30007",
+          "script_path": "./core/production_inputs/episode_30007_script.txt",
+          "status": "dry_run",
+          "generated_at": "2025-11-03T16:12:48.255914"
+        }
+      ],
+      "timestamp": "2025-11-03T16:12:48.255963",
+      "dry_run": true
+    }
+  ],
+  "proofs": [
+    {
+      "episode_number": 30005,
+      "llm": "ChatGPT",
+      "round": 1,
+      "proof_type": "placeholder",
+      "timestamp": "2025-11-03T16:12:48.255984",
+      "reviewed": false,
+      "approved_for_upload": false
+    },
+    {
+      "episode_number": 30006,
+      "llm": "ChatGPT",
+      "round": 1,
+      "proof_type": "placeholder",
+      "timestamp": "2025-11-03T16:12:48.255990",
+      "reviewed": false,
+      "approved_for_upload": false
+    },
+    {
+      "episode_number": 30007,
+      "llm": "ChatGPT",
+      "round": 1,
+      "proof_type": "placeholder",
+      "timestamp": "2025-11-03T16:12:48.256000",
+      "reviewed": false,
+      "approved_for_upload": false
+    }
+  ],
+  "pending_submissions": [
+    {
+      "filename": "ChatGPT_20251103_161217.json",
+      "llm_name": "ChatGPT",
+      "episode_count": 5,
+      "episodes": [
+        30000,
+        30001,
+        30002,
+        30003,
+        30004
+      ],
+      "received_at": "2025-11-03T16:12:17.610053",
+      "status": "enqueued",
+      "processed_at": null,
+      "enqueued_at": "2025-11-03T16:12:32.232310",
+      "production_files": [
+        "episode_30000_script.txt",
+        "episode_30000_metadata.json",
+        "episode_30001_script.txt",
+        "episode_30001_metadata.json",
+        "episode_30002_script.txt",
+        "episode_30002_metadata.json",
+        "episode_30003_script.txt",
+        "episode_30003_metadata.json",
+        "episode_30004_script.txt",
+        "episode_30004_metadata.json"
+      ]
+    },
+    {
+      "filename": "GROK_20251103_161225.json",
+      "llm_name": "GROK",
+      "episode_count": 5,
+      "episodes": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004
+      ],
+      "received_at": "2025-11-03T16:12:25.583531",
+      "status": "enqueued",
+      "processed_at": null,
+      "enqueued_at": "2025-11-03T16:12:32.233075",
+      "production_files": [
+        "episode_60000_script.txt",
+        "episode_60000_metadata.json",
+        "episode_60001_script.txt",
+        "episode_60001_metadata.json",
+        "episode_60002_script.txt",
+        "episode_60002_metadata.json",
+        "episode_60003_script.txt",
+        "episode_60003_metadata.json",
+        "episode_60004_script.txt",
+        "episode_60004_metadata.json"
+      ]
+    }
+  ],
+  "llm_summary": {
+    "ChatGPT": {
+      "total_episodes": 3,
+      "total_rounds": 1,
+      "status": "active"
+    }
+  },
+  "generated_at": "2025-11-03T16:12:48.256018"
+}
