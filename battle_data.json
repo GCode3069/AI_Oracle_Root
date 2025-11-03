@@ -36,6 +36,34 @@
       ],
       "timestamp": "2025-11-03T16:12:48.255963",
       "dry_run": true
+    },
+    {
+      "llm": "Claude",
+      "round": 1,
+      "episode_count": 2,
+      "start_episode": 90000,
+      "episodes": [
+        {
+          "llm": "Claude",
+          "round": 1,
+          "episode_number": 90000,
+          "title": "Claude Battle Round 1 - Episode 90000",
+          "script_path": "./core/production_inputs/episode_90000_script.txt",
+          "status": "dry_run",
+          "generated_at": "2025-11-03T16:15:51.933550"
+        },
+        {
+          "llm": "Claude",
+          "round": 1,
+          "episode_number": 90001,
+          "title": "Claude Battle Round 1 - Episode 90001",
+          "script_path": "./core/production_inputs/episode_90001_script.txt",
+          "status": "dry_run",
+          "generated_at": "2025-11-03T16:15:51.933565"
+        }
+      ],
+      "timestamp": "2025-11-03T16:15:51.933584",
+      "dry_run": true
     }
   ],
   "proofs": [
@@ -63,6 +91,24 @@
       "round": 1,
       "proof_type": "placeholder",
       "timestamp": "2025-11-03T16:12:48.256000",
+      "reviewed": false,
+      "approved_for_upload": false
+    },
+    {
+      "episode_number": 90000,
+      "llm": "Claude",
+      "round": 1,
+      "proof_type": "placeholder",
+      "timestamp": "2025-11-03T16:15:51.933594",
+      "reviewed": false,
+      "approved_for_upload": false
+    },
+    {
+      "episode_number": 90001,
+      "llm": "Claude",
+      "round": 1,
+      "proof_type": "placeholder",
+      "timestamp": "2025-11-03T16:15:51.933598",
       "reviewed": false,
       "approved_for_upload": false
     }
@@ -123,6 +169,62 @@
         "episode_60004_script.txt",
         "episode_60004_metadata.json"
       ]
+    },
+    {
+      "filename": "ChatGPT_20251103_161551.json",
+      "llm_name": "ChatGPT",
+      "episode_count": 5,
+      "episodes": [
+        30000,
+        30001,
+        30002,
+        30003,
+        30004
+      ],
+      "received_at": "2025-11-03T16:15:51.824578",
+      "status": "enqueued",
+      "processed_at": null,
+      "enqueued_at": "2025-11-03T16:15:51.895895",
+      "production_files": [
+        "episode_30000_script.txt",
+        "episode_30000_metadata.json",
+        "episode_30001_script.txt",
+        "episode_30001_metadata.json",
+        "episode_30002_script.txt",
+        "episode_30002_metadata.json",
+        "episode_30003_script.txt",
+        "episode_30003_metadata.json",
+        "episode_30004_script.txt",
+        "episode_30004_metadata.json"
+      ]
+    },
+    {
+      "filename": "GROK_20251103_161551.json",
+      "llm_name": "GROK",
+      "episode_count": 5,
+      "episodes": [
+        60000,
+        60001,
+        60002,
+        60003,
+        60004
+      ],
+      "received_at": "2025-11-03T16:15:51.858598",
+      "status": "enqueued",
+      "processed_at": null,
+      "enqueued_at": "2025-11-03T16:15:51.896589",
+      "production_files": [
+        "episode_60000_script.txt",
+        "episode_60000_metadata.json",
+        "episode_60001_script.txt",
+        "episode_60001_metadata.json",
+        "episode_60002_script.txt",
+        "episode_60002_metadata.json",
+        "episode_60003_script.txt",
+        "episode_60003_metadata.json",
+        "episode_60004_script.txt",
+        "episode_60004_metadata.json"
+      ]
     }
   ],
   "llm_summary": {
@@ -130,7 +232,12 @@
       "total_episodes": 3,
       "total_rounds": 1,
       "status": "active"
+    },
+    "Claude": {
+      "total_episodes": 2,
+      "total_rounds": 1,
+      "status": "active"
     }
   },
-  "generated_at": "2025-11-03T16:12:48.256018"
+  "generated_at": "2025-11-03T16:15:51.933609"
 }
