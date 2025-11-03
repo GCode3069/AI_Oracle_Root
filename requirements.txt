@@ -1,75 +1,24 @@
-# ═══════════════════════════════════════════════════════════════
-#   SCARIFY EMPIRE - Python Dependencies
-#   Install with: pip install -r requirements.txt
-# ═══════════════════════════════════════════════════════════════
-
-# Core Video Generation
-moviepy>=1.0.3
-Pillow>=10.0.0
-numpy>=1.24.0
-
-# AI & ML
-elevenlabs>=0.2.0
-
-# YouTube API
-google-api-python-client>=2.0.0
-google-auth-oauthlib>=1.0.0
-google-auth-httplib2>=0.1.0
-
-# Web Scraping & APIs
-requests>=2.31.0
-beautifulsoup4>=4.12.0
-pexels-api>=1.0.0
-
-# Google Sheets Integration
-gspread>=5.10.0
-oauth2client>=4.1.3
-
-# Telegram Bot
-python-telegram-bot>=20.0
-
-# Web Interface (Mobile UI)
-Flask>=3.0.0
-Flask-CORS>=4.0.0
-
-# Audio Processing
-pydub>=0.25.1
-
-# Data & Analytics
-pandas>=2.0.0
-
-# QR Code Generation
-qrcode[pil]>=7.4.2
-
-# Image Processing
-opencv-python>=4.8.0
-
-# Utilities
-python-dotenv>=1.0.0
-pyyaml>=6.0
-
-# CLI Tools
-click>=8.1.0
-colorama>=0.4.6
-
-# Testing (Optional)
-pytest>=7.4.0
-
-# ═══════════════════════════════════════════════════════════════
-# INSTALLATION INSTRUCTIONS
-# ═══════════════════════════════════════════════════════════════
-#
-# Windows:
-#   pip install -r requirements.txt
-#
-# Linux/Mac:
-#   pip3 install -r requirements.txt
-#
-# With Virtual Environment (Recommended):
-#   python3 -m venv venv
-#   source venv/bin/activate  # Linux/Mac
-#   venv\Scripts\activate     # Windows
-#   pip install -r requirements.txt
-#
-# ═══════════════════════════════════════════════════════════════
-
+librosa
+fastapi
+uvicorn
+httpx
+numpy
+soundfile
+dash
+plotly
+matplotlib
+pydub
+Pillow
+slack-sdk
+pandas
+psutil
+watchdog
+# Additional production dependencies for video processing, monitoring, and notifications
+opencv-python
+requests
+scikit-learn
+imageio
+ffmpeg-python
+pyyaml
+setuptools
+# Add any other required packages here
