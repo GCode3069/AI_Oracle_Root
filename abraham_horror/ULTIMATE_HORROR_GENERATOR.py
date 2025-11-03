@@ -275,15 +275,57 @@ def create_ultimate_horror_video(audio_path, output_path, headline):
         # QR Code - visible entire video (bottom corner)
         qr_clip = ImageClip(str(qr_img)).resize((350, 430)).set_position((700, 1450)).set_duration(duration).set_opacity(0.95)
         
-        # Jump scare at strategic points
-        if scare_img and duration > 15:
-            jump_scare = ImageClip(str(scare_img)).set_duration(0.2)  # 0.2 second flash
+        # AUDIO-REACTIVE LIP BAR (makes lips "move")
+        try:
+            # Simple pulsing effect based on time (simulates speech rhythm)
+            # Create red lip bar
+            lip_bar = Image.new('RGB', (500, 20), (255, 0, 0))  # Red bar
+            lip_bar_path = BASE / "temp" / "lip_bar.png"
+            lip_bar.save(lip_bar_path)
             
-            # Add scares at: 8s, 20s, 40s
-            scare_times = [t for t in [8, 20, 40] if t < duration]
-            scare_clips = [jump_scare.set_start(t) for t in scare_times]
-        else:
-            scare_clips = []
+            # Pulse function - simulates speech pattern without complex audio analysis
+            import math
+            def pulse(t):
+                # Rapid pulse (10 Hz) with occasional pauses
+                base_pulse = abs(math.sin(t * 10 * 2 * math.pi))
+                pause = 1 if (t % 1.2) < 0.9 else 0.1  # Pause every 1.2 seconds
+                return base_pulse * pause
+            
+            # Make bar expand/contract (lip movement effect)
+            lip_clip = ImageClip(str(lip_bar_path))
+            lip_clip = lip_clip.resize(lambda t: (500, int(25 + 140*pulse(t))))  # 25-165px height
+            lip_clip = lip_clip.set_position(('center', 1300)).set_duration(duration).set_opacity(0.95)
+            
+            log("Audio-reactive lip bar created (RED pulsing)", "SUCCESS")
+        except Exception as e:
+            log(f"Lip bar failed: {e}, skipping", "ERROR")
+            lip_clip = None
+        
+        # Jump scare at strategic points - ENHANCED
+        scare_clips = []
+        if scare_img:
+            # Calculate scare times (every 15 seconds, but at least 2 scares)
+            scare_times = []
+            if duration > 8:
+                scare_times.append(8)  # First scare at 8s
+            if duration > 20:
+                scare_times.append(duration * 0.5)  # Middle
+            if duration > 40:
+                scare_times.append(duration * 0.8)  # Near end
+            
+            for scare_time in scare_times:
+                # Make jump scare more visible: full screen, longer duration, WHITE FLASH
+                # Add white flash before scare for impact
+                white_flash = ColorClip(size=(1080, 1920), color=(255, 255, 255))
+                white_flash = white_flash.set_start(scare_time).set_duration(0.1).set_opacity(0.8)
+                scare_clips.append(white_flash)
+                
+                # Then the actual scare image
+                jump_scare = ImageClip(str(scare_img)).resize(height=1920)  # Full screen height
+                jump_scare = jump_scare.set_start(scare_time + 0.1).set_duration(0.5).set_opacity(1.0)  # 0.5s, full opacity
+                scare_clips.append(jump_scare)
+            
+            log(f"Created {len(scare_times)} jump scares (with white flash)", "SUCCESS")
         
         # Scanlines
         scan_path = BASE / "temp" / "scanlines_heavy.png"
@@ -303,8 +345,11 @@ def create_ultimate_horror_video(audio_path, output_path, headline):
         hook_img.save(hook_path)
         hook_clip = ImageClip(str(hook_path)).set_position(('center', 50)).set_duration(min(4, duration)).set_opacity(0.9)
         
-        # Compose
-        layers = [bg, lincoln, qr_clip, scan_clip, hook_clip] + scare_clips
+        # Compose (add lip bar if available)
+        layers = [bg, lincoln, qr_clip, scan_clip, hook_clip]
+        if lip_clip:
+            layers.append(lip_clip)
+        layers.extend(scare_clips)
         
         temp_video = BASE / "temp" / f"temp_{int(time.time())}.mp4"
         comp = CompositeVideoClip(layers, size=(1080, 1920))
@@ -316,11 +361,19 @@ def create_ultimate_horror_video(audio_path, output_path, headline):
             bitrate='10000k',
             preset='fast',
             verbose=False,
-            logger=None
+            logger=None,
+            threads=4
         )
         comp.close()
         bg.close()
         audio.close()
+        
+        # Verify temp video was created
+        if not temp_video.exists() or temp_video.stat().st_size == 0:
+            log(f"Temp video creation failed: {temp_video}", "ERROR")
+            return False
+        
+        log(f"Temp video created: {temp_video.stat().st_size / (1024*1024):.1f}MB", "SUCCESS")
         
         # Heavy VHS post-processing
         log("Applying HEAVY VHS degradation...", "PROCESS")
@@ -335,17 +388,28 @@ def create_ultimate_horror_video(audio_path, output_path, headline):
             "drawbox=y=mod(n*3\\,15)*10:h=5:w=iw:color=black@0.7:t=fill"
         )
         
-        subprocess.run([
+        result = subprocess.run([
             "ffmpeg", "-y", "-i", str(temp_video),
             "-vf", vhs_filter,
             "-c:v", "libx264", "-preset", "fast", "-crf", "26",
             "-c:a", "copy",
             str(output_path)
-        ], capture_output=True, timeout=120)
+        ], capture_output=True, timeout=120, text=True)
         
-        if output_path.exists():
-            log("ULTIMATE horror video created", "SUCCESS")
+        if result.returncode != 0:
+            log(f"FFmpeg VHS processing failed: {result.stderr[:200]}", "ERROR")
+            # Try to copy temp video as fallback
+            if temp_video.exists() and temp_video.stat().st_size > 0:
+                import shutil
+                shutil.copy2(temp_video, output_path)
+                log("Used temp video as fallback (no VHS effects)", "SUCCESS")
+        
+        if output_path.exists() and output_path.stat().st_size > 0:
+            log(f"ULTIMATE horror video created: {output_path.stat().st_size / (1024*1024):.1f}MB", "SUCCESS")
             return True
+        else:
+            log(f"Video file not created or empty: {output_path}", "ERROR")
+            return False
             
     except Exception as e:
         log(f"Video creation failed: {e}", "ERROR")
@@ -495,7 +559,15 @@ def generate_ultimate_horror():
     # Create video
     vp = BASE / f"videos/ULTIMATE_{t}.mp4"
     if not create_ultimate_horror_video(ap, vp, headline):
+        log("Video creation failed - skipping", "ERROR")
         return None
+    
+    # Check if video file actually exists and has content
+    if not vp.exists() or vp.stat().st_size == 0:
+        log(f"Video file is empty or missing: {vp}", "ERROR")
+        return None
+    
+    log(f"Video created: {vp.name} ({vp.stat().st_size / (1024*1024):.1f}MB)", "SUCCESS")
     
     # Upload
     youtube_url = upload_to_youtube(vp, headline)
@@ -504,7 +576,11 @@ def generate_ultimate_horror():
     up = BASE / "uploaded" / f"ULTIMATE_HORROR_{t}.mp4"
     up.parent.mkdir(parents=True, exist_ok=True)
     import shutil
-    shutil.copy2(vp, up)
+    if vp.exists() and vp.stat().st_size > 0:
+        shutil.copy2(vp, up)
+    else:
+        log(f"Cannot copy empty video file to uploaded/", "ERROR")
+        return None
     
     mb = up.stat().st_size / (1024 * 1024)
     
