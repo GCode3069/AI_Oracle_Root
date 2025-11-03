@@ -1,0 +1,61 @@
+{
+  "llm_name": "ChatGPT_4o",
+  "contact": "operator: /F:/AI_Oracle_Root/scarify",
+  "scripts": [
+    {
+      "episode": 30000,
+      "script": "Stop scrolling. Governments hide things by fear. Today's headline shows them pocketing panic while you freeze. Now you see it. Support truth. Bitcoin below.",
+      "title": "Lincoln's WARNING #30000: They Profit From Your Panic #Shorts",
+      "tags": [
+        "lincoln",
+        "horror",
+        "truth",
+        "shorts"
+      ],
+      "satire_label": true,
+      "notes": "Hook first 3s: 'Stop scrolling.'"
+    },
+    {
+      "episode": 30001,
+      "script": "Listen closely. The headline says it's urgent, but urgency hides profit. They sell chaos while investors smile. You know now. Bitcoin link below.",
+      "title": "Lincoln's WARNING #30001: Urgency Is Their Product #Shorts",
+      "tags": [
+        "viral",
+        "lincoln",
+        "exposed"
+      ],
+      "satire_label": true
+    },
+    {
+      "episode": 30002,
+      "script": "Stop. Look. Politicians cry wolf while pockets grow heavy. Today's scandal proves it. You saw it first. Donate to keep truth alive.",
+      "title": "Lincoln's WARNING #30002: Cry Wolf, Fill Pockets #Shorts",
+      "tags": [
+        "horror",
+        "satire"
+      ],
+      "satire_label": true
+    },
+    {
+      "episode": 30003,
+      "script": "Wait. Headlines teach fear like a lesson plan. But who grades them? Their banks. You now have the grade. Bitcoin below.",
+      "title": "Lincoln's WARNING #30003: Who Grades the Fear? #Shorts",
+      "tags": [
+        "news",
+        "shorts",
+        "viral"
+      ],
+      "satire_label": true
+    },
+    {
+      "episode": 30004,
+      "script": "Don't scroll past this. They manufacture shock for clicks and coin. This headline is proof. Share and support truth with Bitcoin.",
+      "title": "Lincoln's WARNING #30004: Manufactured Shock Exposed #Shorts",
+      "tags": [
+        "exposed",
+        "lincoln"
+      ],
+      "satire_label": true
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║           SCARIFY CONTROL CENTER - DESKTOP DASHBOARD                 ║
+║                                                                      ║
+║              Easy Deployment & Tweaking Interface                    ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+🚀 LAUNCH:
+
+Double-click:  LAUNCH_CONTROL_CENTER.bat
+Or:            SCARIFY_CONTROL_CENTER.pyw
+
+═══════════════════════════════════════════════════════════════════════
+
+✨ FEATURES:
+
+TAB 1: QUICK DEPLOY
+────────────────────
+[TEST Button]        - Generate 3 test videos
+[PRODUCTION Button]  - Generate custom count (adjustable)
+[BLITZ Button]       - Continuous generation until $15K
+[STOP ALL Button]    - Emergency stop for all processes
+
+Settings:
+  • Video Count: Spinner (1-1000)
+  • One-click deployment
+  • Real-time console output
+
+
+TAB 2: SETTINGS
+────────────────
+Configure:
+  ✓ Bitcoin Address
+  ✓ Product Link (Rebel Kit)
+  ✓ Voice ID Selection (3 options)
+  ✓ Channel Count (1-15)
+  
+[Save Settings] - Applies changes instantly
+
+
+TAB 3: MONITOR
+───────────────
+Live Statistics:
+  • Videos Ready count
+  • Audio Files count
+  • QR Codes generated
+  • System Status
+
+Actions:
+  [Refresh Stats]  - Update dashboard
+  [Check BTC]      - Bitcoin balance
+  [Analytics]      - Performance report
+
+
+TAB 4: TOOLS
+─────────────
+Utilities:
+  [Setup 15 Channels]     - Channel OAuth setup
+  [Generate BTC QR]       - Create QR codes
+  [Test System]           - Full diagnostics
+  [Open YouTube Studio]   - Browser link
+  [View Videos]           - Open folder
+  [Clean Temp]            - Free disk space
+
+═══════════════════════════════════════════════════════════════════════
+
+📊 CONSOLE OUTPUT:
+
+Bottom panel shows:
+  • Real-time generation progress
+  • Upload status
+  • Error messages
+  • Completion notifications
+
+═══════════════════════════════════════════════════════════════════════
+
+🎯 QUICK START:
+
+1. Launch: LAUNCH_CONTROL_CENTER.bat
+
+2. Click "TEST (3 Videos)" to verify system
+
+3. Adjust video count and click "PRODUCTION"
+
+4. Monitor progress in Console Output
+
+5. Use Tools tab for maintenance
+
+═══════════════════════════════════════════════════════════════════════
+
+⚙️ TWEAKING:
+
+From Settings Tab:
+  • Change Bitcoin address on the fly
+  • Switch voice IDs for different sounds
+  • Adjust channel distribution
+  • Update product links
+
+From Quick Deploy Tab:
+  • Set exact video count with spinner
+  • Choose deployment mode
+  • Stop/start instantly
+
+═══════════════════════════════════════════════════════════════════════
+
+💡 TIPS:
+
+• Leave console open to watch progress
+• Use TEST mode before production runs
+• Check Monitor tab for stats
+• Tools tab has quick access to everything
+• Settings auto-save
+
+═══════════════════════════════════════════════════════════════════════
+
+🔥 DEPLOYMENT MODES:
+
+TEST MODE (3 videos)
+  ↓
+Verify system working
+  ↓
+PRODUCTION (10-50 videos)
+  ↓
+Scale up
+  ↓
+BLITZ (Continuous until $15K)
+
+═══════════════════════════════════════════════════════════════════════
+
+THE CONTROL CENTER MAKES EVERYTHING POINT-AND-CLICK EASY!
+
+═══════════════════════════════════════════════════════════════════════
+
+

@@ -1,0 +1,60 @@
+═══════════════════════════════════════════════════════════════
+POLLO.AI PROMPT - CONDENSED TO 800 CHARACTERS
+═══════════════════════════════════════════════════════════════
+
+COPY THIS (797 characters):
+
+---BEGIN---
+
+Abraham Lincoln's decomposing face screaming inside malfunctioning 1980s CRT television, extreme horror glitch aesthetic, flesh dripping from skull, RGB chromatic aberration splitting face into red/green/blue layers, digital corruption artifacts, VHS static 40% overlay, violent scan line distortion, phosphor burn trails, blood-splattered screen cracks, bulging pixelated eyeballs, unhinged jaw with rotting teeth, peeling skin with glitch displacement, rusted sparking TV frame, harsh cyan/magenta grading, Max Headroom stuttering, signal loss distortion, 1987 broadcast nightmare, hyperrealistic decay with digital corruption, cinematic horror lighting, 4K detail, compression artifacts, cursed transmission
+
+---END---
+
+═══════════════════════════════════════════════════════════════
+CHARACTER COUNT: 797/800 ✅
+═══════════════════════════════════════════════════════════════
+
+WHAT WAS REMOVED/CONDENSED:
+- "screaming from" → "screaming inside"
+- "white noise interference" → (implied in static/distortion)
+- "found footage horror cinematography" → (implied in aesthetic)
+- "analog horror aesthetic" → (covered by other terms)
+- "intentional" → (assumed)
+- "vibes" → (implied)
+
+ALL KEY VISUAL ELEMENTS PRESERVED:
+✅ Decomposing Lincoln face
+✅ 1980s CRT television
+✅ Horror glitch aesthetic
+✅ RGB chromatic aberration (red/green/blue split)
+✅ VHS static 40% overlay
+✅ Blood splatter, screen cracks
+✅ Bulging pixelated eyes
+✅ Unhinged jaw, rotting teeth
+✅ Peeling skin with glitch
+✅ Rusted/sparking TV
+✅ Cyan/magenta color grading
+✅ Max Headroom stuttering
+✅ 1987 broadcast nightmare
+✅ Hyperrealistic decay
+✅ Cinematic horror lighting
+✅ 4K detail
+✅ Compression artifacts
+✅ Cursed transmission
+
+═══════════════════════════════════════════════════════════════
+USAGE IN POLLO.AI:
+═══════════════════════════════════════════════════════════════
+
+1. Open Pollo.ai
+2. Go to "Image to Image" tab
+3. Upload current Lincoln image
+4. Copy prompt between ---BEGIN--- and ---END---
+5. Paste into Pollo.ai prompt box
+6. Click "Create" (3 credits)
+7. Download result
+8. Save as: assets/master_images/lincoln_horror_glitch.jpg
+
+═══════════════════════════════════════════════════════════════
+
+

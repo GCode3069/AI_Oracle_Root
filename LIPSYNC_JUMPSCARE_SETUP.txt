@@ -1,0 +1,47 @@
+✅ D-ID + WAV2LIP + JUMPSCARE INTEGRATED!
+
+SETUP:
+1. D-ID API Key (optional but recommended):
+   - Sign up at https://studio.d-id.com/
+   - Get API key from dashboard
+   - Set environment variable: $env:DID_API_KEY="your_key_here"
+
+2. Wav2Lip (optional):
+   - Can use API service (set $env:WAV2LIP_API_KEY)
+   - Or install local Wav2Lip in F:\AI_Oracle_Root\scarify\wav2lip\
+   - Falls back to zoom effect if unavailable
+
+3. Jumpscare:
+   - Enabled by default
+   - Triggers at 80% through video
+   - Sudden zoom + flash + distortion
+
+TO USE:
+```powershell
+# With D-ID (best quality lip sync)
+$env:DID_API_KEY="your_did_key"
+python abraham_MAX_HEADROOM.py 1
+
+# Without D-ID (uses Wav2Lip fallback or zoom effect)
+python abraham_MAX_HEADROOM.py 1
+
+# Disable jumpscare
+$env:USE_JUMPSCARE="false"
+python abraham_MAX_HEADROOM.py 1
+
+# Disable lip sync (static image only)
+$env:USE_LIPSYNC="false"
+python abraham_MAX_HEADROOM.py 1
+```
+
+FEATURES:
+✅ D-ID lip sync (mouth moves with audio)
+✅ Wav2Lip lip sync (alternative)
+✅ Zoom/pan fallback (if APIs unavailable)
+✅ Jumpscare at 80% mark
+✅ Max Headroom glitch effects
+✅ TV static overlay
+✅ Horror text overlays
+
+FILE: abraham_MAX_HEADROOM.py
+

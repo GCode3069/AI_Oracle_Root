@@ -1,0 +1,99 @@
+═══════════════════════════════════════════════════════════════════════════
+POLLO AI PROMPT - MAXIMUM HORROR GLITCH EFFECT (SAVE AS TEMPLATE)
+═══════════════════════════════════════════════════════════════════════════
+
+PROMPT FOR POLLO.AI IMAGE 1.6 MODEL:
+
+---BEGIN PROMPT---
+
+Abraham Lincoln's decomposing face screaming from inside a malfunctioning 1980s CRT television, extreme horror glitch aesthetic, flesh dripping from skull, RGB chromatic aberration splitting his face into red/green/blue layers, digital corruption artifacts, VHS static snow overlay at 40% opacity, scan lines violently distorting, phosphor burn-in trails, white noise interference, blood-splattered screen cracks, eyeballs bulging with digital pixelation, jaw unhinged revealing rotting teeth, skin peeling with glitch displacement, television frame rusted and sparking, deep shadows with harsh cyan/magenta color grading, found footage horror cinematography, analog horror aesthetic, Max Headroom stuttering effect, signal loss distortion, 1987 broadcast nightmare, hyperrealistic decay with digital corruption, cinematic horror lighting, 4K detail with intentional compression artifacts, cursed transmission vibes
+
+---END PROMPT---
+
+═══════════════════════════════════════════════════════════════════════════
+SETTINGS TO USE IN POLLO.AI:
+═══════════════════════════════════════════════════════════════════════════
+
+Model: Pollo Image 1.6
+Mode: Basic (fast generation)
+Credits: 3 per image
+Upload: Your current Lincoln face image as base
+Output: Will create MUCH darker, glitchier, more horrific version
+
+═══════════════════════════════════════════════════════════════════════════
+KEY HORROR ELEMENTS INCLUDED:
+═══════════════════════════════════════════════════════════════════════════
+
+VISUAL HORROR:
+- Decomposing face, dripping flesh
+- Blood splatter, screen cracks
+- Bulging eyeballs, unhinged jaw
+- Rotting teeth, peeling skin
+
+GLITCH EFFECTS:
+- RGB chromatic aberration (red/green/blue split)
+- Digital corruption artifacts
+- VHS static snow (40% opacity)
+- Violent scan line distortion
+- Phosphor burn-in trails
+- White noise interference
+- Signal loss distortion
+- Compression artifacts
+
+COLOR/LIGHTING:
+- Deep shadows (menacing)
+- Harsh cyan/magenta grading (unnatural)
+- Cinematic horror lighting
+- Found footage aesthetic
+
+TECHNICAL STYLE:
+- Max Headroom stuttering
+- 1980s CRT television
+- Analog horror aesthetic
+- 1987 broadcast nightmare
+- Cursed transmission vibes
+
+═══════════════════════════════════════════════════════════════════════════
+USAGE INSTRUCTIONS:
+═══════════════════════════════════════════════════════════════════════════
+
+1. Go to Pollo.ai "Image to Image" tab
+2. Upload your current Lincoln face image
+3. Copy ENTIRE prompt above (between ---BEGIN--- and ---END---)
+4. Paste into Pollo.ai prompt box
+5. Keep "Pollo Image 1.6" model selected
+6. Keep "Basic" mode
+7. Click "Create" (costs 3 credits)
+8. Wait 30-60 seconds for generation
+9. Download result
+10. Use in video generation
+
+═══════════════════════════════════════════════════════════════════════════
+EXPECTED RESULT:
+═══════════════════════════════════════════════════════════════════════════
+
+MUCH DARKER than current:
+- Horror movie level scary
+- Zombie apocalypse vibes
+- Genuinely unsettling
+- "Can't unsee this" quality
+
+MUCH GLITCHIER than current:
+- RGB split effect (like 3D glasses without glasses)
+- Heavy VHS distortion
+- Digital corruption visible
+- Max Headroom stuttering aesthetic
+
+MORE SATIRICAL CONTEXT:
+- "Broadcast from hell" vibe
+- "Cursed transmission" feel
+- "Found footage horror" aesthetic
+- Perfect for dark political satire
+
+═══════════════════════════════════════════════════════════════════════════
+SAVE THIS FILE AS: POLLO_HORROR_GLITCH_TEMPLATE.txt
+USE FOR: All future Lincoln horror video generations
+CREDITS NEEDED: 3 per image (you have 326 credits = 108 images possible)
+═══════════════════════════════════════════════════════════════════════════
+
+

@@ -1,0 +1,20 @@
+{
+  "created": "2025-10-29T17:07:29.175213",
+  "youtube_channel": "@FarFromWeakFFW",
+  "upload_settings": {
+    "auto_open_browser": true,
+    "batch_upload": true,
+    "default_privacy": "public",
+    "add_to_playlist": "Motivation Shorts"
+  },
+  "video_categories": {
+    "motivation": "People & Blogs",
+    "comedy": "Entertainment",
+    "education": "Education"
+  },
+  "hashtags": {
+    "motivation": "#motivation #success #mindset #grind #alpha",
+    "comedy": "#comedy #funny #humor #satire #lincoln",
+    "education": "#education #history #facts #learning"
+  }
+}

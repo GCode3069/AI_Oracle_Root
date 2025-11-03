@@ -1,0 +1,51 @@
+# SCARIFY Environment Configuration
+# Copy this to: config/credentials/.env
+# Then fill in your actual API keys
+
+# ============================================
+# AUDIO GENERATION
+# ============================================
+
+# ElevenLabs API Key (OPTIONAL - for best voice quality)
+# Get free key: https://elevenlabs.io/
+# Free tier: 10,000 characters/month = ~20 videos
+ELEVENLABS_API_KEY=your_elevenlabs_key_here
+
+# ============================================
+# VIDEO GENERATION
+# ============================================
+
+# Pexels API Key (REQUIRED - for stock footage)
+# Get free key: https://www.pexels.com/api/
+# Unlimited free downloads
+PEXELS_API_KEY=your_pexels_key_here
+
+# ============================================
+# YOUTUBE UPLOAD (FUTURE)
+# ============================================
+
+# YouTube OAuth credentials file path
+# Get from: https://console.cloud.google.com/
+YOUTUBE_CLIENT_SECRETS=F:/AI_Oracle_Root/scarify/config/credentials/youtube/client_secrets.json
+
+# ============================================
+# NOTES
+# ============================================
+
+# Audio fallback order:
+# 1. SOVA TTS (if sova-tts/run_sova_tts.py exists)
+# 2. ElevenLabs API (if ELEVENLABS_API_KEY set)
+# 3. Windows TTS (always available on Windows)
+
+# Video generation:
+# - Uses Pexels API for free stock footage
+# - Downloads 5 clips per video
+# - Stitches to 50 seconds
+# - Adds audio overlay
+# - Outputs 1080x1920 vertical MP4
+
+# Cost per video:
+# - Audio: FREE (Windows TTS) or $0 (ElevenLabs free tier)
+# - Video: FREE (Pexels)
+# - Upload: FREE (YouTube)
+# Total: $0 per video! 🔥

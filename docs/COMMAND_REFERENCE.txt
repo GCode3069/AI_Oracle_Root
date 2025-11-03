@@ -1,0 +1,300 @@
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                                                                           ║
+║                  SCARIFY COMMAND REFERENCE CARD                           ║
+║                   Keep this open while working                            ║
+║                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+
+┌─ INSTANT DEPLOYMENT ──────────────────────────────────────────────────────┐
+│                                                                           │
+│  One-Click Deploy (Fastest):                                             │
+│    > .\DEPLOY_NOW.ps1                                                    │
+│    Result: 3 test videos in output\videos\ (2-3 min)                     │
+│                                                                           │
+│  Interactive Menu (Easiest):                                             │
+│    > .\launch_bootstrap.ps1                                              │
+│    Result: Visual menu, choose options, generate                         │
+│                                                                           │
+│  Validate First (Safest):                                                │
+│    > .\test_bootstrap.ps1                                                │
+│    Result: Check environment, report issues                              │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+
+┌─ BOOTSTRAP COMMANDS ──────────────────────────────────────────────────────┐
+│                                                                           │
+│  Quick Test (No Videos):                                                 │
+│    > .\scarify_bootstrap.ps1 -QuickTest                                  │
+│                                                                           │
+│  Generate 1 Video:                                                       │
+│    > .\scarify_bootstrap.ps1 -VideoCount 1                               │
+│                                                                           │
+│  Generate 5 Videos:                                                      │
+│    > .\scarify_bootstrap.ps1 -VideoCount 5                               │
+│                                                                           │
+│  Generate 10 Rebel Videos:                                               │
+│    > .\scarify_bootstrap.ps1 -VideoCount 10 -Archetype "Rebel"           │
+│                                                                           │
+│  Generate 20 Mystic Videos:                                              │
+│    > .\scarify_bootstrap.ps1 -VideoCount 20 -Archetype "Mystic"          │
+│                                                                           │
+│  Full Deploy + Auto-Generate:                                            │
+│    > .\scarify_bootstrap.ps1 -VideoCount 5 -FullDeploy                   │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+
+┌─ PYTHON GENERATOR COMMANDS ───────────────────────────────────────────────┐
+│                                                                           │
+│  (After bootstrap completes, use Python directly)                        │
+│                                                                           │
+│  Single Video:                                                           │
+│    > python scarify_bootstrap_generator.py Mystic 1                      │
+│                                                                           │
+│  5 Rebel Videos:                                                         │
+│    > python scarify_bootstrap_generator.py Rebel 5                       │
+│                                                                           │
+│  10 Sage Videos:                                                         │
+│    > python scarify_bootstrap_generator.py Sage 10                       │
+│                                                                           │
+│  20 Hero Videos:                                                         │
+│    > python scarify_bootstrap_generator.py Hero 20                       │
+│                                                                           │
+│  50 Guardian Videos:                                                     │
+│    > python scarify_bootstrap_generator.py Guardian 50                   │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+
+┌─ ARCHETYPES ──────────────────────────────────────────────────────────────┐
+│                                                                           │
+│  Rebel     - Revolutionary, anti-establishment (red colors)               │
+│  Mystic    - Spiritual, ethereal (purple colors)                         │
+│  Sage      - Wisdom, knowledge (blue colors)                             │
+│  Hero      - Courage, transformation (gold colors)                       │
+│  Guardian  - Protection, service (green colors)                          │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+
+┌─ FILE OPERATIONS ─────────────────────────────────────────────────────────┐
+│                                                                           │
+│  View Generated Videos:                                                  │
+│    > explorer output\videos                                              │
+│                                                                           │
+│  View Audio Files:                                                       │
+│    > explorer output\audio                                               │
+│                                                                           │
+│  View Scripts:                                                           │
+│    > explorer output\scripts                                             │
+│                                                                           │
+│  Check Logs:                                                             │
+│    > notepad logs\bootstrap_*.log                                        │
+│                                                                           │
+│  View Config:                                                            │
+│    > notepad config\bootstrap_config.json                                │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+
+┌─ TROUBLESHOOTING COMMANDS ────────────────────────────────────────────────┐
+│                                                                           │
+│  Check Python Version:                                                   │
+│    > python --version                                                    │
+│    Expected: Python 3.8.0 or higher                                      │
+│                                                                           │
+│  Check FFmpeg:                                                           │
+│    > ffmpeg -version                                                     │
+│    (Optional, videos work without it)                                    │
+│                                                                           │
+│  List Installed Packages:                                                │
+│    > pip list                                                            │
+│                                                                           │
+│  Install Missing Packages:                                               │
+│    > pip install -r requirements_bootstrap.txt                           │
+│                                                                           │
+│  Upgrade pip:                                                            │
+│    > python -m pip install --upgrade pip                                 │
+│                                                                           │
+│  View Latest Log:                                                        │
+│    > Get-Content logs\bootstrap_*.log | Select-Object -Last 50           │
+│                                                                           │
+│  Count Generated Videos:                                                 │
+│    > (Get-ChildItem output\videos\*.mp4).Count                           │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+
+┌─ BATCH OPERATIONS ────────────────────────────────────────────────────────┐
+│                                                                           │
+│  Generate All Archetypes (5 each):                                       │
+│    > foreach ($a in @("Rebel","Mystic","Sage","Hero","Guardian")) {      │
+│        python scarify_bootstrap_generator.py $a 5                        │
+│      }                                                                    │
+│                                                                           │
+│  Generate 10 Random Archetype Videos:                                    │
+│    > $archetypes = @("Rebel","Mystic","Sage","Hero","Guardian")          │
+│    > 1..10 | ForEach-Object {                                            │
+│        $a = Get-Random $archetypes                                       │
+│        python scarify_bootstrap_generator.py $a 1                        │
+│      }                                                                    │
+│                                                                           │
+│  Clean Old Videos (backup first!):                                       │
+│    > Remove-Item output\videos\* -Confirm                                │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+
+┌─ VIDEO INFO ──────────────────────────────────────────────────────────────┐
+│                                                                           │
+│  List Videos with Details:                                               │
+│    > Get-ChildItem output\videos\*.mp4 | Format-Table Name,              │
+│        @{N='Size(MB)';E={[math]::Round($_.Length/1MB,2)}},               │
+│        LastWriteTime                                                     │
+│                                                                           │
+│  Total Video Size:                                                       │
+│    > $total = (Get-ChildItem output\videos\*.mp4 |                       │
+│        Measure-Object -Property Length -Sum).Sum                         │
+│    > Write-Host "$([math]::Round($total/1MB,2)) MB total"                │
+│                                                                           │
+│  Find Newest Video:                                                      │
+│    > Get-ChildItem output\videos\*.mp4 | Sort-Object LastWriteTime |     │
+│        Select-Object -Last 1 | Select-Object Name, LastWriteTime         │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+
+┌─ DOCUMENTATION COMMANDS ──────────────────────────────────────────────────┐
+│                                                                           │
+│  View Start Guide:                                                       │
+│    > notepad _START_HERE.txt                                             │
+│                                                                           │
+│  View Full Documentation:                                                │
+│    > notepad README_BOOTSTRAP_SYSTEM.md                                  │
+│                                                                           │
+│  View Quick Reference:                                                   │
+│    > notepad BOOTSTRAP_QUICK_START.txt                                   │
+│                                                                           │
+│  View This Card:                                                         │
+│    > notepad COMMAND_REFERENCE.txt                                       │
+│                                                                           │
+│  View File Index:                                                        │
+│    > notepad INDEX_BOOTSTRAP_FILES.md                                    │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+
+┌─ SYSTEM INFO ─────────────────────────────────────────────────────────────┐
+│                                                                           │
+│  Check Disk Space:                                                       │
+│    > Get-PSDrive -PSProvider FileSystem | Format-Table Name, Used,       │
+│        Free, @{N='FreePct';E={[math]::Round($_.Free/$_.Used*100,2)}}     │
+│                                                                           │
+│  Check Python Packages:                                                  │
+│    > pip list | Select-String "moviepy|gtts|Pillow|numpy"                │
+│                                                                           │
+│  System Memory:                                                          │
+│    > Get-CimInstance Win32_OperatingSystem | Select-Object               │
+│        @{N='TotalGB';E={[math]::Round($_.TotalVisibleMemorySize/1MB,2)}},│
+│        @{N='FreeGB';E={[math]::Round($_.FreePhysicalMemory/1MB,2)}}      │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+
+┌─ QUICK TIPS ──────────────────────────────────────────────────────────────┐
+│                                                                           │
+│  • Start with DEPLOY_NOW.ps1 for fastest results                         │
+│  • Use launch_bootstrap.ps1 for visual menu                              │
+│  • Check logs if anything fails                                          │
+│  • Generate 1 video first to test everything                             │
+│  • Backup videos regularly (they're valuable!)                           │
+│  • Try all 5 archetypes to see which performs best                       │
+│  • Videos are in output\videos\ after generation                         │
+│  • Each video is ~5-15MB, plan storage accordingly                       │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+
+┌─ COMMON ERRORS & FIXES ───────────────────────────────────────────────────┐
+│                                                                           │
+│  "Python not found":                                                     │
+│    → Install Python 3.8+ from python.org                                 │
+│    → Add to PATH during installation                                     │
+│                                                                           │
+│  "ModuleNotFoundError: No module named 'moviepy'":                       │
+│    → Run: pip install -r requirements_bootstrap.txt                      │
+│                                                                           │
+│  "Permission denied" or "Execution policy":                              │
+│    → Run PowerShell as Administrator                                     │
+│    → Run: Set-ExecutionPolicy RemoteSigned -Scope CurrentUser            │
+│                                                                           │
+│  "No videos generated":                                                  │
+│    → Check logs\bootstrap_*.log for errors                               │
+│    → Verify Python packages installed                                    │
+│    → Try running test_bootstrap.ps1                                      │
+│                                                                           │
+│  "Video has no audio":                                                   │
+│    → Check if gTTS is installed: pip show gtts                           │
+│    → Verify internet connection (gTTS needs it)                          │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+
+┌─ PERFORMANCE BENCHMARKS ──────────────────────────────────────────────────┐
+│                                                                           │
+│  Bootstrap Setup:          2-3 minutes                                   │
+│  Single Video:             30-60 seconds                                 │
+│  5 Videos:                 3-5 minutes                                   │
+│  10 Videos:                6-10 minutes                                  │
+│  50 Videos:                25-50 minutes                                 │
+│  100 Videos:               50-100 minutes                                │
+│                                                                           │
+│  (Times vary based on CPU, disk speed, internet for packages)            │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+
+┌─ TYPICAL WORKFLOW ────────────────────────────────────────────────────────┐
+│                                                                           │
+│  Day 1:                                                                  │
+│    1. Run .\DEPLOY_NOW.ps1                     [3 min]                   │
+│    2. Verify 3 videos generated                [1 min]                   │
+│    3. Upload to YouTube/TikTok                 [5 min]                   │
+│                                                                           │
+│  Daily:                                                                  │
+│    1. Generate 10-20 videos                    [10-20 min]               │
+│       > python scarify_bootstrap_generator.py Mystic 10                  │
+│    2. Upload to platforms                      [15-30 min]               │
+│    3. Track performance                        [5 min]                   │
+│                                                                           │
+│  Weekly:                                                                 │
+│    1. Review top performers                    [30 min]                  │
+│    2. Adjust archetypes/themes                 [30 min]                  │
+│    3. Backup videos and logs                   [10 min]                  │
+│    4. Scale up production                      [ongoing]                 │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                                                                           ║
+║  💡 REMEMBER:                                                            ║
+║                                                                           ║
+║  • Start simple: DEPLOY_NOW.ps1                                          ║
+║  • Generate content daily                                                ║
+║  • Upload and monetize                                                   ║
+║  • Scale gradually                                                       ║
+║  • Track what works                                                      ║
+║  • Optimize and repeat                                                   ║
+║                                                                           ║
+║  Target: $6K-$9K per deployment cycle 💰                                 ║
+║                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+
+Version: 2.0-Bootstrap
+Created: 2025-10-27
+Print this and keep it handy!
+

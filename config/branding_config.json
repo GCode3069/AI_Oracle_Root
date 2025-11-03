@@ -1,0 +1,178 @@
+{
+  "themes": {
+    "abraham_horror": {
+      "name": "Abraham's Warning",
+      "tagline": "Lincoln speaks truth from beyond",
+      "colors": {
+        "primary": "#8B0000",
+        "secondary": "#2F4F4F",
+        "accent": "#FFD700"
+      },
+      "fonts": {
+        "title": "Impact",
+        "body": "Arial"
+      },
+      "logo_style": "Lincoln silhouette with red background",
+      "intro_style": "Blood drip effect with whisper sound",
+      "outro_style": "Fade to black with BTC QR code",
+      "thumbnail_template": "Lincoln face + red text + headline",
+      "voice_id": "VR6AewLTigWG4xSOukaG",
+      "music_style": "Dark ambient, 4Hz theta waves"
+    },
+    "oracle_signals": {
+      "name": "Oracle Signals",
+      "tagline": "AI that sees tomorrow",
+      "colors": {
+        "primary": "#00FF41",
+        "secondary": "#0D0D0D",
+        "accent": "#00CED1"
+      },
+      "fonts": {
+        "title": "Courier New",
+        "body": "Consolas"
+      },
+      "logo_style": "Digital eye with code rain",
+      "intro_style": "Matrix-style code cascade",
+      "outro_style": "Signal pulse with Bitcoin address",
+      "thumbnail_template": "Green overlay + tech font + glitch",
+      "voice_id": "pNInz6obpgDQGcFmaJgB",
+      "music_style": "Cyber ambient, glitch sounds"
+    },
+    "dark_comedy": {
+      "name": "Dark Josh Chronicles",
+      "tagline": "Comedy from the void",
+      "colors": {
+        "primary": "#FF6B35",
+        "secondary": "#1A1A2E",
+        "accent": "#FFFFFF"
+      },
+      "fonts": {
+        "title": "Bebas Neue",
+        "body": "Open Sans"
+      },
+      "logo_style": "Laughing skull with orange glow",
+      "intro_style": "Quick laugh track with neon flash",
+      "outro_style": "Punchline reveal + product card",
+      "thumbnail_template": "Face shot + orange text + emoji reaction",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "music_style": "Upbeat dark synth"
+    },
+    "scarify_classic": {
+      "name": "SCARIFY",
+      "tagline": "Psychological warfare in 60 seconds",
+      "colors": {
+        "primary": "#000000",
+        "secondary": "#FF0000",
+        "accent": "#C0C0C0"
+      },
+      "fonts": {
+        "title": "Impact",
+        "body": "Arial Black"
+      },
+      "logo_style": "SCARIFY text with blood drip",
+      "intro_style": "Flash cut with heartbeat",
+      "outro_style": "Scar reveal animation",
+      "thumbnail_template": "High contrast + bold text + shock value",
+      "voice_id": "VR6AewLTigWG4xSOukaG",
+      "music_style": "Industrial noise"
+    }
+  },
+  "universal": {
+    "bitcoin_address": "bc1qaeylk80cz3cd9ckxlyuedyq9eupeqhaujk2plt",
+    "product_link": "https://trenchaikits.com/buy-rebel-$97",
+    "product_name": "REBEL KIT",
+    "product_price": "$97",
+    "end_screen_text": [
+      "SUPPORT TRUTH",
+      "REBEL KIT BELOW",
+      "BITCOIN ACCEPTED"
+    ],
+    "description_template": "{script}\n\n\ud83d\udcb0 SUPPORT: {btc_address}\n\ud83d\udd25 REBEL KIT: {product_link}\n\n{hashtags}",
+    "standard_tags": [
+      "shorts",
+      "viral",
+      "truth",
+      "awakening",
+      "rebellion"
+    ],
+    "thumbnail_specs": {
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG",
+      "quality": 95,
+      "dpi": 72
+    },
+    "video_specs": {
+      "resolution": "1080x1920",
+      "fps": 30,
+      "codec": "h264",
+      "bitrate": "5000k",
+      "format": "mp4"
+    }
+  },
+  "channel_assignments": {
+    "abraham": {
+      "channels": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "theme": "abraham_horror",
+      "content_types": [
+        "government_corruption",
+        "economic_collapse",
+        "prophetic_warnings"
+      ],
+      "upload_frequency": "3-5 per day",
+      "target_audience": "Truth seekers, conspiracy theorists, political junkies"
+    },
+    "oracle": {
+      "channels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "theme": "oracle_signals",
+      "content_types": [
+        "tech_predictions",
+        "market_signals",
+        "ai_warnings"
+      ],
+      "upload_frequency": "2-4 per day",
+      "target_audience": "Tech enthusiasts, traders, futurists"
+    },
+    "comedy": {
+      "channels": [
+        10,
+        11,
+        12
+      ],
+      "theme": "dark_comedy",
+      "content_types": [
+        "headline_roasts",
+        "social_commentary",
+        "dark_humor"
+      ],
+      "upload_frequency": "4-6 per day",
+      "target_audience": "Comedy fans, social critics, Gen Z/Millennials"
+    },
+    "scarify": {
+      "channels": [
+        13,
+        14,
+        15
+      ],
+      "theme": "scarify_classic",
+      "content_types": [
+        "cognitohazards",
+        "psychological_ops",
+        "fear_targeting"
+      ],
+      "upload_frequency": "2-3 per day",
+      "target_audience": "ARG fans, horror lovers, edge lords"
+    }
+  }
+}

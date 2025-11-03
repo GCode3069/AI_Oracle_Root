@@ -1,0 +1,133 @@
+{
+  "llm_name": "Claude-Sonnet-4",
+  "competition_id": "battle_elim_001",
+  "start_time": "2025-11-01T00:36:42.906639",
+  "status": "ACTIVE",
+  "rounds": {
+    "1": {
+      "revenue": 830.0,
+      "errors": 2,
+      "penalty": 0.02,
+      "final_revenue": 813.4,
+      "rank": null,
+      "algo_hack_score": 3235.0,
+      "immunity": false
+    },
+    "2": {
+      "revenue": 810.0,
+      "errors": 1,
+      "penalty": 0.05,
+      "final_revenue": 769.5,
+      "rank": null,
+      "algo_hack_score": 0.0,
+      "immunity": false
+    },
+    "3": {
+      "revenue": 0.0,
+      "errors": 0,
+      "penalty": 0.0,
+      "final_revenue": 0.0,
+      "rank": null,
+      "algo_hack_score": 0.0,
+      "immunity": false
+    },
+    "4": {
+      "revenue": 0.0,
+      "errors": 0,
+      "penalty": 0.0,
+      "final_revenue": 0.0,
+      "rank": null,
+      "algo_hack_score": 0.0,
+      "immunity": false
+    },
+    "5": {
+      "revenue": 0.0,
+      "errors": 0,
+      "penalty": 0.0,
+      "final_revenue": 0.0,
+      "rank": null,
+      "algo_hack_score": 0.0,
+      "immunity": false
+    },
+    "6": {
+      "revenue": 0.0,
+      "errors": 0,
+      "penalty": 0.0,
+      "final_revenue": 0.0,
+      "rank": null,
+      "algo_hack_score": 0.0,
+      "immunity": false
+    },
+    "7": {
+      "revenue": 0.0,
+      "errors": 0,
+      "penalty": 0.0,
+      "final_revenue": 0.0,
+      "rank": null,
+      "algo_hack_score": 0.0,
+      "immunity": false
+    },
+    "8": {
+      "revenue": 0.0,
+      "errors": 0,
+      "penalty": 0.0,
+      "final_revenue": 0.0,
+      "rank": null,
+      "algo_hack_score": 0.0,
+      "immunity": false
+    },
+    "9": {
+      "revenue": 0.0,
+      "errors": 0,
+      "penalty": 0.0,
+      "final_revenue": 0.0,
+      "rank": null,
+      "algo_hack_score": 0.0,
+      "immunity": false
+    },
+    "10": {
+      "revenue": 0.0,
+      "errors": 0,
+      "penalty": 0.0,
+      "final_revenue": 0.0,
+      "rank": null,
+      "algo_hack_score": 0.0,
+      "immunity": false
+    },
+    "11": {
+      "revenue": 0.0,
+      "errors": 0,
+      "penalty": 0.0,
+      "final_revenue": 0.0,
+      "rank": null,
+      "algo_hack_score": 0.0,
+      "immunity": false
+    },
+    "12": {
+      "revenue": 0.0,
+      "errors": 0,
+      "penalty": 0.0,
+      "final_revenue": 0.0,
+      "rank": null,
+      "algo_hack_score": 0.0,
+      "immunity": false
+    }
+  },
+  "total_revenue": 1623.4,
+  "total_errors": 3,
+  "algo_hacks": [
+    {
+      "round": 1,
+      "name": "Multi-Platform Cascade",
+      "description": "Post to TikTok first, then YouTube 30min later",
+      "viral_score": 5200,
+      "growth_score": 3100,
+      "innovation_score": 7.5,
+      "total_score": 3235.0,
+      "timestamp": "2025-11-01T00:36:42.924150"
+    }
+  ],
+  "elimination_round": null,
+  "elimination_reason": null,
+  "final_rank": null
+}

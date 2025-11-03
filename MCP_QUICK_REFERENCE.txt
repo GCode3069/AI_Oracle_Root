@@ -1,0 +1,119 @@
+╔══════════════════════════════════════════════════════════════════╗
+║                                                                  ║
+║             SCARIFY EMPIRE - MCP QUICK REFERENCE                 ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
+
+📍 SERVER LOCATION
+━━━━━━━━━━━━━━━━━━
+F:\AI_Oracle_Root\scarify\mcp-server\dist\index.js
+
+
+🔌 INTEGRATION CONFIG
+━━━━━━━━━━━━━━━━━━━━
+{
+  "mcpServers": {
+    "scarify-empire": {
+      "command": "node",
+      "args": ["F:\\AI_Oracle_Root\\scarify\\mcp-server\\dist\\index.js"]
+    }
+  }
+}
+
+Add to:
+• Claude Desktop: %APPDATA%\Claude\claude_desktop_config.json
+• Cursor: Settings → MCP Servers
+
+
+🛠️ AVAILABLE TOOLS (10)
+━━━━━━━━━━━━━━━━━━━━━━━
+
+1. generate_videos       - Create video batches
+2. upload_videos         - Multi-channel uploads
+3. check_bitcoin_balance - Revenue tracking
+4. get_analytics         - YouTube stats
+5. system_status         - Health check
+6. setup_channels        - Manage channels
+7. read_file             - File operations
+8. list_videos           - Video inventory
+9. launch_studio         - Open GUI
+10. run_blitz_campaign   - Automated campaigns
+
+
+💬 EXAMPLE COMMANDS
+━━━━━━━━━━━━━━━━━━━
+
+Basic:
+  "Show system status"
+  "List all videos"
+  "Check Bitcoin balance"
+
+Generation:
+  "Generate 10 videos"
+  "Create 50 videos in production mode"
+
+Upload:
+  "Upload all videos"
+  "Upload to 15 channels using round-robin"
+
+Analytics:
+  "Get analytics summary"
+  "Show me top performing videos"
+
+Advanced:
+  "Generate 50 videos and upload them all"
+  "Run a campaign targeting $15,000"
+
+
+🧪 TEST SERVER
+━━━━━━━━━━━━━━
+Double-click: TEST_MCP_SERVER.bat
+Expected: "Scarify Empire MCP Server running on stdio"
+
+
+📚 DOCUMENTATION
+━━━━━━━━━━━━━━━━
+START_HERE_MCP.md         - Start here!
+MCP_QUICK_START.md        - 3-min setup
+MCP_USAGE_EXAMPLES.md     - Real examples
+MCP_SERVER_SETUP.md       - Detailed guide
+MCP_SERVER_COMPLETE.md    - Technical docs
+
+
+🚀 QUICK START
+━━━━━━━━━━━━━━
+
+1. Add config to Claude/Cursor
+2. Restart AI application
+3. Say: "Show system status"
+4. Start generating!
+
+
+🆘 TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━
+
+Server won't start?
+  → Run: INSTALL_MCP.bat
+
+AI doesn't see tools?
+  → Check config syntax
+  → Restart AI completely
+  → Verify path correct
+
+Tools fail?
+  → Check Python installed
+  → Verify scripts work manually
+  → See MCP_SERVER_SETUP.md
+
+
+✅ STATUS
+━━━━━━━━━
+Server: 🟢 Built & Ready
+Tools:  ✅ 10 configured
+Docs:   ✅ Complete
+
+
+╔══════════════════════════════════════════════════════════════════╗
+║  READY TO USE! Integrate with Claude/Cursor and start talking!  ║
+╚══════════════════════════════════════════════════════════════════╝
+

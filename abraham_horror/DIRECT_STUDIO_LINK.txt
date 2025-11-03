@@ -1,0 +1,57 @@
+================================================================================
+DIRECT YOUTUBE STUDIO LINKS FOR YOUR CHANNEL
+================================================================================
+
+COPY & PASTE THESE LINKS TO CHECK YOUR VIDEOS:
+
+ALL VIDEOS (Including Shorts):
+https://studio.youtube.com/channel/UCS5pEpSCw8k4wene0iv0uAg/videos
+
+SHORTS ONLY:
+https://studio.youtube.com/channel/UCS5pEpSCw8k4wene0iv0uAg/videos/short?filter=%5B%5D&sort=%7B%22columnType%22%3A%22date%22%2C%22sortOrder%22%3A%22DESCENDING%22%7D
+
+UPLOAD PAGE:
+https://studio.youtube.com/channel/UCS5pEpSCw8k4wene0iv0uAg/videos/upload
+
+PUBLIC CHANNEL:
+https://www.youtube.com/channel/UCS5pEpSCw8k4wene0iv0uAg
+
+================================================================================
+WHY ALL VIDEOS ARE "SHORTS":
+================================================================================
+
+YouTube automatically classifies videos as "Shorts" if:
+1. Duration is 60 seconds or less
+2. Format is vertical (1080x1920)
+
+Your videos ARE uploading successfully, but they appear as Shorts because
+they're under 60 seconds. This is NORMAL and EXPECTED.
+
+TO SEE THEM:
+- They appear in "Shorts" tab (because <60s)
+- They ALSO appear in "Videos" tab (all videos appear there)
+- CHECK BOTH TABS!
+
+================================================================================
+IF VIDEOS DON'T APPEAR:
+================================================================================
+
+1. WAIT 1-2 minutes - YouTube needs time to process
+2. REFRESH browser - Press Ctrl+F5 (hard refresh)
+3. CHECK "Videos" tab - Not just "Shorts" tab
+4. FILTER by date - Sort by "Newest first"
+5. CHECK console output - Look for upload errors
+
+================================================================================
+TEST & DEPLOY COMMAND:
+================================================================================
+
+cd F:\AI_Oracle_Root\scarify\abraham_horror
+python ABRAHAM_COMEDY_YOUTUBE_COMPLETE.py 5
+
+This generates 5 videos and uploads them. Check the URLs shown in console
+output. They will also appear in your channel at the links above.
+
+================================================================================
+
+

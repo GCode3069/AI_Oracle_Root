@@ -1,0 +1,21 @@
+{
+  "template": "tesla_tech",
+  "name": "Tesla Tech Warnings",
+  "created": "2025-11-01T00:55:13.174210",
+  "description": "Nikola Tesla warns about modern technology",
+  "voice_id": "VR6AewLTigWG4xSOukaG",
+  "style": "Electric laboratory",
+  "script_type": "tech_warnings",
+  "tags": [
+    "science",
+    "technology",
+    "warnings",
+    "tesla"
+  ],
+  "hashtags": [
+    "#Shorts",
+    "#Tesla",
+    "#Tech",
+    "#Science"
+  ]
+}

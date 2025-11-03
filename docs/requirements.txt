@@ -1,0 +1,33 @@
+# SCARIFY EMPIRE Requirements - All Features
+
+# Core dependencies
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Video processing
+moviepy>=1.0.3
+opencv-python>=4.8.0
+imageio>=2.31.0
+imageio-ffmpeg>=0.4.9
+
+# Audio processing
+pydub>=0.25.1
+pyaudio>=0.2.11
+elevenlabs>=0.2.26
+
+# YouTube upload
+google-auth-oauthlib>=1.1.0
+google-auth-httplib2>=0.1.1
+google-api-python-client>=2.108.0
+
+# Empire Features
+qrcode[pil]>=7.4.2
+numpy>=1.24.0
+scipy>=1.11.0
+Pillow>=10.0.0
+
+# System utilities
+psutil>=5.9.0
+pathlib>=1.0.1
+
+

@@ -1,0 +1,102 @@
+{
+  "channel_data": {
+    "channel_name": "DissWhatImSayin",
+    "channel_id": "UCS5pEpSCw8k4wene0iv0uAg",
+    "period": "Last 28 days (Oct 3-30, 2025)",
+    "total_views": 3321,
+    "avg_retention": 36.0,
+    "total_videos": 10
+  },
+  "top_performers": [
+    {
+      "title": "Lincoln's WARNING #52",
+      "duration": "0:17",
+      "retention": 45.1,
+      "views": 1130
+    },
+    {
+      "title": "Lincoln's WARNING #27",
+      "duration": "0:09",
+      "retention": 45.3,
+      "views": 929
+    },
+    {
+      "title": "Lincoln's WARNING #29",
+      "duration": "0:16",
+      "retention": 32.8,
+      "views": 247
+    }
+  ],
+  "traffic_sources": {
+    "Shorts feed": {
+      "views": 3166,
+      "percentage": 95.3,
+      "avg_duration": "0:17"
+    },
+    "Channel pages": {
+      "views": 64,
+      "percentage": 1.9,
+      "avg_duration": "0:52"
+    },
+    "YouTube search": {
+      "views": 41,
+      "percentage": 1.2,
+      "avg_duration": "0:16"
+    }
+  },
+  "insights": [
+    "Excellent retention (45.3%) - Keep this content style!",
+    "Short videos (9-17s) perform best - Stick to this length",
+    "Shorts feed is dominant (95.3%) - Optimize for Shorts algorithm",
+    "Recent view spike detected - Momentum is building!"
+  ],
+  "recommendations": [
+    {
+      "category": "CONTENT OPTIMIZATION",
+      "actions": [
+        "Keep videos between 9-17 seconds (your sweet spot)",
+        "Target 45%+ retention (you're hitting this!)",
+        "Use 'Lincoln's WARNING' format (proven winner)",
+        "Post daily during your peak growth period"
+      ]
+    },
+    {
+      "category": "SHORTS ALGORITHM OPTIMIZATION",
+      "actions": [
+        "95% views from Shorts feed - optimize titles for Shorts",
+        "Use #Shorts hashtag consistently",
+        "Hook viewers in first 2 seconds (critical for Shorts)",
+        "Post at peak times: 12pm-3pm, 7pm-10pm EST"
+      ]
+    },
+    {
+      "category": "ENGAGEMENT BOOSTERS",
+      "actions": [
+        "Add clear CTA in first 3 seconds",
+        "Use text overlays (WARNING format works)",
+        "Keep Bitcoin QR code visible (don't recite address)",
+        "End with cliffhanger to encourage replays"
+      ]
+    },
+    {
+      "category": "MONETIZATION MILESTONES",
+      "actions": [
+        "Target: 1,000 subscribers (current progress: track in Studio)",
+        "Target: 10M Shorts views in 90 days",
+        "Current pace: 3,321 views/28 days = ~118 views/day",
+        "Need: ~111,111 views/day for 10M in 90 days",
+        "Strategy: Scale to 50-100 videos/day with proven format"
+      ]
+    },
+    {
+      "category": "TECHNICAL OPTIMIZATIONS",
+      "actions": [
+        "Ensure QR code is always visible (top-right, 150x150px)",
+        "Don't recite Bitcoin address in audio (wastes time)",
+        "Keep VHS glitch effects (unique visual identity)",
+        "Maintain 1080x1920 vertical format"
+      ]
+    }
+  ],
+  "timestamp": "20251031_150249"
+}

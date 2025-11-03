@@ -1,0 +1,110 @@
+{
+  "timestamp": "2025-10-29T04:06:58.667947",
+  "status": {
+    "generators": {
+      "VIRAL_OPTIMIZED_GENERATOR.py": {
+        "exists": true,
+        "path": "F:\\AI_Oracle_Root\\scarify\\VIRAL_OPTIMIZED_GENERATOR.py",
+        "size_kb": 24.296875
+      },
+      "ABRAHAM_ULTIMATE_FINAL.py": {
+        "exists": true,
+        "path": "F:\\AI_Oracle_Root\\scarify\\ABRAHAM_ULTIMATE_FINAL.py",
+        "size_kb": 15.845703125
+      },
+      "BLITZKRIEG_15_CHANNELS.py": {
+        "exists": true,
+        "path": "F:\\AI_Oracle_Root\\scarify\\BLITZKRIEG_15_CHANNELS.py",
+        "size_kb": 16.4501953125
+      },
+      "working_abraham.py": {
+        "exists": true,
+        "path": "F:\\AI_Oracle_Root\\scarify\\working_abraham.py",
+        "size_kb": 7.845703125
+      },
+      "abe_maxheadroom.py": {
+        "exists": false,
+        "path": "F:\\AI_Oracle_Root\\scarify\\abraham_horror\\abe_maxheadroom.py",
+        "size_kb": 0
+      }
+    },
+    "apis": {
+      "ElevenLabs": true,
+      "Pexels": false,
+      "YouTube OAuth": true
+    },
+    "platforms": {
+      "YouTube": {
+        "generator": true,
+        "uploader": true,
+        "creds": true,
+        "output": true
+      },
+      "TikTok": {
+        "output": false
+      },
+      "Instagram": {
+        "output": false
+      }
+    },
+    "files": {
+      "Chapman 2025 Config": {
+        "exists": true,
+        "path": "F:\\AI_Oracle_Root\\scarify\\configs\\chapman_2025.yaml"
+      },
+      "YouTube Token": {
+        "exists": true,
+        "path": "F:\\AI_Oracle_Root\\scarify\\abraham_horror\\youtube_token.pickle"
+      },
+      "Launch Script": {
+        "exists": true,
+        "path": "F:\\AI_Oracle_Root\\scarify\\LAUNCH_VIRAL_GENERATOR.ps1"
+      }
+    },
+    "directories": {
+      "audio": {
+        "exists": true,
+        "path": "F:\\AI_Oracle_Root\\scarify\\abraham_horror\\audio",
+        "file_count": 153
+      },
+      "videos": {
+        "exists": true,
+        "path": "F:\\AI_Oracle_Root\\scarify\\abraham_horror\\videos",
+        "file_count": 141
+      },
+      "youtube_ready": {
+        "exists": true,
+        "path": "F:\\AI_Oracle_Root\\scarify\\abraham_horror\\youtube_ready",
+        "file_count": 81
+      },
+      "tiktok_ready": {
+        "exists": false,
+        "path": "F:\\AI_Oracle_Root\\scarify\\abraham_horror\\tiktok_ready",
+        "file_count": 0
+      },
+      "instagram_ready": {
+        "exists": false,
+        "path": "F:\\AI_Oracle_Root\\scarify\\abraham_horror\\instagram_ready",
+        "file_count": 0
+      },
+      "uploaded": {
+        "exists": true,
+        "path": "F:\\AI_Oracle_Root\\scarify\\abraham_horror\\uploaded",
+        "file_count": 21
+      },
+      "analytics": {
+        "exists": false,
+        "path": "F:\\AI_Oracle_Root\\scarify\\abraham_horror\\analytics",
+        "file_count": 0
+      }
+    }
+  },
+  "summary": {
+    "operational_generators": 4,
+    "total_generators": 5,
+    "apis_configured": 2,
+    "total_apis": 3,
+    "platforms_ready": 1,
+    "total_platforms": 3
+  }
+}

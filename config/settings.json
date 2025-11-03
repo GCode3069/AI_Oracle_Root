@@ -1,0 +1,7 @@
+{
+  "project_root": "F:\\AI_Oracle_Root\\scarify",
+  "video_output_dir": "abraham_horror/youtube_ready",
+  "auto_upload": false,
+  "max_videos_per_batch": 100,
+  "default_generation_count": 10
+}

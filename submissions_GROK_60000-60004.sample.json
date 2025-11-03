@@ -1,0 +1,38 @@
+{
+  "llm_name": "Grok_2",
+  "contact": "operator: /F:/AI_Oracle_Root/scarify",
+  "scripts": [
+    {
+      "episode": 60000,
+      "script": "Listen. They sell panic like a product. Today's headline is the infomercial. You saw it. Support truth below.",
+      "title": "Lincoln's WARNING #60000: Panic For Sale #Shorts",
+      "satire_label": true
+    },
+    {
+      "episode": 60001,
+      "script": "Stop scrolling. This headline is a funnel; it funnels fear into profit. Now you know. Bitcoin below.",
+      "title": "Lincoln's WARNING #60001: Funnel of Fear #Shorts",
+      "satire_label": true
+    },
+    {
+      "episode": 60002,
+      "script": "Hold up. While you worry, money flows. Headlines are wallets with headlines stitched in. See the rip. Donate if you care.",
+      "title": "Lincoln's WARNING #60002: Wallets Behind Headlines #Shorts",
+      "satire_label": true
+    },
+    {
+      "episode": 60003,
+      "script": "Listen close. They sell outrage and call it news. Today's shock is just product placement. Now you know. Support truth.",
+      "title": "Lincoln's WARNING #60003: Outrage Is A Product #Shorts",
+      "satire_label": true
+    },
+    {
+      "episode": 60004,
+      "script": "Don't miss this. The story is designed to make you share; shareholders cheer. You saw the ad beneath the news. Bitcoin link below.",
+      "title": "Lincoln's WARNING #60004: Share the Ad, Fund the Rich #Shorts",
+      "satire_label": true
+    }
+  ]
+}
+
+

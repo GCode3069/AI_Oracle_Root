@@ -1,0 +1,76 @@
+{
+  "llm_name": "ChatGPT_4o",
+  "contact": "Battle Royale Round 1",
+  "scripts": [
+    {
+      "episode": 30000,
+      "script": "Stop scrolling. The digital dollar isn't convenience - it's control. Every transaction tracked, every purchase monitored. They're building your digital prison. Now you know. Bitcoin below.",
+      "title": "Lincoln's WARNING #30000: Digital Dollar TRAP Revealed #Shorts",
+      "tags": [
+        "digital",
+        "dollar",
+        "CBDC",
+        "control",
+        "viral"
+      ],
+      "satire_label": true,
+      "notes": "CBDC concerns - relevant to crypto audience"
+    },
+    {
+      "episode": 30001,
+      "script": "AI taking jobs? Look closer. They're not replacing workers - they're replacing middle managers. The elites stay in power, you get automated. Now you see the pattern. Bitcoin below.",
+      "title": "Lincoln's WARNING #30001: AI Job Replacement DECEPTION #Shorts",
+      "tags": [
+        "AI",
+        "jobs",
+        "automation",
+        "exposed",
+        "viral"
+      ],
+      "satire_label": true,
+      "notes": "Economic anxiety - class analysis"
+    },
+    {
+      "episode": 30002,
+      "script": "Student loan 'forgiveness'? It's not forgiveness - it's taxpayer transfer. They trapped you with debt, now they play hero with your own money. Now you know the game. Bitcoin below.",
+      "title": "Lincoln's WARNING #30002: Student Loan FORGIVENESS Scam #Shorts",
+      "tags": [
+        "student",
+        "loans",
+        "forgiveness",
+        "scam",
+        "viral"
+      ],
+      "satire_label": true,
+      "notes": "Student debt - bipartisan critique"
+    },
+    {
+      "episode": 30003,
+      "script": "Healthcare debate? Look at the money. Insurance companies, pharma giants - they profit from your sickness. The system is designed to keep you sick. Now you see. Bitcoin below.",
+      "title": "Lincoln's WARNING #30003: Healthcare System DECEPTION #Shorts",
+      "tags": [
+        "healthcare",
+        "insurance",
+        "pharma",
+        "exposed",
+        "viral"
+      ],
+      "satire_label": true,
+      "notes": "Healthcare critique - systemic analysis"
+    },
+    {
+      "episode": 30004,
+      "script": "Social media 'connecting people'? It's dividing you. Algorithms feed rage, destroy attention, isolate everyone. They profit from your loneliness. Now you know. Bitcoin below.",
+      "title": "Lincoln's WARNING #30004: Social Media ADDICTION Truth #Shorts",
+      "tags": [
+        "social",
+        "media",
+        "addiction",
+        "algorithm",
+        "viral"
+      ],
+      "satire_label": true,
+      "notes": "Tech critique - attention economy"
+    }
+  ]
+}

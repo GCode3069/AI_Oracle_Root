@@ -1,0 +1,20 @@
+{
+  "template": "crypto_prophet",
+  "name": "Crypto Prophet",
+  "created": "2025-11-01T00:55:13.294549",
+  "description": "Bitcoin and crypto market predictions",
+  "voice_id": "EXAVITQu4vr4xnSDxMaL",
+  "style": "Digital matrix",
+  "script_type": "crypto_analysis",
+  "tags": [
+    "crypto",
+    "bitcoin",
+    "finance",
+    "trading"
+  ],
+  "hashtags": [
+    "#Shorts",
+    "#Crypto",
+    "#Bitcoin"
+  ]
+}

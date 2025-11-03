@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Abe Studio">
+    <title>📺 Abraham Studio Mobile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a0f0a 0%, #2a1f1a 100%);
+            color: #ffffff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #ff3333;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #ff3333;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            font-size: 12px;
+            color: #00ffff;
+        }
+        
+        .card {
+            background: rgba(42, 31, 26, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-title {
+            font-size: 18px;
+            color: #00ffff;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        label {
+            display: block;
+            color: #ffaa00;
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        select, input, textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #444;
+            border-radius: 8px;
+            background: #000000;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #0066cc, #004499);
+            color: white;
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #00cc00, #009900);
+            color: white;
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
+        .status {
+            background: #000000;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #00ff00;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+        
+        .quick-ideas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .quick-idea {
+            padding: 10px;
+            background: #333;
+            border-radius: 8px;
+            font-size: 12px;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .quick-idea:active {
+            border-color: #00ffff;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00ffff;
+        }
+        
+        .stat-label {
+            font-size: 11px;
+            color: #999;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📺 ABE STUDIO</h1>
+            <p>Mobile Video Generator • On The Road</p>
+        </div>
+        
+        <!-- Quick Generate Card -->
+        <div class="card">
+            <div class="card-title">⚡ Quick Generate</div>
+            
+            <label>Script Style:</label>
+            <select id="style">
+                <option value="chatgpt_poetic">ChatGPT - Poetic (12-18% CTR) ⭐</option>
+                <option value="cursor_consistent">Cursor - Consistent (8-12% CTR)</option>
+                <option value="opus_sophisticated">Opus - Sophisticated (10-15% CTR)</option>
+                <option value="grok_controversial">Grok - Controversial (10-25% CTR) ⚠️</option>
+            </select>
+            
+            <label>CTR Level:</label>
+            <select id="ctr">
+                <option value="safe">Safe (8-10%)</option>
+                <option value="moderate" selected>Moderate (10-15%) ✅</option>
+                <option value="aggressive">Aggressive (15-20%)</option>
+                <option value="maximum">Maximum (20-25%) ⚠️</option>
+            </select>
+            
+            <label>Video Count:</label>
+            <select id="count">
+                <option value="1">1 video (test)</option>
+                <option value="5" selected>5 videos (quick batch)</option>
+                <option value="10">10 videos (medium batch)</option>
+                <option value="20">20 videos (large batch)</option>
+            </select>
+            
+            <button class="btn btn-primary" onclick="generateBatch()">
+                🎬 GENERATE NOW
+            </button>
+        </div>
+        
+        <!-- Idea Capture Card -->
+        <div class="card">
+            <div class="card-title">💡 Capture Idea (Voice or Text)</div>
+            
+            <button class="btn btn-secondary" onclick="startVoiceCapture()">
+                🎤 VOICE TO TEXT
+            </button>
+            
+            <textarea id="ideaText" placeholder="Or type your idea here...
+Example: 'Generate video about crypto crash using ChatGPT style with aggressive hooks'"></textarea>
+            
+            <div class="quick-ideas">
+                <div class="quick-idea" onclick="quickIdea('Government Shutdown')">🏛️ Gov Shutdown</div>
+                <div class="quick-idea" onclick="quickIdea('Crypto Crash')">₿ Crypto Crash</div>
+                <div class="quick-idea" onclick="quickIdea('AI Takes Over')">🤖 AI Takeover</div>
+                <div class="quick-idea" onclick="quickIdea('Climate Summit')">🌍 Climate</div>
+                <div class="quick-idea" onclick="quickIdea('Tech Layoffs')">💼 Layoffs</div>
+                <div class="quick-idea" onclick="quickIdea('Election 2025')">🗳️ Election</div>
+            </div>
+            
+            <button class="btn btn-success" onclick="saveIdea()" style="margin-top: 15px;">
+                💾 SAVE IDEA FOR LATER
+            </button>
+        </div>
+        
+        <!-- Stats Card -->
+        <div class="card">
+            <div class="card-title">📊 Quick Stats</div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value" id="videoCount">--</div>
+                    <div class="stat-label">Videos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="queueCount">--</div>
+                    <div class="stat-label">Queued</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="revenue">$--</div>
+                    <div class="stat-label">Est. Revenue</div>
+                </div>
+            </div>
+            
+            <button class="btn btn-secondary" onclick="refreshStats()" style="margin-top: 15px;">
+                🔄 REFRESH STATS
+            </button>
+        </div>
+        
+        <!-- Status Console -->
+        <div class="card">
+            <div class="card-title">📺 Status</div>
+            <div class="status" id="statusLog">
+                ✅ Mobile generator ready<br>
+                💡 Capture ideas with voice or text<br>
+                🎬 Generate videos remotely<br>
+                📊 Monitor progress<br>
+                <br>
+                Tap "GENERATE NOW" to start!
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // API endpoint (change this to your server IP/domain)
+        const API_URL = 'http://localhost:5000';  // Or your PC IP: http://192.168.1.X:5000
+        
+        function log(message) {
+            const statusLog = document.getElementById('statusLog');
+            const timestamp = new Date().toLocaleTimeString();
+            statusLog.innerHTML += `<br>[${timestamp}] ${message}`;
+            statusLog.scrollTop = statusLog.scrollHeight;
+        }
+        
+        async function generateBatch() {
+            const style = document.getElementById('style').value;
+            const ctr = document.getElementById('ctr').value;
+            const count = document.getElementById('count').value;
+            
+            log(`🎬 Generating ${count} videos...`);
+            log(`Style: ${style}, CTR: ${ctr}`);
+            
+            try {
+                const response = await fetch(`${API_URL}/generate`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        style: style,
+                        ctr_level: ctr,
+                        count: parseInt(count)
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    log(`✅ Generation started: ${data.job_id}`);
+                    log(`📊 Estimated time: ${data.estimated_time} minutes`);
+                } else {
+                    log(`❌ Error: ${response.statusText}`);
+                }
+            } catch (error) {
+                log(`❌ Network error: ${error.message}`);
+                log(`💡 Make sure server is running on your PC`);
+            }
+        }
+        
+        function startVoiceCapture() {
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                const recognition = new SpeechRecognition();
+                
+                recognition.onstart = function() {
+                    log('🎤 Listening... Speak your idea!');
+                };
+                
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById('ideaText').value = transcript;
+                    log(`✅ Captured: "${transcript}"`);
+                };
+                
+                recognition.onerror = function(event) {
+                    log(`❌ Voice error: ${event.error}`);
+                };
+                
+                recognition.start();
+            } else {
+                alert('Voice recognition not supported on this browser. Use Safari on iPhone.');
+            }
+        }
+        
+        async function saveIdea() {
+            const idea = document.getElementById('ideaText').value;
+            if (!idea.trim()) {
+                alert('Please enter an idea first!');
+                return;
+            }
+            
+            log(`💾 Saving idea...`);
+            
+            try {
+                const response = await fetch(`${API_URL}/save_idea`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        idea: idea,
+                        timestamp: new Date().toISOString()
+                    })
+                });
+                
+                if (response.ok) {
+                    log(`✅ Idea saved!`);
+                    document.getElementById('ideaText').value = '';
+                } else {
+                    log(`❌ Save failed`);
+                }
+            } catch (error) {
+                // Fallback: Save to localStorage
+                const ideas = JSON.parse(localStorage.getItem('savedIdeas') || '[]');
+                ideas.push({
+                    idea: idea,
+                    timestamp: new Date().toISOString()
+                });
+                localStorage.setItem('savedIdeas', JSON.stringify(ideas));
+                log(`✅ Idea saved locally (${ideas.length} total)`);
+                document.getElementById('ideaText').value = '';
+            }
+        }
+        
+        function quickIdea(topic) {
+            const style = document.getElementById('style').value;
+            const text = `Generate 5 videos about "${topic}" using ${style} style with moderate CTR`;
+            document.getElementById('ideaText').value = text;
+            log(`💡 Quick idea: ${topic}`);
+        }
+        
+        async function refreshStats() {
+            log('🔄 Refreshing stats...');
+            
+            try {
+                const response = await fetch(`${API_URL}/stats`);
+                if (response.ok) {
+                    const data = await response.json();
+                    document.getElementById('videoCount').textContent = data.total_videos || '--';
+                    document.getElementById('queueCount').textContent = data.queued || '--';
+                    document.getElementById('revenue').textContent = `$${data.revenue || '--'}`;
+                    log(`✅ Stats updated`);
+                } else {
+                    log(`❌ Stats unavailable`);
+                }
+            } catch (error) {
+                // Fallback: Show estimated stats
+                document.getElementById('videoCount').textContent = '44+';
+                document.getElementById('queueCount').textContent = '30';
+                document.getElementById('revenue').textContent = '$150';
+                log(`💡 Showing estimated stats (server offline)`);
+            }
+        }
+        
+        // Auto-refresh stats on load
+        window.onload = function() {
+            refreshStats();
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>
+
+

@@ -1,0 +1,30 @@
+BITCOIN ADDRESS FOR DONATION TRACKING
+========================================
+
+Address: bc1qaeylk80cz3cd9ckxlyuedyq9eupeqhaujk2plt
+
+QR Code URL: https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=bitcoin:bc1qaeylk80cz3cd9ckxlyuedyq9eupeqhaujk2plt
+
+Copy this into your video description:
+"Bitcoin donations: bc1qaeylk80cz3cd9ckxlyuedyq9eupeqhaujk2plt
+
+Scan QR code to donate: [link to QR image]"
+
+You can now update the ABRAHAM_REAL_FACE.py script to include this Bitcoin address in every video description.
+
+Next steps:
+1. Embed QR code image in video overlays (optional)
+2. Add to all YouTube video descriptions
+3. Track donations via blockchain explorer
+4. Generate more videos with this embedded
+
+Would you like me to:
+- Update the video generator to include Bitcoin QR code?
+- Create a donation tracking dashboard?
+- Generate more Abraham Lincoln videos with this address?
+
+
+
+
+
+

@@ -1,0 +1,175 @@
+# PROBLEM SPECIFICATION: FFmpeg VHS Broadcast Timeout Issue
+# For AI/LLM collaboration to solve complex video processing
+
+## OBJECTIVE
+Create Abraham Lincoln VHS broadcast style videos (Max Headroom aesthetic) with:
+- VHS TV screen effects (scan lines, tracking errors, RGB split, static)
+- B-roll video overlay from Pexels API
+- Professional voice from ElevenLabs
+- 60+ second duration
+- 1080x1920 vertical format (YouTube Shorts)
+- NO quality reduction
+- NO simplification
+- MUST complete in under 2 minutes
+
+## CURRENT PROBLEM
+FFmpeg command times out after 120 seconds when processing videos
+
+## FAILING COMMAND
+```bash
+ffmpeg -y \
+  -loop 1 -i abe_image.jpg \
+  -i broll_processed.mp4 \
+  -i audio.mp3 \
+  -filter_complex "[0:v]scale=1080:1920,zoompan=z='min(zoom+0.001,1.5)':d=1:s=1080x1920[abe];[1:v]loop=loop=-1:size=1,setpts=N/FRAME_RATE/TB[broll_loop];[abe][broll_loop]blend=all_mode=overlay:all_opacity=0.2[v]" \
+  -map "[v]" -map "2:a" \
+  -c:v libx264 -preset fast -crf 23 \
+  -c:a aac -b:a 192k \
+  -t 72.80325 \
+  -pix_fmt yuv420p \
+  output.mp4
+```
+
+## ROOT CAUSE ANALYSIS
+The `loop=loop=-1:size=1,setpts=N/FRAME_RATE/TB` filter is computationally expensive because:
+1. It processes every frame of a 60+ second video
+2. It creates an infinite loop of a 5-second B-roll clip
+3. The blend operation happens on every frame
+4. Zoompan is also processing every frame simultaneously
+
+## CONSTRAINTS (NON-NEGOTIABLE)
+1. **MUST** maintain VHS aesthetic quality
+2. **MUST** include B-roll overlay
+3. **MUST** have scan lines and VHS effects
+4. **MUST** complete in < 120 seconds
+5. **MUST** be 1080x1920 vertical
+6. **MUST** handle 60-75 second audio duration
+7. **NO** quality reduction
+8. **NO** removing features
+
+## REQUIRED VHS EFFECTS
+- Scan lines (horizontal lines every 3-4 pixels)
+- RGB split (chromatic aberration)
+- VHS tracking errors (horizontal displacement)
+- Color bleeding (magenta/cyan shift)
+- Digital noise/static
+- Low resolution upscale (720x480 → 1080x1920)
+- Vignette (CRT tube effect)
+- Audio compression (VHS audio degradation)
+
+## PROPOSED SOLUTIONS TO EVALUATE
+
+### Solution 1: Multi-Pass Rendering
+```
+Pass 1: Pre-render looped B-roll to exact duration
+Pass 2: Pre-render Abe with zoom/effects
+Pass 3: Composite pre-rendered videos
+Pass 4: Apply VHS effects as post-process
+```
+
+### Solution 2: Hardware Acceleration
+```
+Use -hwaccel cuda or -hwaccel qsv
+GPU encoding: -c:v h264_nvenc
+Faster processing on compatible hardware
+```
+
+### Solution 3: Segment Processing
+```
+Split video into 15-second segments
+Process each segment independently
+Concatenate segments
+Reduces memory load per operation
+```
+
+### Solution 4: Optimized Filter Chain
+```
+Reorder filters for efficiency
+Use format conversion strategically
+Minimize filter complexity per frame
+Use libx265 for better compression/speed ratio
+```
+
+### Solution 5: Pre-computed Assets
+```
+Generate VHS scan line overlay as static image
+Create looped B-roll file beforehand
+Apply overlays instead of live filters
+Reduce real-time computation
+```
+
+## TECHNICAL SPECIFICATIONS
+
+### Input Files
+- **abe_image.jpg**: 3000x4000px Abraham Lincoln portrait
+- **broll_processed.mp4**: 5-second Pexels video (1080x1920)
+- **audio.mp3**: 60-75 second ElevenLabs voiceover
+
+### Output Requirements
+- **Format**: MP4 (H.264 + AAC)
+- **Resolution**: 1080x1920 (9:16)
+- **Framerate**: 30fps
+- **Video codec**: libx264, CRF 20-23
+- **Audio codec**: AAC, 192kbps
+- **Duration**: Match audio length exactly
+
+### System Environment
+- **OS**: Windows 11
+- **Python**: 3.x
+- **FFmpeg**: Latest version
+- **Hardware**: Standard CPU (no guaranteed GPU)
+- **RAM**: Adequate for video processing
+
+## QUESTIONS FOR LLM COLLABORATORS
+
+1. **What is the most efficient FFmpeg filter chain order?**
+2. **Should we use multiple FFmpeg passes or single complex filter?**
+3. **Can we leverage hardware acceleration reliably across systems?**
+4. **What preset/CRF balance gives best speed without quality loss?**
+5. **Is there a way to cache/reuse the looped B-roll?**
+6. **Should VHS effects be applied pre or post composition?**
+7. **Can we use segment processing without visible seams?**
+8. **What's the optimal thread count for FFmpeg?**
+
+## SUCCESS CRITERIA
+- ✅ Video completes in < 120 seconds
+- ✅ All VHS effects visible and authentic
+- ✅ B-roll overlay present (20% opacity)
+- ✅ Smooth playback at 30fps
+- ✅ Audio synced perfectly
+- ✅ No visual artifacts or glitches (except intentional VHS ones)
+- ✅ File size reasonable (< 15MB per minute)
+
+## FAILURE MODES TO AVOID
+- ❌ Timeout after 120 seconds
+- ❌ Audio desync
+- ❌ Missing VHS effects
+- ❌ No B-roll overlay
+- ❌ Choppy playback
+- ❌ Visible seams in video
+- ❌ Corrupted output file
+
+## EXAMPLE WORKING COMMANDS (FOR REFERENCE)
+Simple zoom without B-roll (works, but missing features):
+```bash
+ffmpeg -y -loop 1 -i abe.jpg -i audio.mp3 \
+  -filter_complex "[0:v]scale=1080:1920,zoompan=z='min(zoom+0.001,1.5)':d=1:s=1080x1920,format=yuv420p[v]" \
+  -map "[v]" -map "1:a" \
+  -c:v libx264 -preset fast -crf 23 \
+  -t 60 output.mp4
+```
+This completes in ~30 seconds but lacks B-roll.
+
+## DELIVERABLES REQUESTED
+1. **Optimized FFmpeg command** that completes in < 120s
+2. **Explanation** of why it's faster
+3. **Trade-off analysis** if any
+4. **Alternative approaches** if multiple solutions exist
+5. **Python code** implementing the solution
+6. **Performance benchmarks** if available
+
+## PRIORITY
+**CRITICAL** - Blocking 50 video generation pipeline
+
+## TAGS
+#ffmpeg #video-processing #vhs-effects #performance-optimization #timeout-fix #max-headroom #youtube-shorts

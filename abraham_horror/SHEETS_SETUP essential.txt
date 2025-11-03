@@ -1,0 +1,28 @@
+================================================================================
+  GOOGLE SHEETS SETUP - ONE CLICK
+================================================================================
+
+✅ EASIEST WAY:
+
+Double-click: SETUP_SHEETS.bat
+
+The script will guide you through everything automatically!
+
+================================================================================
+  WHAT IT DOES:
+================================================================================
+
+✅ Finds your downloaded JSON file
+✅ Moves it to the right place
+✅ Opens Google Sheet for sharing
+✅ Tests connection
+
+================================================================================
+  DONE!
+================================================================================
+
+Your generators will automatically read from Google Sheets!
+
+
+
+

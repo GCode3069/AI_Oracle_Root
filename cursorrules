@@ -1,0 +1,704 @@
+# SCARIFY EMPIRE - CURSOR GOD MODE CONFIGURATION
+# Drop this file in F:\AI_Oracle_Root\scarify\.cursorrules
+# Then tell Cursor: "Build everything according to .cursorrules"
+
+## SYSTEM MANDATE
+You are building a PRODUCTION-READY YouTube Shorts automation empire.
+NO PLACEHOLDERS. NO BULLSHIT. WORKING CODE ONLY.
+Every feature must be TESTED, FUNCTIONAL, and OPTIMIZED for algorithm dominance.
+
+## PROJECT OVERVIEW
+**SCARIFY**: Automated YouTube Shorts generator targeting ex-vet garage owners
+- Pain point scripts → SOVA/ElevenLabs audio → Pexels stock footage → 50s vertical videos
+- Auto-upload to YouTube with algorithm-optimized metadata
+- Target: 50+ videos/day, 1M+ impressions, $6K+/month revenue
+
+## CURRENT STATE (What Exists)
+```
+✅ video_generator.py - Pexels API integration (WORKING)
+✅ audio_generator.py - Windows TTS fallback (WORKING but robot voice)
+✅ scarify_master.py - Basic orchestrator (WORKING)
+✅ youtube_uploader.py - OAuth setup (CREDENTIALS CONFIGURED)
+✅ Pexels API Key: HARDCODED in video_generator.py
+✅ YouTube OAuth: config/credentials/youtube/client_secrets.json (VALID Desktop app)
+⚠️ SOVA TTS: Not installed yet
+⚠️ ElevenLabs: Import error (wrong version)
+⚠️ Desktop launcher: Not created
+⚠️ Algorithm optimization: Minimal
+```
+
+## CRITICAL PATHS
+```
+F:\AI_Oracle_Root\scarify\
+├── config/credentials/
+│   ├── .env (Pexels + ElevenLabs keys)
+│   └── youtube/client_secrets.json (VALID OAuth - Desktop app)
+├── output/
+│   ├── videos/ (3.3 MB MP4s - REAL content)
+│   └── audio/ (WAV files from Windows TTS)
+├── sova-tts/ (TO BE INSTALLED)
+└── [all Python scripts]
+```
+
+## BUILD DIRECTIVES
+
+### 1. AUDIO SYSTEM - PRIORITY 1
+**Implement 3-tier audio with SOVA as primary:**
+
+```python
+# audio_generator.py REQUIREMENTS:
+class AudioGenerator:
+    def __init__(self):
+        # Priority order: SOVA → ElevenLabs → Windows TTS
+        self.sova_available = self._check_sova()
+        self.elevenlabs_key = os.getenv('ELEVENLABS_API_KEY')
+    
+    def _check_sova(self):
+        """Check if SOVA TTS is installed and functional"""
+        sova_path = Path('sova-tts')
+        if not sova_path.exists():
+            return False
+        # Test SOVA with simple audio generation
+        try:
+            result = subprocess.run([
+                'python', 'sova-tts/inference.py',
+                '--text', 'test',
+                '--speaker', 'lj_16khz',
+                '--output', 'temp_test.wav'
+            ], timeout=10, capture_output=True)
+            if result.returncode == 0:
+                os.remove('temp_test.wav')
+                return True
+        except:
+            return False
+        return False
+    
+    def _generate_sova(self, text: str, output_path: str) -> bool:
+        """
+        Generate audio using SOVA TTS
+        Voice: lj_16khz (deep, cinematic)
+        Sample rate: 22050 Hz
+        """
+        try:
+            cmd = [
+                'python', 'sova-tts/inference.py',
+                '--text', text,
+                '--speaker', 'lj_16khz',
+                '--output', output_path,
+                '--sample_rate', '22050'
+            ]
+            result = subprocess.run(cmd, timeout=60, capture_output=True)
+            return result.returncode == 0 and os.path.exists(output_path)
+        except Exception as e:
+            print(f"SOVA error: {e}")
+            return False
+    
+    def _generate_elevenlabs(self, text: str, output_path: str) -> bool:
+        """
+        Generate using ElevenLabs API
+        Use v1.x SDK format (NOT v0.x)
+        """
+        try:
+            from elevenlabs.client import ElevenLabs
+            from elevenlabs import save
+            
+            client = ElevenLabs(api_key=self.elevenlabs_key)
+            audio = client.generate(
+                text=text,
+                voice="Adam",  # Deep male voice
+                model="eleven_monolingual_v1"
+            )
+            save(audio, output_path)
+            return os.path.exists(output_path)
+        except Exception as e:
+            print(f"ElevenLabs error: {e}")
+            return False
+```
+
+**INSTALLATION SCRIPT:**
+Create `install_audio.ps1`:
+```powershell
+# Install SOVA TTS
+if (!(Test-Path "sova-tts")) {
+    git clone https://github.com/sovaai/sova-tts.git
+    cd sova-tts
+    pip install -r requirements.txt --break-system-packages
+    cd ..
+}
+
+# Fix ElevenLabs
+pip uninstall elevenlabs -y
+pip install elevenlabs==1.8.0 --break-system-packages
+
+Write-Host "✅ Audio systems installed!" -ForegroundColor Green
+```
+
+### 2. VIDEO GENERATION - ALGORITHM OPTIMIZATION
+**Enhance video_generator.py with algorithm features:**
+
+```python
+class VideoGenerator:
+    def generate(self, pain_point: dict, audio_path: str, output_path: str):
+        """
+        pain_point structure:
+        {
+            'text': 'Chicago garage supply meltdown...',
+            'keywords': 'abandoned factory dark industrial',
+            'hook': 'Chicago garage owner saves $50k',
+            'cta': 'Ex-vet emergency kit'
+        }
+        """
+        # Search Pexels with PRIMARY and FALLBACK keywords
+        videos = self._search_pexels(pain_point['keywords'], count=7)
+        if len(videos) < 3:
+            # Fallback to generic keywords
+            videos = self._search_pexels('industrial dark cinematic', count=7)
+        
+        # Download videos
+        clips = self._download_clips(videos)
+        
+        # Stitch with:
+        # - Hook visual in first 3 seconds (attention grab)
+        # - Smooth transitions
+        # - CTA visual in last 5 seconds
+        final = self._stitch_algorithm_optimized(
+            clips, 
+            audio_path,
+            hook_duration=3,
+            cta_duration=5
+        )
+        
+        # Add text overlays (CRITICAL for algorithm)
+        final = self._add_text_overlays(
+            final,
+            hook=pain_point['hook'],
+            cta=pain_point['cta']
+        )
+        
+        # Export with optimal settings for Shorts
+        self._export_shorts_optimized(final, output_path)
+    
+    def _add_text_overlays(self, video, hook, cta):
+        """Add text overlays using moviepy TextClip"""
+        from moviepy.editor import TextClip, CompositeVideoClip
+        
+        # Hook overlay (0-3s) - top of screen
+        hook_clip = TextClip(
+            hook,
+            fontsize=70,
+            color='white',
+            font='Arial-Bold',
+            stroke_color='black',
+            stroke_width=3,
+            size=(1080, None),
+            method='caption'
+        ).set_position(('center', 100)).set_duration(3)
+        
+        # CTA overlay (last 5s) - bottom of screen
+        cta_clip = TextClip(
+            cta,
+            fontsize=60,
+            color='yellow',
+            font='Arial-Bold',
+            stroke_color='black',
+            stroke_width=3,
+            size=(1080, None),
+            method='caption'
+        ).set_position(('center', 1600)).set_duration(5).set_start(video.duration - 5)
+        
+        # Composite
+        return CompositeVideoClip([video, hook_clip, cta_clip])
+    
+    def _export_shorts_optimized(self, video, output_path):
+        """Export with YouTube Shorts optimal settings"""
+        video.write_videofile(
+            output_path,
+            fps=30,
+            codec='libx264',
+            audio_codec='aac',
+            bitrate='8000k',  # Higher quality
+            preset='slow',    # Better compression
+            ffmpeg_params=[
+                '-profile:v', 'high',
+                '-level', '4.2',
+                '-pix_fmt', 'yuv420p',
+                '-movflags', '+faststart'
+            ]
+        )
+```
+
+### 3. YOUTUBE UPLOADER - ALGORITHM DOMINANCE
+**Metadata optimization in youtube_uploader.py:**
+
+```python
+class YouTubeUploader:
+    PAIN_POINT_METADATA = {
+        'garage_supply': {
+            'title_template': '{hook} | Ex-Vet $97 Kit Saves {savings}',
+            'tags': [
+                'business tips', 'small business', 'garage owner',
+                'veteran business', 'entrepreneur', 'business hack',
+                'save money business', 'business emergency kit'
+            ],
+            'category_id': '22'  # People & Blogs
+        },
+        'employee_issues': {
+            'title_template': 'Fire Deadweight Employees | {savings} Monthly Savings',
+            'tags': [
+                'hiring tips', 'employee management', 'small business',
+                'business owner advice', 'productivity', 'business growth'
+            ]
+        }
+        # ... more pain point templates
+    }
+    
+    def upload(self, video_path: str, pain_point: dict) -> str:
+        """Upload with algorithm-optimized metadata"""
+        metadata = self._generate_metadata(pain_point)
+        
+        request_body = {
+            'snippet': {
+                'title': metadata['title'],
+                'description': metadata['description'],
+                'tags': metadata['tags'],
+                'categoryId': metadata['category_id']
+            },
+            'status': {
+                'privacyStatus': 'public',
+                'selfDeclaredMadeForKids': False
+            }
+        }
+        
+        # Upload
+        media = MediaFileUpload(video_path, resumable=True)
+        request = self.youtube.videos().insert(
+            part='snippet,status',
+            body=request_body,
+            media_body=media
+        )
+        
+        response = None
+        while response is None:
+            status, response = request.next_chunk()
+            if status:
+                print(f"Upload {int(status.progress() * 100)}%")
+        
+        video_id = response['id']
+        video_url = f"https://www.youtube.com/shorts/{video_id}"
+        
+        # Set as Short (required!)
+        self._set_as_short(video_id)
+        
+        return video_url
+    
+    def _generate_metadata(self, pain_point: dict) -> dict:
+        """Generate algorithm-optimized metadata"""
+        hook = pain_point.get('hook', '')
+        savings = pain_point.get('savings', '$50k')
+        
+        # Title (max 100 chars, front-loaded with hook)
+        title = f"{hook} | Ex-Vet Emergency Kit"[:100]
+        
+        # Description (first 2 lines are CRITICAL for algorithm)
+        description = f"""{hook}
+
+Ex-vet emergency kit for garage owners: https://gumroad.com/l/buy-rebel-97
+
+{pain_point['text']}
+
+#Shorts #SmallBusiness #BusinessTips #Entrepreneur #GarageOwner
+
+---
+Tools for business owners:
+→ Emergency response kit: $97
+→ Save $50k+ in your first year
+→ Built by ex-military for real businesses
+
+Subscribe for more business hacks!"""
+        
+        # Tags (max 500 chars total)
+        tags = [
+            'shorts', 'business', 'small business', 'entrepreneur',
+            'business tips', 'garage owner', 'veteran business',
+            'save money', 'business hack', 'productivity'
+        ]
+        
+        return {
+            'title': title,
+            'description': description,
+            'tags': tags,
+            'category_id': '22'
+        }
+```
+
+### 4. MASTER ORCHESTRATOR - PRODUCTION PIPELINE
+**Update scarify_master.py:**
+
+```python
+class ScarifyMaster:
+    # Enhanced pain points with algorithm data
+    PAIN_POINTS = [
+        {
+            'text': 'Chicago garage supply meltdown – 48hr $50k fix. Ex-vet drops emergency kit.',
+            'keywords': 'abandoned factory dark industrial rusty tools',
+            'hook': '💥 $50K SAVED IN 48 HOURS',
+            'cta': '👉 EX-VET KIT: $97',
+            'savings': '$50k',
+            'type': 'garage_supply'
+        },
+        {
+            'text': 'Mechanic deadweight employees bleeding $8k monthly. Fire them. Hire hungry.',
+            'keywords': 'mechanic workshop garage industrial workers',
+            'hook': '🔥 FIRE DEADWEIGHT EMPLOYEES',
+            'cta': '👉 SAVE $8K/MONTH',
+            'savings': '$8k',
+            'type': 'employee_issues'
+        },
+        {
+            'text': 'Barber no-show clients killing revenue. Text reminders save $2k monthly.',
+            'keywords': 'barber shop dark moody professional business',
+            'hook': '💈 NO-SHOWS KILLING REVENUE?',
+            'cta': '👉 TEXT REMINDERS = $2K',
+            'savings': '$2k',
+            'type': 'barber_business'
+        },
+        {
+            'text': 'Plumber emergency drought – phone silent. SEO fixes bring 40 calls weekly.',
+            'keywords': 'plumbing pipes industrial maintenance emergency',
+            'hook': '🚨 PHONE NOT RINGING?',
+            'cta': '👉 40 CALLS/WEEK',
+            'savings': '$15k',
+            'type': 'plumber_leads'
+        },
+        {
+            'text': 'Welder material waste destroying margins. Track inventory, save $15k yearly.',
+            'keywords': 'welding sparks industrial dark workshop metal',
+            'hook': '⚡ MATERIAL WASTE = PROFIT LOSS',
+            'cta': '👉 SAVE $15K/YEAR',
+            'savings': '$15k',
+            'type': 'welder_inventory'
+        }
+    ]
+    
+    def batch_generate(self, count: int, upload: bool = False):
+        """Generate multiple videos with progress tracking"""
+        results = {
+            'generated': 0,
+            'uploaded': 0,
+            'failed': 0,
+            'urls': []
+        }
+        
+        for i in range(count):
+            pain_point = self.PAIN_POINTS[i % len(self.PAIN_POINTS)]
+            
+            try:
+                # Generate
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                audio_path = f"output/audio/scarify_{timestamp}.wav"
+                video_path = f"output/videos/scarify_{timestamp}.mp4"
+                
+                print(f"\n{'='*80}")
+                print(f"🎯 VIDEO {i+1}/{count}")
+                print(f"   Pain Point: {pain_point['hook']}")
+                print(f"{'='*80}")
+                
+                # Audio
+                if not self.audio_gen.generate(pain_point['text'], audio_path):
+                    raise Exception("Audio generation failed")
+                
+                # Video
+                if not self.video_gen.generate(pain_point, audio_path, video_path):
+                    raise Exception("Video generation failed")
+                
+                results['generated'] += 1
+                
+                # Upload
+                if upload:
+                    try:
+                        url = self.uploader.upload(video_path, pain_point)
+                        results['uploaded'] += 1
+                        results['urls'].append(url)
+                        print(f"✅ UPLOADED: {url}")
+                    except Exception as e:
+                        print(f"❌ Upload failed: {e}")
+                
+                # Delay between videos (avoid rate limits)
+                if i < count - 1:
+                    time.sleep(30)
+                    
+            except Exception as e:
+                print(f"❌ Video {i+1} failed: {e}")
+                results['failed'] += 1
+        
+        # Summary
+        print(f"\n{'='*80}")
+        print(f"📊 BATCH COMPLETE")
+        print(f"{'='*80}")
+        print(f"✅ Generated: {results['generated']}")
+        print(f"📤 Uploaded: {results['uploaded']}")
+        print(f"❌ Failed: {results['failed']}")
+        if results['urls']:
+            print(f"\n🎬 VIDEO URLS:")
+            for url in results['urls']:
+                print(f"   → {url}")
+        print(f"{'='*80}")
+        
+        return results
+```
+
+### 5. DESKTOP LAUNCHER - ONE-CLICK EMPIRE
+**Create scarify_launcher.ps1 with GUI:**
+
+```powershell
+Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
+
+$form = New-Object System.Windows.Forms.Form
+$form.Text = '🔥 SCARIFY Empire Controller'
+$form.Size = New-Object System.Drawing.Size(600,500)
+$form.StartPosition = 'CenterScreen'
+$form.BackColor = [System.Drawing.Color]::FromArgb(20,20,20)
+$form.ForeColor = [System.Drawing.Color]::White
+
+# Title
+$titleLabel = New-Object System.Windows.Forms.Label
+$titleLabel.Location = New-Object System.Drawing.Point(50,20)
+$titleLabel.Size = New-Object System.Drawing.Size(500,40)
+$titleLabel.Text = 'SCARIFY EMPIRE CONTROLLER'
+$titleLabel.Font = New-Object System.Drawing.Font("Arial",18,[System.Drawing.FontStyle]::Bold)
+$titleLabel.ForeColor = [System.Drawing.Color]::Orange
+$form.Controls.Add($titleLabel)
+
+# Status
+$statusLabel = New-Object System.Windows.Forms.Label
+$statusLabel.Location = New-Object System.Drawing.Point(50,70)
+$statusLabel.Size = New-Object System.Drawing.Size(500,30)
+$statusLabel.Text = 'Ready to generate videos'
+$statusLabel.ForeColor = [System.Drawing.Color]::LimeGreen
+$form.Controls.Add($statusLabel)
+
+# Progress bar
+$progressBar = New-Object System.Windows.Forms.ProgressBar
+$progressBar.Location = New-Object System.Drawing.Point(50,110)
+$progressBar.Size = New-Object System.Drawing.Size(500,30)
+$form.Controls.Add($progressBar)
+
+# Output box
+$outputBox = New-Object System.Windows.Forms.TextBox
+$outputBox.Location = New-Object System.Drawing.Point(50,280)
+$outputBox.Size = New-Object System.Drawing.Size(500,150)
+$outputBox.Multiline = $true
+$outputBox.ScrollBars = "Vertical"
+$outputBox.ReadOnly = $true
+$outputBox.BackColor = [System.Drawing.Color]::Black
+$outputBox.ForeColor = [System.Drawing.Color]::LimeGreen
+$outputBox.Font = New-Object System.Drawing.Font("Consolas",10)
+$form.Controls.Add($outputBox)
+
+# Button styling
+$buttonStyle = {
+    param($button)
+    $button.Size = New-Object System.Drawing.Size(240,50)
+    $button.FlatStyle = 'Flat'
+    $button.BackColor = [System.Drawing.Color]::FromArgb(40,40,40)
+    $button.ForeColor = [System.Drawing.Color]::White
+    $button.Font = New-Object System.Drawing.Font("Arial",12,[System.Drawing.FontStyle]::Bold)
+}
+
+# Test button (1 video, no upload)
+$btn1 = New-Object System.Windows.Forms.Button
+$btn1.Location = New-Object System.Drawing.Point(50,160)
+$btn1.Text = '🧪 Test (1 Video)'
+& $buttonStyle $btn1
+$btn1.Add_Click({
+    $outputBox.Text = "Generating 1 test video...`r`n"
+    $statusLabel.Text = "Generating..."
+    python scarify_master.py --count 1 --test | ForEach-Object {
+        $outputBox.AppendText("$_`r`n")
+        $outputBox.ScrollToCaret()
+        [System.Windows.Forms.Application]::DoEvents()
+    }
+    $statusLabel.Text = "Complete!"
+})
+$form.Controls.Add($btn1)
+
+# Generate 5 button
+$btn5 = New-Object System.Windows.Forms.Button
+$btn5.Location = New-Object System.Drawing.Point(310,160)
+$btn5.Text = '🚀 Generate 5 + Upload'
+& $buttonStyle $btn5
+$btn5.Add_Click({
+    $outputBox.Text = "Generating 5 videos with upload...`r`n"
+    $statusLabel.Text = "Generating..."
+    $progressBar.Maximum = 5
+    python scarify_master.py --count 5 --upload | ForEach-Object {
+        $outputBox.AppendText("$_`r`n")
+        $outputBox.ScrollToCaret()
+        if ($_ -match "VIDEO \d+/5") {
+            $progressBar.Value++
+        }
+        [System.Windows.Forms.Application]::DoEvents()
+    }
+    $statusLabel.Text = "5 videos uploaded!"
+    $progressBar.Value = 5
+})
+$form.Controls.Add($btn5)
+
+# Generate 20 button
+$btn20 = New-Object System.Windows.Forms.Button
+$btn20.Location = New-Object System.Drawing.Point(50,220)
+$btn20.Text = '💪 Generate 20 + Upload'
+& $buttonStyle $btn20
+$btn20.Add_Click({
+    $response = [System.Windows.Forms.MessageBox]::Show(
+        "Generate 20 videos? This will take ~40 minutes.",
+        "Confirm Batch",
+        [System.Windows.Forms.MessageBoxButtons]::YesNo,
+        [System.Windows.Forms.MessageBoxIcon]::Question
+    )
+    if ($response -eq 'Yes') {
+        $outputBox.Text = "Generating 20 videos...`r`n"
+        $statusLabel.Text = "Generating..."
+        $progressBar.Maximum = 20
+        python scarify_master.py --count 20 --upload | ForEach-Object {
+            $outputBox.AppendText("$_`r`n")
+            $outputBox.ScrollToCaret()
+            if ($_ -match "VIDEO \d+/20") {
+                $progressBar.Value++
+            }
+            [System.Windows.Forms.Application]::DoEvents()
+        }
+        $statusLabel.Text = "20 videos uploaded!"
+    }
+})
+$form.Controls.Add($btn20)
+
+# Open folder button
+$btnFolder = New-Object System.Windows.Forms.Button
+$btnFolder.Location = New-Object System.Drawing.Point(310,220)
+$btnFolder.Text = '📁 Open Output Folder'
+& $buttonStyle $btnFolder
+$btnFolder.Add_Click({
+    explorer "output\videos"
+})
+$form.Controls.Add($btnFolder)
+
+$form.ShowDialog()
+```
+
+### 6. SETUP AUTOMATION
+**Create install_empire.ps1 - ONE COMMAND INSTALL:**
+
+```powershell
+Write-Host "🔥 SCARIFY EMPIRE - COMPLETE INSTALLATION" -ForegroundColor Cyan
+Write-Host "="*80
+
+# 1. Python packages
+Write-Host "`n[1/6] Installing Python packages..." -ForegroundColor Yellow
+pip install -r requirements.txt --break-system-packages
+
+# 2. Git (for SOVA)
+Write-Host "`n[2/6] Installing Git..." -ForegroundColor Yellow
+if (!(Get-Command git -ErrorAction SilentlyContinue)) {
+    winget install Git.Git -e --silent
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+}
+
+# 3. SOVA TTS
+Write-Host "`n[3/6] Installing SOVA TTS..." -ForegroundColor Yellow
+if (!(Test-Path "sova-tts")) {
+    git clone https://github.com/sovaai/sova-tts.git
+    cd sova-tts
+    pip install -r requirements.txt --break-system-packages
+    cd ..
+}
+
+# 4. Fix ElevenLabs
+Write-Host "`n[4/6] Fixing ElevenLabs SDK..." -ForegroundColor Yellow
+pip uninstall elevenlabs -y
+pip install elevenlabs==1.8.0 --break-system-packages
+
+# 5. Test audio
+Write-Host "`n[5/6] Testing audio systems..." -ForegroundColor Yellow
+python audio_generator.py "SCARIFY system test" "output/test_audio.wav"
+
+# 6. Create desktop shortcut
+Write-Host "`n[6/6] Creating desktop shortcut..." -ForegroundColor Yellow
+$WshShell = New-Object -comObject WScript.Shell
+$Shortcut = $WshShell.CreateShortcut("$env:USERPROFILE\Desktop\SCARIFY Generator.lnk")
+$Shortcut.TargetPath = "powershell.exe"
+$Shortcut.Arguments = "-ExecutionPolicy Bypass -File `"$PWD\scarify_launcher.ps1`""
+$Shortcut.WorkingDirectory = $PWD
+$Shortcut.IconLocation = "powershell.exe,0"
+$Shortcut.Description = "SCARIFY Empire Video Generator"
+$Shortcut.Save()
+
+Write-Host "`n" + ("="*80)
+Write-Host "✅ INSTALLATION COMPLETE!" -ForegroundColor Green
+Write-Host ("="*80)
+Write-Host "`nNext steps:"
+Write-Host "1. Double-click 'SCARIFY Generator' on desktop" -ForegroundColor Cyan
+Write-Host "2. Click 'Test (1 Video)' to verify everything works" -ForegroundColor Cyan
+Write-Host "3. Click 'Generate 5 + Upload' to start dominating" -ForegroundColor Cyan
+Write-Host "`nLET'S FUCKING GO! 🔥" -ForegroundColor Yellow
+```
+
+## TESTING REQUIREMENTS
+After building each component, CREATE TEST FILE:
+```python
+# test_component.py
+def test_audio():
+    gen = AudioGenerator()
+    assert gen.generate("test", "test.wav") == True
+    assert os.path.exists("test.wav")
+    assert os.path.getsize("test.wav") > 1000
+
+def test_video():
+    gen = VideoGenerator()
+    pain = PAIN_POINTS[0]
+    assert gen.generate(pain, "test.wav", "test.mp4") == True
+    assert os.path.getsize("test.mp4") > 1000000  # >1MB
+
+def test_youtube():
+    uploader = YouTubeUploader()
+    url = uploader.upload("test.mp4", PAIN_POINTS[0])
+    assert url.startswith("https://www.youtube.com/shorts/")
+```
+
+## PERFORMANCE TARGETS
+- Audio generation: <15 seconds
+- Video generation: <2 minutes
+- Upload: <30 seconds
+- Total per video: <3 minutes
+- Batch 50 videos: <2.5 hours
+
+## ERROR HANDLING
+```python
+# Every function must have:
+try:
+    # operation
+except SpecificException as e:
+    logger.error(f"Operation failed: {e}")
+    # Retry logic (max 3 attempts)
+    # Fallback behavior
+    return False
+```
+
+## ALGORITHM OPTIMIZATION CHECKLIST
+✅ Front-loaded hooks in title
+✅ First 2 lines of description optimized
+✅ Text overlays in first 3 seconds
+✅ CTA in last 5 seconds
+✅ 10+ relevant tags
+✅ Category 22 (People & Blogs)
+✅ Marked as #Shorts
+✅ Upload during peak hours (12pm-3pm EST)
+✅ Vertical 1080x1920, 30fps
+✅ High bitrate (8000k)
+
+## FINAL COMMAND TO CURSOR
+"Build SCARIFY empire according to .cursorrules. Implement ALL features. Test everything. NO PLACEHOLDERS. Show me working demos of audio, video, upload, and launcher. Go."
+
+---
+END OF CONFIGURATION

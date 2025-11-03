@@ -1,0 +1,28 @@
+# QUICK COMMANDS - WHEN YOU WAKE UP
+
+## CHECK PROGRESS:
+ls batch_upload
+
+## CHECK REVENUE:
+python MONITOR_REVENUE.py
+
+## PROCESS POLLO BATCH (after you generate 30 on Pollo.ai):
+python PROCESS_POLLO_BATCH.py
+
+## DEPLOY TO OTHER PLATFORMS:
+python DEPLOY_ALL_PLATFORMS.py
+
+## GENERATE MORE IF NEEDED:
+python MASS_GENERATE_100_VIDEOS.py --total 50 --pollo 0
+
+---
+
+## POLLO.AI PROMPT (970 CHARS):
+
+Dark Abraham Lincoln Max Headroom close-up, predatory stare parasocial eye contact, left geometric glitch right hyperrealistic cognitive dissonance, 0.3s stuttering loop pattern obsession, red-cyan split retinal rivalry, brutal contrast electric blue threat detection, uncanny smile malevolent intelligence, neon magenta cheekbones Zeigarnik pattern, zooming closer violating space, pupil movements trapped consciousness, phosphor afterimage burned retina, sync errors brain stabilization, corruption revealing hidden screaming faces pareidolia, 60Hz rhythm delta-theta brainwaves, synthetic wrong reality existential unease, bleeding pixels 1987 cursed broadcast, 4K compression artifacts, predatory stare following viewer, Max Headroom stuttering glitch, dark horror geometric shadows, neon green streams, vertical errors, intimate malevolent presence, retro CRT glow, digital prison, angular polygons fragmenting, razor shadows electric rim light, hypnotic scan lines
+
+---
+
+STATUS: 120 videos live, 70 generating, ready to hit $3,690!
+
+

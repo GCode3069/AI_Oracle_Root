@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Abe Studio Mobile</title>
+    <style>
+        body {
+            font-family: -apple-system, sans-serif;
+            background: #1a0f0a;
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            color: #ff3333;
+            text-align: center;
+            font-size: 24px;
+        }
+        .card {
+            background: #2a1f1a;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            margin: 10px 0;
+            color: white;
+        }
+        .btn-red { background: #ff0000; }
+        .btn-blue { background: #0066cc; }
+        .btn-green { background: #00cc00; }
+        textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background: #000;
+            color: white;
+            border: 2px solid #444;
+            border-radius: 8px;
+            min-height: 100px;
+        }
+        .quick {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #333;
+            border-radius: 6px;
+            margin: 5px;
+            font-size: 14px;
+        }
+        select {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background: #000;
+            color: white;
+            border: 2px solid #444;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .status {
+            background: #000;
+            border: 2px solid #00ff00;
+            padding: 15px;
+            color: #00ff00;
+            font-family: monospace;
+            font-size: 12px;
+            border-radius: 8px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>📺 ABE STUDIO</h1>
+    <p style="text-align:center; color:#00ffff; font-size:12px;">Mobile Generator</p>
+    
+    <div class="card">
+        <h3 style="color:#00ffff;">⚡ Quick Generate</h3>
+        
+        <select id="style">
+            <option value="chatgpt">ChatGPT - Poetic ⭐</option>
+            <option value="cursor">Cursor - Consistent</option>
+            <option value="grok">Grok - Controversial ⚠️</option>
+            <option value="opus">Opus - Sophisticated</option>
+        </select>
+        
+        <select id="count">
+            <option value="1">1 video</option>
+            <option value="5" selected>5 videos</option>
+            <option value="10">10 videos</option>
+            <option value="20">20 videos</option>
+        </select>
+        
+        <button class="btn btn-red" onclick="generate()">🎬 GENERATE</button>
+    </div>
+    
+    <div class="card">
+        <h3 style="color:#00ffff;">💡 Capture Idea</h3>
+        
+        <button class="btn btn-blue" onclick="voiceCapture()">🎤 VOICE TO TEXT</button>
+        
+        <textarea id="idea" placeholder="Or type your idea..."></textarea>
+        
+        <div style="margin:10px 0;">
+            <span class="quick" onclick="quickSet('Gov Shutdown')">🏛️ Gov</span>
+            <span class="quick" onclick="quickSet('Crypto')">₿ Crypto</span>
+            <span class="quick" onclick="quickSet('AI')">🤖 AI</span>
+            <span class="quick" onclick="quickSet('Climate')">🌍 Climate</span>
+        </div>
+        
+        <button class="btn btn-green" onclick="saveIdea()">💾 SAVE</button>
+    </div>
+    
+    <div class="card">
+        <h3 style="color:#00ffff;">📊 Stats</h3>
+        <div class="status" id="status">
+            ✅ Mobile ready<br>
+            📱 Tap buttons to use<br>
+            🎬 Generate from anywhere
+        </div>
+        <button class="btn btn-blue" onclick="checkStatus()">🔄 REFRESH</button>
+    </div>
+    
+    <script>
+        function log(msg) {
+            document.getElementById('status').innerHTML += '<br>' + msg;
+        }
+        
+        function generate() {
+            const style = document.getElementById('style').value;
+            const count = document.getElementById('count').value;
+            
+            log(`🎬 Generating ${count} videos (${style} style)...`);
+            
+            // Create API call URL
+            const url = `${window.location.origin}/api/generate?style=${style}&count=${count}`;
+            
+            fetch(url, {method: 'POST'})
+                .then(r => r.json())
+                .then(d => {
+                    log(`✅ Started: ${d.job_id || 'OK'}`);
+                    log(`⏱️ ETA: ${count * 3} minutes`);
+                })
+                .catch(e => {
+                    log(`❌ Error: ${e.message}`);
+                    // FALLBACK: Save to localStorage for manual processing
+                    const queue = JSON.parse(localStorage.getItem('queue') || '[]');
+                    queue.push({style, count, time: new Date().toISOString()});
+                    localStorage.setItem('queue', JSON.stringify(queue));
+                    log(`💾 Saved to local queue (${queue.length} items)`);
+                    log(`💡 Process on PC: CHECK_QUEUE.bat`);
+                });
+        }
+        
+        function voiceCapture() {
+            if ('webkitSpeechRecognition' in window) {
+                const recognition = new webkitSpeechRecognition();
+                recognition.onstart = () => log('🎤 Listening...');
+                recognition.onresult = (e) => {
+                    const text = e.results[0][0].transcript;
+                    document.getElementById('idea').value = text;
+                    log(`✅ "${text}"`);
+                };
+                recognition.onerror = (e) => log(`❌ ${e.error}`);
+                recognition.start();
+            } else {
+                alert('Use Safari for voice features');
+            }
+        }
+        
+        function quickSet(topic) {
+            document.getElementById('idea').value = `Generate videos about ${topic}`;
+            log(`💡 Set: ${topic}`);
+        }
+        
+        function saveIdea() {
+            const idea = document.getElementById('idea').value;
+            if (!idea) {
+                alert('Enter an idea first!');
+                return;
+            }
+            
+            const ideas = JSON.parse(localStorage.getItem('ideas') || '[]');
+            ideas.push({idea, time: new Date().toISOString()});
+            localStorage.setItem('ideas', JSON.stringify(ideas));
+            
+            log(`💾 Saved! (${ideas.length} total ideas)`);
+            document.getElementById('idea').value = '';
+        }
+        
+        function checkStatus() {
+            log('🔄 Checking status...');
+            
+            fetch(`${window.location.origin}/api/stats`)
+                .then(r => r.json())
+                .then(d => {
+                    log(`📊 Videos: ${d.total || '--'}`);
+                    log(`📊 Queued: ${d.queued || '--'}`);
+                    log(`💰 Revenue: $${d.revenue || '--'}`);
+                })
+                .catch(e => {
+                    log(`💡 Offline mode`);
+                    const queue = JSON.parse(localStorage.getItem('queue') || '[]');
+                    const ideas = JSON.parse(localStorage.getItem('ideas') || '[]');
+                    log(`📝 ${queue.length} in queue`);
+                    log(`💡 ${ideas.length} ideas saved`);
+                });
+        }
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,84 @@
+# Chapman 2025 Fear Survey - Top Fears for Psychological Targeting
+# Source: Chapman University Survey of American Fears 2025
+# Updated: October 2025
+
+top_fears:
+  corrupt_gov:
+    name: "Corrupt Government Officials"
+    prevalence: 69
+    rank: 1
+    prompt: "Lincoln: The whistle's bribes, not arrivals. Your taxes funded this... now pay in sats."
+    audio_spike: 40
+    visual_theme: "redacted_files_burning"
+    retention_hook: "Your audit starts at dawn"
+    
+  loved_ones_dying:
+    name: "Loved Ones Dying"
+    prevalence: 59
+    rank: 2
+    prompt: "Lincoln: Your family's on the next car... wave goodbye. Their graves are unpaid."
+    audio_spike: 40
+    visual_theme: "fog_cemetery_rails"
+    retention_hook: "Mom's next... check the news"
+    
+  economic_collapse:
+    name: "Economic Collapse"
+    prevalence: 58
+    rank: 3
+    prompt: "Lincoln: Your 401K derails at dawn. Board or starve."
+    audio_spike: 40
+    visual_theme: "endless_iou_train_cars"
+    retention_hook: "Your debt's eternal"
+    
+  cyber_terrorism:
+    name: "Cyber Terrorism"
+    prevalence: 55
+    rank: 4
+    prompt: "Lincoln: They hacked the rails. Your data's the next derailment."
+    audio_spike: 40
+    visual_theme: "glitch_screen_train"
+    retention_hook: "Your password's on the manifest"
+    
+  russia_nukes:
+    name: "Russia Nuclear Attack"
+    prevalence: 52
+    rank: 5
+    prompt: "Lincoln: The mushroom cloud blooms from the tracks. Last stop: fallout."
+    audio_spike: 40
+    visual_theme: "nuclear_fog_rails"
+    retention_hook: "Your shelter's a lie"
+
+# Audio Engineering Specs
+audio_specs:
+  theta_frequency: "4-8Hz"  # Freeze-gut paralysis
+  gamma_spike: "40Hz"        # BDNF hijack at 7s mark
+  base_volume: 0.7
+  tts_volume: 0.9
+  fade_in: 1.0
+  spike_timing: 7.0
+
+# Visual Effects Specs
+visual_specs:
+  duration: 15  # Seconds - optimized for Shorts
+  resolution: "1080x1920"  # Vertical
+  fps: 24
+  color_grade: "silver_bleed_red"
+  glitch_timing: 13  # Seconds
+  freeze_duration: 2  # Seconds
+
+# Deployment Strategy
+deployment:
+  clips_per_hour: 5
+  channels_per_wave: 3
+  total_duration_hours: 72
+  target_views: 500000
+  cpm_target: 15  # USD - Halloween spike
+  
+# Revenue Projections
+revenue:
+  ad_revenue: 7500  # USD
+  superchat: 2500   # USD
+  btc_donations: 0.0005  # BTC per donation
+  donation_count: 50
+  total_btc: 0.1  # ~$10K at $100K/BTC
+

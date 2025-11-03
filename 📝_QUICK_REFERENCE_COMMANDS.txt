@@ -1,0 +1,214 @@
+═══════════════════════════════════════════════════════════════════════════
+
+                    📝 QUICK REFERENCE - ALL COMMANDS
+
+═══════════════════════════════════════════════════════════════════════════
+
+🚀 DEPLOYMENT:
+
+python SELF_DEPLOY.py              # Interactive menu (choose A/B/C/D/E)
+python SELF_DEPLOY.py --full       # Full deployment (no menu)
+python SELF_DEPLOY.py --battle     # Battle Royale mode
+python SELF_DEPLOY.py --empire     # Empire Forge mode
+python SELF_DEPLOY.py --quick      # Quick essentials
+python SELF_DEPLOY.py --mobile     # Mobile only
+
+═══════════════════════════════════════════════════════════════════════════
+
+🎮 LAUNCHERS:
+
+LAUNCH_EMPIRE.bat                  # Windows: Start everything
+./LAUNCH_EMPIRE.sh                 # Linux/Mac: Start everything
+AUTO_DEPLOY.bat                    # Windows: Auto-setup
+./AUTO_DEPLOY.sh                   # Linux/Mac: Auto-setup
+
+═══════════════════════════════════════════════════════════════════════════
+
+📱 ACCESS POINTS:
+
+Desktop Dashboard:    LAUNCH_EMPIRE.bat
+Mobile Web UI:        http://localhost:5000
+Mobile from Phone:    http://YOUR_IP:5000
+Telegram Bot:         python3 TELEGRAM_BOT_ENHANCED.py YOUR_TOKEN
+MCP Server:           cd mcp-server && npm start
+Then use Claude:      "Generate 10 videos"
+
+═══════════════════════════════════════════════════════════════════════════
+
+🔧 FIXES & UTILS:
+
+FIX_VIDEO_1_QR.bat                 # Add QR to Video 1
+python ADD_QR_TO_VIDEO.py "video"  # Add QR to any video
+SYNC_TO_GITHUB.bat                 # Sync to GitHub
+./SYNC_TO_GITHUB.sh                # Sync to GitHub (Linux)
+
+═══════════════════════════════════════════════════════════════════════════
+
+🎥 VIDEO OPERATIONS:
+
+Generate 10 videos:
+  Desktop: Generation tab → Set 10 → Generate
+  Mobile: Tap "Generate 10" button
+  Telegram: /generate 10
+  Claude: "Generate 10 videos"
+  CLI: python abraham_horror/ABRAHAM_PROFESSIONAL_UPGRADE.py 10
+
+Upload all videos:
+  Desktop: Upload tab → Start Upload
+  Mobile: Tap "Upload All" button
+  Telegram: /upload
+  Claude: "Upload all videos"
+  CLI: python MULTI_CHANNEL_UPLOADER.py abraham_horror/youtube_ready round-robin
+
+Check analytics:
+  Desktop: Analytics tab → Refresh
+  Mobile: Tap "Analytics" button
+  Telegram: /analytics
+  Claude: "Show analytics"
+  CLI: python analytics_tracker.py summary
+
+Check Bitcoin:
+  Desktop: Revenue tab → Check Balance
+  Mobile: Tap "Check Bitcoin" button
+  Telegram: /bitcoin
+  Claude: "Check Bitcoin balance"
+  CLI: python check_balance.py
+
+═══════════════════════════════════════════════════════════════════════════
+
+⚔️ BATTLE ROYALE:
+
+Access: Desktop → Battle Royale tab
+Commands:
+  • Refresh Status
+  • Load Battle Data
+  • Show Leaderboard
+Prize: $3,690 in 72 hours
+Competitors: Claude, GPT-4, Grok, Gemini
+
+═══════════════════════════════════════════════════════════════════════════
+
+💰 EMPIRE FORGE 2.0:
+
+Execute: pwsh empire_forge_2.0.ps1
+Features: SOVA TTS + RunwayML + Multi-platform
+Target: $10,000 revenue
+Platforms: YouTube, TikTok, Instagram, Twitter, Facebook, LinkedIn, Reddit
+
+═══════════════════════════════════════════════════════════════════════════
+
+📤 GITHUB SYNC:
+
+First Time:
+  1. Read: GIT_SETUP_INSTRUCTIONS.md
+  2. Fix permissions: git config --global --add safe.directory '*'
+  3. Create repo on GitHub.com
+  4. Run: SYNC_TO_GITHUB.bat
+
+Daily Sync:
+  SYNC_TO_GITHUB.bat  (Windows)
+  ./SYNC_TO_GITHUB.sh (Linux/Mac)
+
+═══════════════════════════════════════════════════════════════════════════
+
+🐧 LINUX COMMANDS:
+
+Setup:
+  sudo apt update && sudo apt upgrade -y
+  sudo apt install python3 python3-pip nodejs npm git -y
+  pip3 install -r requirements.txt
+  cd mcp-server && npm install && npm run build
+
+Make Executable:
+  chmod +x *.sh
+  chmod +x mcp-server/*.sh
+
+Run:
+  ./LAUNCH_EMPIRE.sh
+  ./SYNC_TO_GITHUB.sh
+  python3 SELF_DEPLOY.py
+
+═══════════════════════════════════════════════════════════════════════════
+
+📚 KEY DOCUMENTATION:
+
+Start:    ⚡_DO_THIS_NOW.txt
+Overview: 🚀_START_HERE_MASTER_GUIDE.md
+Agent:    🤖_AGENT_MERGE_COMPLETE.txt
+System:   🎯_ULTIMATE_INTEGRATION_MAP.txt
+Linux:    LINUX_BEGINNERS_GUIDE.md
+GitHub:   GIT_SETUP_INSTRUCTIONS.md
+Mobile:   MOBILE_INTERFACE_GUIDE.md
+QR Fix:   QR_CODE_FIX_GUIDE.md
+
+═══════════════════════════════════════════════════════════════════════════
+
+🎯 COMMON WORKFLOWS:
+
+Morning Routine:
+  1. LAUNCH_EMPIRE.bat
+  2. Check Desktop → Dashboard tab
+  3. Mobile: http://localhost:5000
+
+Generate & Upload:
+  1. Desktop → Generation tab → Generate 20
+  2. Wait for completion
+  3. Desktop → Upload tab → Upload All
+
+Mobile Control:
+  1. python3 MOBILE_MCP_SERVER.py
+  2. Phone: http://YOUR_IP:5000
+  3. Tap buttons to control
+
+AI Control:
+  1. Ensure LAUNCH_EMPIRE.bat ran (starts MCP)
+  2. Open Claude Desktop
+  3. Say: "Generate 10 videos and upload them"
+
+Battle Royale:
+  1. python SELF_DEPLOY.py --battle
+  2. LAUNCH_EMPIRE.bat
+  3. Desktop → Battle Royale tab
+  4. Track competition!
+
+═══════════════════════════════════════════════════════════════════════════
+
+🆘 TROUBLESHOOTING:
+
+Desktop won't start:
+  → Check Python installed: python --version
+  → Run: python SCARIFY_CONTROL_CENTER.pyw
+
+Mobile UI won't load:
+  → Install Flask: pip install Flask
+  → Run: python MOBILE_MCP_SERVER.py
+  → Browser: http://localhost:5000
+
+MCP Server fails:
+  → Check Node.js: node --version
+  → Build: cd mcp-server && npm run build
+  → Run: npm start
+
+Git permission issues:
+  → PowerShell as Admin: git config --global --add safe.directory '*'
+  → Then retry: SYNC_TO_GITHUB.bat
+
+Video QR fix fails:
+  → Install deps: pip install moviepy qrcode[pil]
+  → Check FFmpeg: ffmpeg -version
+  → Re-run: FIX_VIDEO_1_QR.bat
+
+═══════════════════════════════════════════════════════════════════════════
+
+✅ EVERYTHING IN ONE PLACE!
+
+Deployment: python SELF_DEPLOY.py
+Launch: LAUNCH_EMPIRE.bat
+Mobile: http://localhost:5000
+GitHub: SYNC_TO_GITHUB.bat
+Docs: ⚡_DO_THIS_NOW.txt
+
+GO! 🚀🔥💰
+
+═══════════════════════════════════════════════════════════════════════════
+

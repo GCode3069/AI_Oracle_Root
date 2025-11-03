@@ -1,0 +1,40 @@
+================================================================================
+QUICK DEPLOY - COPY & PASTE THIS
+================================================================================
+
+# Deploy 10 comedy videos to your YouTube channel:
+
+cd F:\AI_Oracle_Root\scarify\abraham_horror
+.\DEPLOY_NOW_COMEDY.ps1 -Count 10
+
+================================================================================
+WHAT IT DOES:
+- Generates 10 comedy videos (Abe on TV)
+- Uses proper MALE voice only
+- Comedy styles: Chappelle, Carlin, Pryor, etc.
+- Scrapes current events
+- Auto-uploads to YOUR channel: UCS5pEpSCw8k4wene0iv0uAg
+- Shows you exact YouTube URLs and Studio links
+
+================================================================================
+WHERE TO FIND YOUR VIDEOS:
+1. ALL Videos Tab:
+   https://studio.youtube.com/channel/UCS5pEpSCw8k4wene0iv0uAg/videos
+
+2. Shorts Tab Only:
+   https://studio.youtube.com/channel/UCS5pEpSCw8k4wene0iv0uAg/videos/short
+
+NOTE: YouTube shows videos in BOTH tabs. Shorts appear in "Shorts" tab,
+but ALL videos (including Shorts) also appear in "Videos" tab.
+
+================================================================================
+IF VIDEOS DON'T APPEAR:
+1. Wait 1-2 minutes (YouTube processing)
+2. Refresh browser (Ctrl+F5)
+3. Check "Videos" tab (not just "Shorts")
+4. Filter by date (newest first)
+5. Check console output for upload errors
+
+================================================================================
+
+

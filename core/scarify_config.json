@@ -1,0 +1,44 @@
+﻿{
+    "paths":  {
+                  "content_source":  "F:\\Extreme SSD\\SCARIFY_CONSOLIDATED",
+                  "root":  "F:\\AI_Oracle_Root\\scarify",
+                  "logs":  "logs",
+                  "output":  "output"
+              },
+    "version":  "1.0",
+    "credentials":  {
+                        "runway":  {
+                                       "status":  "READY",
+                                       "api_key":  "CONFIGURED",
+                                       "use_case":  "AI Video Generation"
+                                   },
+                        "youtube":  {
+                                        "status":  "MISSING",
+                                        "use_case":  "Video Upload Automation",
+                                        "oauth2":  "PENDING"
+                                    },
+                        "claude":  {
+                                       "status":  "EXTRACTED",
+                                       "use_case":  "Script Generation \u0026 Content Ideas",
+                                       "api_key_file":  "config/credentials/claude_api.key"
+                                   },
+                        "elevenlabs":  {
+                                           "status":  "EXTRACTED",
+                                           "use_case":  "AI Voice Narration",
+                                           "api_key_file":  "config/credentials/elevenlabs_api.key"
+                                       }
+                    },
+    "archetypes":  [
+                       "Rebel",
+                       "Mystic",
+                       "Sage",
+                       "Hero",
+                       "Guardian"
+                   ],
+    "default_settings":  {
+                             "auto_upload":  true,
+                             "default_archetype":  "Mystic",
+                             "upload_method":  "standard"
+                         },
+    "project_name":  "SCARIFY Automated YouTube System"
+}

@@ -1,0 +1,76 @@
+{
+  "llm_name": "Grok_2",
+  "contact": "Battle Royale Round 1",
+  "scripts": [
+    {
+      "episode": 60000,
+      "script": "Stop scrolling. Elon's Twitter algorithm isn't about free speech - it's about data harvesting. They're training AI on your rage. Now you know why they want you angry. Bitcoin below.",
+      "title": "Lincoln's WARNING #60000: Twitter Algorithm SECRET Exposed #Shorts",
+      "tags": [
+        "twitter",
+        "elon",
+        "algorithm",
+        "exposed",
+        "viral"
+      ],
+      "satire_label": true,
+      "notes": "Current event: X algorithm changes"
+    },
+    {
+      "episode": 60001,
+      "script": "The AI safety summit? Theater. They're not scared of AI - they're scared of YOU having AI. Classic power consolidation. Now you see the game. Bitcoin below.",
+      "title": "Lincoln's WARNING #60001: AI Safety Summit DECEPTION #Shorts",
+      "tags": [
+        "AI",
+        "safety",
+        "summit",
+        "exposed",
+        "viral"
+      ],
+      "satire_label": true,
+      "notes": "Topical: Recent AI safety discussions"
+    },
+    {
+      "episode": 60002,
+      "script": "Presidential debates? Scripted reality TV. Both sides work for the same bankers. The real election happens in Bitcoin markets. Now you know where power really is. Bitcoin below.",
+      "title": "Lincoln's WARNING #60002: Presidential Debates ILLUSION #Shorts",
+      "tags": [
+        "debate",
+        "president",
+        "election",
+        "exposed",
+        "viral"
+      ],
+      "satire_label": true,
+      "notes": "Political satire - bipartisan critique"
+    },
+    {
+      "episode": 60003,
+      "script": "The Fed 'pausing rates'? They're not controlling inflation - they're controlling YOU. Your savings are being systematically erased. Now you know the truth. Bitcoin below.",
+      "title": "Lincoln's WARNING #60003: Federal Reserve LIE Exposed #Shorts",
+      "tags": [
+        "fed",
+        "inflation",
+        "rates",
+        "exposed",
+        "viral"
+      ],
+      "satire_label": true,
+      "notes": "Economic commentary"
+    },
+    {
+      "episode": 60004,
+      "script": "Climate summit private jets? They don't care about the planet - they care about control. Carbon credits are the new indulgences. Now you see the scam. Bitcoin below.",
+      "title": "Lincoln's WARNING #60004: Climate Summit HYPOCRISY #Shorts",
+      "tags": [
+        "climate",
+        "summit",
+        "hypocrisy",
+        "exposed",
+        "viral"
+      ],
+      "satire_label": true,
+      "notes": "Environmental satire - hypocrisy angle"
+    }
+  ]
+}

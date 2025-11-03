@@ -1,0 +1,6 @@
+Build Neuro-Skins 2.0 MVP:
+1. React Native app with TypeScript and Expo 50
+2. Audio player for 36-min protocols
+3. Video integration with SCARIFY pipeline
+5. Firebase analytics integration
+6. Dark mode UI with  CTA

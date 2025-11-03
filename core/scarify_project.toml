@@ -1,0 +1,191 @@
+[project]
+name = "SCARIFY YouTube Video Automation"
+description = "Automate narration, video generation, and YouTube uploads using ElevenLabs, Runway API, and Python scripts."
+version = "1.0"
+author = "GCode3069"
+
+[goals]
+primary = [
+    "End-to-end automation of YouTube content creation",
+    "Professional-grade narration and video production",
+    "Algorithm-dominating metadata and analytics",
+    "Rapid troubleshooting and error recovery",
+    "Zero manual steps via desktop deploy shortcut"
+]
+secondary = [
+    "No-cheating enforcement for pipeline integrity",
+    "Batch processing and scheduled uploads",
+    "Multi-API integration with credential auto-discovery"
+]
+# ADDED IDEAS:
+innovation = [
+    "Automatic system hardware benchmarking before pipeline runs",
+    "Set system power plan to High Performance via script",
+    "Clean temp files and optimize system before each batch",
+    "Log all system and pipeline environment details for reproducibility",
+    "Enable Storage Sense for disk cleanup",
+    "Auto-detect and optimize for number of CPU threads"
+]
+
+[steps.prepare_assets]
+step = 1
+description = "Organize your working directory and place all required assets."
+details = [
+    "Place your video script (text) in a known location.",
+    "Ensure your ElevenLabs and Runway API keys are available.",
+    "Install all necessary Python dependencies.",
+    "Place 'client_secrets.json', API key files, and config files in the root directory.",
+    "Verify desktop deploy batch/shortcut scripts are present.",
+    # ADDED IDEAS:
+    "Run PowerShell system info script to benchmark hardware and environment."
+]
+
+[steps.install_dependencies]
+step = 2
+description = "Install Python libraries for TTS, video generation, and YouTube upload."
+commands = [
+    "pip install google-auth-oauthlib google-auth google-api-python-client",
+    "pip install httpx aiohttp sqlalchemy",
+    "pip install moviepy pillow pydub",
+    "pip install elevenlabs runwayml"
+]
+additional_setup = [
+    # ADDED IDEAS:
+    "Set up PowerShell for system optimization before each run.",
+    "Optional: Clean temp files and enable Storage Sense in Windows."
+]
+
+[steps.narration]
+step = 3
+description = "Generate narration audio using ElevenLabs Jiminex voice."
+files_needed = [
+    "client_secrets.json (YouTube OAuth)",
+    "scarify/utils/complete_pipeline.py (for end-to-end automation)"
+]
+api_keys = ["ELEVENLABS_API_KEY"]
+output = "MP3 audio file with Jiminex narration"
+notes = [
+    "Auto-discover API key from credentials folder or .env file.",
+    "Fallback to Windows TTS if ElevenLabs is unavailable.",
+    "Log all narration steps for analytics.",
+    # ADDED IDEAS:
+    "Log CPU, RAM, and disk info for each narration step for troubleshooting."
+]
+
+[steps.video_generation]
+step = 4
+description = "Generate video assets using Runway API and the narration audio."
+api_keys = ["RUNWAY_API_KEY"]
+output = "MP4 video file synced with narration audio"
+notes = [
+    "Use MoviePy for video composition if Runway API is unavailable.",
+    "Auto-sync captions and overlays for algorithmic optimization.",
+    # ADDED IDEAS:
+    "Benchmark video encoding speed and log system performance."
+]
+
+[steps.youtube_upload]
+step = 5
+description = "Upload the generated video to YouTube using the minimal Python uploader."
+files_needed = [
+    "scarify_upload_youtube_minimal.py",
+    "client_secrets.json"
+]
+output = "Video live on YouTube (link provided in console output)"
+notes = [
+    "Auto-fill metadata (title, tags, description) for YouTube algorithm optimization.",
+    "Desktop batch script launches upload with zero manual steps.",
+    "Enforce no-cheating: uploads only via script or desktop shortcut.",
+    # ADDED IDEAS:
+    "Log uploader environment, UTC timestamp, and user for audit.",
+    "Auto-generate tags and descriptions based on system info and trending topics."
+]
+
+[steps.desktop_deploy]
+step = 6
+description = "Create and use a desktop deploy shortcut for one-click automation."
+files_needed = [
+    "SCARIFY_FINAL_DEPLOY.bat",
+    "SCARIFY_Final_Upload_YourChannel.ps1"
+]
+actions = [
+    "Double-click to launch full pipeline (narration, video, upload).",
+    "Batch script enforces automation, opens output folder, and launches upload.",
+    "Logs every step for troubleshooting and analytics.",
+    # ADDED IDEAS:
+    "Batch launch runs PowerShell optimization and system info scripts before pipeline execution.",
+    "Logs hardware and OS details for reproducibility."
+]
+
+[steps.troubleshooting]
+step = 7
+description = "If you see errors, refer to these checks."
+checks = [
+    "Is 'client_secrets.json' present in your working directory?",
+    "Are your API keys set correctly?",
+    "Is your video file path correct?",
+    "Are all Python dependencies installed?",
+    "Did the desktop deploy shortcut run as administrator?",
+    "Check logs in Output folder for error details.",
+    "Review YouTube upload status and error messages.",
+    # ADDED IDEAS:
+    "Check system info log for hardware/software mismatches.",
+    "Review PowerShell optimization logs for step failures."
+]
+
+[steps.optional_enhancements]
+step = 8
+description = "Enhance your workflow with analytics, dashboards, and automation."
+options = [
+    "Add analytics tracking in your pipeline.",
+    "Integrate with SCARIFY dashboard for real-time monitoring.",
+    "Use PowerShell or Bash scripts for batch processing.",
+    "Schedule uploads for best YouTube algorithm timing.",
+    "Auto-generate thumbnails and optimized tags/descriptions.",
+    "Add error recovery logic for API failures and credential issues.",
+    "Monitor YouTube API quota and rotate credentials if needed.",
+    # ADDED IDEAS:
+    "Enable hardware-based optimization (thread count, RAM usage) for batch jobs.",
+    "Auto-benchmark pipeline run time and compare to previous runs.",
+    "Automate desktop environment prep before each upload (cleanup, high performance mode)."
+]
+
+[automation]
+enforcement = [
+    "No manual upload allowed—must use script or desktop shortcut.",
+    "Pipeline logs all actions to prevent cheating.",
+    "Auto-retry failed uploads and alert on errors.",
+    "Validate that deployment used local API credentials."
+]
+batch_launch = [
+    "Batch script on desktop launches end-to-end workflow.",
+    "PowerShell/YoutubeUploader.psm1 integration for direct channel upload.",
+    "Open YouTube Studio in browser if all else fails.",
+    # ADDED IDEAS:
+    "Batch script runs environment optimization (PowerShell system info and cleanup) before starting pipeline.",
+    "Pipeline verifies system meets minimum hardware requirements."
+]
+
+[metadata]
+optimization = [
+    "Auto-generate tags based on trending topics.",
+    "Dynamic description and title generation for SEO.",
+    "Include UTC timestamp, user, and GitHub repo references in metadata.",
+    "Log all metadata to output JSON for audit.",
+    # ADDED IDEAS:
+    "Log system benchmark and desktop environment info in metadata JSON.",
+    "Auto-include pipeline version and script hash for reproducibility."
+]
+
+[resources]
+documentation = [
+    "YouTube Data API v3: https://developers.google.com/youtube/v3/docs/videos/insert",
+    "ElevenLabs API: https://docs.elevenlabs.io/",
+    "Runway API: https://docs.runwayml.com/",
+    "MoviePy Docs: https://zulko.github.io/moviepy/",
+    "SCARIFY GitHub: https://github.com/GCode3069/AI_Oracle_Root",
+    # ADDED IDEAS:
+    "Windows PowerShell Docs: https://learn.microsoft.com/en-us/powershell/",
+    "YouTube Algorithm Tips: https://www.tubefilter.com/2023/10/19/youtube-algorithm-guide/",
+    "Python OS Optimization: https://docs.python.org/3/library/os.html"
+]

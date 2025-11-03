@@ -1,0 +1,168 @@
+# 15 YouTube Channel Configuration for Halloween Blitzkrieg
+# Base email: scarify25@gmail.com with +1 through +15 aliases
+
+channels:
+  - id: grim_4a2f
+    email: scarify25+1@gmail.com
+    name: "Grim_4a2f"
+    handle: "@grim_4a2f"
+    token_file: "tokens/grim_4a2f_token.pickle"
+    proxy: "proxy1.brightdata.com:80"
+    archetype: "rebel"
+    daily_limit: 20
+    upload_count: 0
+    
+  - id: grim_7b9e
+    email: scarify25+2@gmail.com
+    name: "Grim_7b9e"
+    handle: "@grim_7b9e"
+    token_file: "tokens/grim_7b9e_token.pickle"
+    proxy: "proxy2.brightdata.com:80"
+    archetype: "mystic"
+    daily_limit: 20
+    upload_count: 0
+    
+  - id: grim_9c3d
+    email: scarify25+3@gmail.com
+    name: "Grim_9c3d"
+    handle: "@grim_9c3d"
+    token_file: "tokens/grim_9c3d_token.pickle"
+    proxy: "proxy3.brightdata.com:80"
+    archetype: "sage"
+    daily_limit: 20
+    upload_count: 0
+    
+  - id: grim_2e8a
+    email: scarify25+4@gmail.com
+    name: "Grim_2e8a"
+    handle: "@grim_2e8a"
+    token_file: "tokens/grim_2e8a_token.pickle"
+    proxy: "proxy4.brightdata.com:80"
+    archetype: "rebel"
+    daily_limit: 20
+    upload_count: 0
+    
+  - id: grim_5f1b
+    email: scarify25+5@gmail.com
+    name: "Grim_5f1b"
+    handle: "@grim_5f1b"
+    token_file: "tokens/grim_5f1b_token.pickle"
+    proxy: "proxy5.brightdata.com:80"
+    archetype: "mystic"
+    daily_limit: 20
+    upload_count: 0
+    
+  - id: grim_8g4c
+    email: scarify25+6@gmail.com
+    name: "Grim_8g4c"
+    handle: "@grim_8g4c"
+    token_file: "tokens/grim_8g4c_token.pickle"
+    proxy: "proxy6.brightdata.com:80"
+    archetype: "sage"
+    daily_limit: 20
+    upload_count: 0
+    
+  - id: grim_1h7d
+    email: scarify25+7@gmail.com
+    name: "Grim_1h7d"
+    handle: "@grim_1h7d"
+    token_file: "tokens/grim_1h7d_token.pickle"
+    proxy: "proxy7.brightdata.com:80"
+    archetype: "rebel"
+    daily_limit: 20
+    upload_count: 0
+    
+  - id: grim_3j9f
+    email: scarify25+8@gmail.com
+    name: "Grim_3j9f"
+    handle: "@grim_3j9f"
+    token_file: "tokens/grim_3j9f_token.pickle"
+    proxy: "proxy8.brightdata.com:80"
+    archetype: "mystic"
+    daily_limit: 20
+    upload_count: 0
+    
+  - id: grim_6k2h
+    email: scarify25+9@gmail.com
+    name: "Grim_6k2h"
+    handle: "@grim_6k2h"
+    token_file: "tokens/grim_6k2h_token.pickle"
+    proxy: "proxy9.brightdata.com:80"
+    archetype: "sage"
+    daily_limit: 20
+    upload_count: 0
+    
+  - id: grim_4m5j
+    email: scarify25+10@gmail.com
+    name: "Grim_4m5j"
+    handle: "@grim_4m5j"
+    token_file: "tokens/grim_4m5j_token.pickle"
+    proxy: "proxy10.brightdata.com:80"
+    archetype: "rebel"
+    daily_limit: 20
+    upload_count: 0
+    
+  - id: grim_7n8k
+    email: scarify25+11@gmail.com
+    name: "Grim_7n8k"
+    handle: "@grim_7n8k"
+    token_file: "tokens/grim_7n8k_token.pickle"
+    proxy: "proxy11.brightdata.com:80"
+    archetype: "mystic"
+    daily_limit: 20
+    upload_count: 0
+    
+  - id: grim_2p1m
+    email: scarify25+12@gmail.com
+    name: "Grim_2p1m"
+    handle: "@grim_2p1m"
+    token_file: "tokens/grim_2p1m_token.pickle"
+    proxy: "proxy12.brightdata.com:80"
+    archetype: "sage"
+    daily_limit: 20
+    upload_count: 0
+    
+  - id: grim_5q4n
+    email: scarify25+13@gmail.com
+    name: "Grim_5q4n"
+    handle: "@grim_5q4n"
+    token_file: "tokens/grim_5q4n_token.pickle"
+    proxy: "proxy13.brightdata.com:80"
+    archetype: "rebel"
+    daily_limit: 20
+    upload_count: 0
+    
+  - id: grim_8r7p
+    email: scarify25+14@gmail.com
+    name: "Grim_8r7p"
+    handle: "@grim_8r7p"
+    token_file: "tokens/grim_8r7p_token.pickle"
+    proxy: "proxy14.brightdata.com:80"
+    archetype: "mystic"
+    daily_limit: 20
+    upload_count: 0
+    
+  - id: grim_1s9q
+    email: scarify25+15@gmail.com
+    name: "Grim_1s9q"
+    handle: "@grim_1s9q"
+    token_file: "tokens/grim_1s9q_token.pickle"
+    proxy: "proxy15.brightdata.com:80"
+    archetype: "sage"
+    daily_limit: 20
+    upload_count: 0
+
+# Proxy Configuration
+proxy_config:
+  rotation_interval: 300  # 5 minutes
+  sticky_session: true
+  timeout: 30
+
+# Upload Strategy
+upload_strategy:
+  stagger_interval: 23  # Minutes between uploads
+  retry_attempts: 3
+  retry_delay: 5  # Seconds
+  view_threshold: 500  # Minimum views in 12 hours
+  prune_enabled: true
+

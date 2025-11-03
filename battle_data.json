@@ -1,0 +1,31 @@
+{
+  "runs": [],
+  "proofs": [],
+  "pending_submissions": [
+    {
+      "llm_name": "ChatGPT_4o",
+      "file": "F:\\AI_Oracle_Root\\scarify\\submissions\\ChatGPT_4o_20251101T095148Z.json",
+      "scripts_count": 5,
+      "received_at": "2025-11-01T09:51:48.954966Z",
+      "status": "enqueued",
+      "enqueued_at": "2025-11-01T09:53:51.208965Z"
+    },
+    {
+      "llm_name": "Grok_2",
+      "file": "F:\\AI_Oracle_Root\\scarify\\submissions\\Grok_2_20251101T095334Z.json",
+      "scripts_count": 5,
+      "received_at": "2025-11-01T09:53:34.996192Z",
+      "status": "enqueued",
+      "enqueued_at": "2025-11-01T09:53:51.277221Z"
+    },
+    {
+      "llm_name": "ChatGPT_4o",
+      "file": "F:\\AI_Oracle_Root\\scarify\\submissions\\ChatGPT_4o_20251101T095345Z.json",
+      "scripts_count": 5,
+      "received_at": "2025-11-01T09:53:45.606716Z",
+      "status": "enqueued",
+      "enqueued_at": "2025-11-01T09:53:51.239213Z"
+    }
+  ],
+  "generated_at": "2025-11-01T09:51:48.942453Z"
+}
