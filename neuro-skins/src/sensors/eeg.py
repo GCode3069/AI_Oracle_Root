@@ -4,6 +4,7 @@ Handles brain wave detection and analysis
 """
 
 import numpy as np
+import time
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 from scipy import signal
@@ -218,61 +219,76 @@ class EEGProcessor:
         )
 
 
-class EEGSimulator:
-    """Simulates EEG data for testing"""
+class EEGHardware:
+    """Real EEG hardware interface using MNE-Python and LSL"""
     
     def __init__(self, sampling_rate: int = 256):
         self.sampling_rate = sampling_rate
-        self.time = 0.0
+        self.inlet = None
+        self.channels = ['Fp1', 'Fp2', 'F3', 'F4', 'C3', 'C4', 'P3', 'P4']
+        
+    def connect(self) -> bool:
+        """Connect to EEG device via Lab Streaming Layer (LSL)"""
+        try:
+            from pylsl import StreamInlet, resolve_stream
+            
+            print("[INFO] Searching for EEG stream...")
+            streams = resolve_stream('type', 'EEG', timeout=5.0)
+            
+            if not streams:
+                print("[ERROR] No EEG device found")
+                return False
+            
+            # Connect to first available stream
+            self.inlet = StreamInlet(streams[0])
+            info = self.inlet.info()
+            
+            print(f"[OK] Connected to {info.name()}")
+            print(f"[INFO] Channels: {info.channel_count()}, Rate: {info.nominal_srate()} Hz")
+            
+            return True
+            
+        except ImportError:
+            print("[ERROR] pylsl not installed. Run: pip install pylsl")
+            return False
+        except Exception as e:
+            print(f"[ERROR] EEG connection failed: {e}")
+            return False
     
-    def generate_epoch(self, duration: float = 1.0, 
-                      state: str = "relaxed") -> Dict[str, np.ndarray]:
+    def read_epoch(self, duration: float = 1.0) -> Dict[str, np.ndarray]:
         """
-        Generate simulated EEG data
+        Read real EEG data from hardware
         
         Args:
             duration: Duration in seconds
-            state: Brain state to simulate
             
         Returns:
             Dict of channel data
         """
+        if not self.inlet:
+            raise RuntimeError("EEG device not connected. Call connect() first.")
+        
         n_samples = int(duration * self.sampling_rate)
-        t = np.linspace(self.time, self.time + duration, n_samples)
-        self.time += duration
+        samples_collected = []
         
-        # State-dependent frequency compositions (increased amplitudes)
-        state_profiles = {
-            "relaxed": {'alpha': 8.0, 'theta': 3.0, 'beta': 1.5, 'delta': 2.0},
-            "focused": {'beta': 6.0, 'gamma': 4.0, 'alpha': 2.0, 'theta': 1.0},
-            "stressed": {'beta': 8.0, 'gamma': 5.0, 'alpha': 1.0, 'theta': 0.5},
-            "meditation": {'theta': 7.0, 'alpha': 5.0, 'delta': 3.0, 'beta': 0.5},
-        }
+        # Pull samples from LSL stream
+        timeout = duration + 1.0
+        start_time = time.time()
         
-        profile = state_profiles.get(state, state_profiles["relaxed"])
+        while len(samples_collected) < n_samples:
+            if time.time() - start_time > timeout:
+                print("[WARN] EEG read timeout")
+                break
+                
+            sample, timestamp = self.inlet.pull_sample(timeout=0.1)
+            if sample:
+                samples_collected.append(sample)
         
-        # Generate signal with multiple frequency components
-        signal_data = np.zeros(n_samples)
-        
-        # Add frequency components with phase variation
-        if 'delta' in profile:
-            signal_data += profile['delta'] * np.sin(2 * np.pi * 2 * t + np.random.random())
-        if 'theta' in profile:
-            signal_data += profile['theta'] * np.sin(2 * np.pi * 6 * t + np.random.random())
-        if 'alpha' in profile:
-            signal_data += profile['alpha'] * np.sin(2 * np.pi * 10 * t + np.random.random())
-        if 'beta' in profile:
-            signal_data += profile['beta'] * np.sin(2 * np.pi * 20 * t + np.random.random())
-        if 'gamma' in profile:
-            signal_data += profile['gamma'] * np.sin(2 * np.pi * 40 * t + np.random.random())
-        
-        # Add realistic noise
-        signal_data += 1.0 * np.random.randn(n_samples)
-        
-        # Simulate multiple channels with slight variations
+        # Convert to channel dict
         channels = {}
-        for channel in ['Fp1', 'Fp2', 'F3', 'F4', 'C3', 'C4', 'P3', 'P4']:
-            noise = 0.5 * np.random.randn(n_samples)
-            channels[channel] = signal_data + noise
+        data_array = np.array(samples_collected)
+        
+        for i, channel_name in enumerate(self.channels[:min(len(self.channels), data_array.shape[1])]):
+            channels[channel_name] = data_array[:, i]
         
         return channels

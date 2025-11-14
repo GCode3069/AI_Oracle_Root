@@ -50,11 +50,7 @@ def main():
         help='User age for verification (default: 25)'
     )
     
-    parser.add_argument(
-        '--simulation',
-        action='store_true',
-        help='Use simulated sensors for testing'
-    )
+
     
     parser.add_argument(
         '--status',
@@ -98,12 +94,12 @@ def main():
     # Start session
     print(f"[INFO] Starting {args.tier.upper()} tier session...")
     print(f"[INFO] Duration: {args.duration} minutes")
-    print(f"[INFO] Simulation mode: {args.simulation}")
+    print(f"[INFO] Using real hardware sensors")
     print()
     
     try:
         # Start session
-        session_id = system.start_session(simulation=args.simulation)
+        session_id = system.start_session()
         
         # Run closed-loop
         system.run_closed_loop(duration_minutes=args.duration)

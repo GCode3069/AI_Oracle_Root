@@ -24,7 +24,6 @@ class SessionStartRequest(BaseModel):
     user_id: str = "default"
     age: int = 25
     duration_minutes: int = 20
-    simulation: bool = True
 
 
 class SessionResponse(BaseModel):
@@ -140,7 +139,7 @@ async def start_session(request: SessionStartRequest):
             raise HTTPException(status_code=500, detail="Hardware initialization failed")
         
         # Start session
-        session_id = neuroskins_system.start_session(simulation=request.simulation)
+        session_id = neuroskins_system.start_session()
         
         # Run in background
         asyncio.create_task(

@@ -92,7 +92,7 @@ class FrequencyGenerator:
 
 
 class TransducerController:
-    """Controls bone conduction transducers"""
+    """Controls bone conduction transducers via Bluetooth"""
     
     def __init__(self, response_time_ms: int = 50):
         """
@@ -119,23 +119,67 @@ class TransducerController:
         
         self.generator = FrequencyGenerator()
         
-        # Hardware interface (simulated)
+        # Hardware interface via Bluetooth LE
         self.hardware_connected = False
+        self.bt_devices = {}  # UUID -> device mapping
+        
+        # Standard Bluetooth Audio Service UUID
+        self.AUDIO_SERVICE_UUID = "0000110B-0000-1000-8000-00805F9B34FB"
     
     def connect_hardware(self) -> bool:
         """
-        Connect to hardware transducers
+        Connect to hardware transducers via Bluetooth LE
         
         Returns:
             True if connection successful
         """
-        # In production, this would connect to actual hardware
-        # via Bluetooth, USB, or other interface
-        print("[INFO] Connecting to transducer hardware...")
-        time.sleep(0.1)
-        self.hardware_connected = True
-        print("[OK] Transducer hardware connected")
-        return True
+        import asyncio
+        try:
+            # Use bleak for Bluetooth LE communication
+            from bleak import BleakScanner, BleakClient
+            
+            print("[INFO] Scanning for transducer hardware...")
+            
+            async def scan_and_connect():
+                devices = await BleakScanner.discover()
+                transducer_devices = [d for d in devices if 'NeuroSkin' in d.name or 'Transducer' in d.name]
+                
+                if not transducer_devices:
+                    print("[WARN] No transducer devices found")
+                    return False
+                
+                print(f"[INFO] Found {len(transducer_devices)} transducer(s)")
+                
+                # Connect to each transducer
+                for device in transducer_devices:
+                    try:
+                        client = BleakClient(device.address)
+                        await client.connect()
+                        if client.is_connected:
+                            self.bt_devices[device.address] = client
+                            print(f"[OK] Connected to {device.name} ({device.address})")
+                    except Exception as e:
+                        print(f"[WARN] Failed to connect to {device.name}: {e}")
+                
+                return len(self.bt_devices) > 0
+            
+            # Run async connection
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            success = loop.run_until_complete(scan_and_connect())
+            
+            self.hardware_connected = success
+            if success:
+                print(f"[OK] Connected to {len(self.bt_devices)} transducer(s)")
+            
+            return success
+            
+        except ImportError:
+            print("[ERROR] bleak library not installed. Run: pip install bleak")
+            return False
+        except Exception as e:
+            print(f"[ERROR] Hardware connection failed: {e}")
+            return False
     
     def set_frequency(self, location: TransducerLocation,
                      frequency: float, amplitude: float,
@@ -178,10 +222,36 @@ class TransducerController:
     
     def _send_to_hardware(self, location: TransducerLocation,
                          frequency: float, amplitude: float, phase: float):
-        """Send command to hardware (simulated)"""
-        # In production, this would send commands to actual hardware
-        # For now, just simulate the delay
-        time.sleep(0.001)  # 1ms simulated hardware delay
+        """Send command to hardware via Bluetooth"""
+        import asyncio
+        
+        async def send_command():
+            # Pack command: location (1 byte) + frequency (4 bytes) + amplitude (4 bytes) + phase (4 bytes)
+            import struct
+            command = struct.pack('<Bfff', location.value, frequency, amplitude, phase)
+            
+            # Send to all connected devices
+            for addr, client in self.bt_devices.items():
+                try:
+                    if client.is_connected:
+                        # Write to characteristic (assumes custom GATT service)
+                        await client.write_gatt_char(
+                            "00002a56-0000-1000-8000-00805f9b34fb",  # Digital Audio Control
+                            command,
+                            response=False
+                        )
+                except Exception as e:
+                    print(f"[WARN] Failed to send to {addr}: {e}")
+        
+        # Execute async command
+        try:
+            loop = asyncio.get_event_loop()
+            if loop.is_running():
+                asyncio.create_task(send_command())
+            else:
+                loop.run_until_complete(send_command())
+        except Exception as e:
+            print(f"[WARN] Command send failed: {e}")
     
     def deploy_layer(self, layer: FrequencyLayer,
                     locations: List[TransducerLocation]) -> bool:

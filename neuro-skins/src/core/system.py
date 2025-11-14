@@ -14,8 +14,8 @@ from .models import (
     EEGReading, HRVReading, CortisolReading,
     SkinConductanceReading, ProtocolState, SessionPhase
 )
-from ..sensors.eeg import EEGProcessor, EEGSimulator
-from ..sensors.biometric import HRVMonitor, CortisolMonitor, SkinConductanceMonitor, BiometricSimulator
+from ..sensors.eeg import EEGProcessor, EEGHardware
+from ..sensors.biometric import HRVMonitor, CortisolMonitor, SkinConductanceMonitor, HRVHardware, CortisolHardware, GSRHardware
 from ..ai.classifier import BrainStateClassifier, ProtocolSelector
 from ..safety.monitor import SafetyMonitor, AgeVerifier, DataEncryption
 from ..delivery.transducers import DeliverySystem
@@ -54,14 +54,15 @@ class NeuroSkinsSystem:
             response_time_ms=config.update_interval * 1000
         )
         
+        # Hardware interfaces
+        self.eeg_hardware = EEGHardware(config.sampling_rate)
+        self.hrv_hardware = HRVHardware()
+        self.cortisol_hardware = CortisolHardware()
+        self.gsr_hardware = GSRHardware()
+        
         # Session state
         self.current_session: Optional[SessionData] = None
         self.running = False
-        
-        # For demo/testing
-        self.eeg_simulator = EEGSimulator(config.sampling_rate)
-        self.bio_simulator = BiometricSimulator()
-        self.simulation_mode = False
         
         print(f"[OK] NeuroSkins {config.tier.value.upper()} initialized")
     
@@ -79,11 +80,24 @@ class NeuroSkinsSystem:
             print("[ERROR] Failed to initialize delivery system")
             return False
         
-        # In production, would also initialize:
-        # - EEG headset connection
-        # - HRV sensor connection
-        # - Cortisol sensor connection
-        # - GSR sensor connection
+        # Connect EEG headset
+        if not self.eeg_hardware.connect():
+            print("[ERROR] Failed to connect EEG headset")
+            return False
+        
+        # Connect HRV monitor
+        if not self.hrv_hardware.connect():
+            print("[WARN] HRV monitor not available")
+        
+        # Connect cortisol sensor (optional for some tiers)
+        if 'cortisol_saliva' in self.config.tier_config.sensors_included:
+            if not self.cortisol_hardware.connect():
+                print("[WARN] Cortisol sensor not available")
+        
+        # Connect GSR sensor
+        if 'skin_conductance' in self.config.tier_config.sensors_included:
+            if not self.gsr_hardware.connect():
+                print("[WARN] GSR sensor not available")
         
         print("[OK] Hardware initialized")
         return True
@@ -100,13 +114,10 @@ class NeuroSkinsSystem:
         """
         return self.age_verifier.verify_age(self.user_id, age)
     
-    def start_session(self, simulation: bool = False) -> str:
+    def start_session(self) -> str:
         """
-        Start a new session
+        Start a new session with real hardware
         
-        Args:
-            simulation: Use simulated data for testing
-            
         Returns:
             Session ID
         """
@@ -123,7 +134,6 @@ class NeuroSkinsSystem:
             start_time=datetime.now()
         )
         
-        self.simulation_mode = simulation
         self.running = True
         self.safety_monitor.start_session()
         
@@ -132,44 +142,42 @@ class NeuroSkinsSystem:
     
     def read_sensors(self) -> SensorData:
         """
-        Read all sensor data
+        Read all sensor data from real hardware
         
         Returns:
             Combined sensor data
         """
-        if self.simulation_mode:
-            return self._read_simulated_sensors()
-        else:
-            return self._read_real_sensors()
-    
-    def _read_simulated_sensors(self) -> SensorData:
-        """Read simulated sensor data for testing"""
-        # Generate simulated EEG
-        eeg_channels = self.eeg_simulator.generate_epoch(
-            duration=self.config.update_interval,
-            state="relaxed"
-        )
+        # Read EEG from hardware
+        eeg_channels = self.eeg_hardware.read_epoch(duration=self.config.update_interval)
         eeg_reading = self.eeg_processor.process_epoch(eeg_channels)
         
-        # Generate simulated ECG/HRV
-        ecg_signal = self.bio_simulator.generate_ecg(
-            duration=10.0,
-            heart_rate=70.0
-        )
-        hrv_reading = self.hrv_monitor.process_ecg(ecg_signal)
+        # Read HRV from heart rate monitor
+        hrv_reading = None
+        try:
+            rr_intervals = self.hrv_hardware.read_hr_data(duration=10.0)
+            if len(rr_intervals) > 0:
+                hrv_reading = self.hrv_monitor.compute_hrv_metrics(rr_intervals)
+        except Exception as e:
+            print(f"[WARN] HRV read failed: {e}")
         
-        # Generate simulated cortisol
-        cortisol_level = self.bio_simulator.generate_cortisol(
-            time_of_day=datetime.now().hour
-        )
-        cortisol_reading = self.cortisol_monitor.process_reading(cortisol_level)
+        # Read cortisol from biosensor
+        cortisol_reading = None
+        if 'cortisol_saliva' in self.config.tier_config.sensors_included:
+            try:
+                cortisol_level = self.cortisol_hardware.read_level()
+                cortisol_reading = self.cortisol_monitor.process_reading(cortisol_level)
+            except Exception as e:
+                print(f"[WARN] Cortisol read failed: {e}")
         
-        # Generate simulated GSR
-        gsr_signal = self.bio_simulator.generate_gsr(
-            duration=1.0,
-            arousal_level="normal"
-        )
-        gsr_reading = self.gsr_monitor.process_reading(gsr_signal[-1])
+        # Read GSR from sensor
+        gsr_reading = None
+        if 'skin_conductance' in self.config.tier_config.sensors_included:
+            try:
+                gsr_signal = self.gsr_hardware.read_signal(duration=1.0)
+                if len(gsr_signal) > 0:
+                    gsr_reading = self.gsr_monitor.process_reading(gsr_signal[-1])
+            except Exception as e:
+                print(f"[WARN] GSR read failed: {e}")
         
         return SensorData(
             timestamp=datetime.now(),
@@ -178,12 +186,6 @@ class NeuroSkinsSystem:
             cortisol=cortisol_reading,
             skin_conductance=gsr_reading
         )
-    
-    def _read_real_sensors(self) -> SensorData:
-        """Read real sensor data from hardware"""
-        # In production, would read from actual sensors
-        # For now, use simulation
-        return self._read_simulated_sensors()
     
     def select_protocol(self, sensor_data: SensorData) -> Optional[Protocol]:
         """
@@ -348,7 +350,6 @@ class NeuroSkinsSystem:
             'tier': self.config.tier.value,
             'user_id': self.user_id,
             'running': self.running,
-            'simulation_mode': self.simulation_mode,
             'session': {
                 'active': self.current_session is not None,
                 'session_id': self.current_session.session_id if self.current_session else None,

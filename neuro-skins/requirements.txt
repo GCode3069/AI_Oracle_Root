@@ -14,6 +14,7 @@ pywavelets>=1.4.0
 # Hardware Interface
 pyserial>=3.5
 bleak>=0.21.0  # Bluetooth LE
+pylsl>=1.16.0  # Lab Streaming Layer for EEG
 
 # Audio Processing
 sounddevice>=0.4.6

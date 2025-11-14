@@ -61,9 +61,16 @@ neuro-skins/
 pip install -r requirements.txt
 ```
 
+### Hardware Requirements
+- EEG headset with LSL support (e.g., Muse, OpenBCI, Emotiv)
+- Bluetooth heart rate monitor (Polar H10, Garmin, etc.)
+- USB cortisol biosensor (optional, Pro/Ascend tiers)
+- USB GSR sensor (optional, Pro/Ascend tiers)
+- Bluetooth bone conduction transducers (NeuroSkin branded)
+
 ### Running the System
 ```bash
-python -m neuro_skins.main --tier lite
+python -m neuro_skins.main --tier lite --duration 20 --age 25
 ```
 
 ### API Server

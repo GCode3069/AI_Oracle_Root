@@ -293,108 +293,187 @@ class SkinConductanceMonitor:
         return peaks.tolist()
 
 
-# Simulator classes for testing
-class BiometricSimulator:
-    """Simulates biometric data for testing"""
+# Real hardware interfaces for biometric sensors
+class HRVHardware:
+    """Real HRV sensor via Bluetooth heart rate monitors"""
     
-    @staticmethod
-    def generate_ecg(duration: float = 10.0, 
-                    sampling_rate: int = 250,
-                    heart_rate: float = 70.0) -> np.ndarray:
-        """Generate simulated ECG signal"""
-        n_samples = int(duration * sampling_rate)
-        t = np.linspace(0, duration, n_samples)
+    def __init__(self, sampling_rate: int = 250):
+        self.sampling_rate = sampling_rate
+        self.device = None
         
-        # Generate R-peaks at heart rate
-        rr_interval = 60.0 / heart_rate  # seconds
-        peak_times = np.arange(0, duration, rr_interval)
-        
-        # Create ECG-like signal
-        ecg = np.zeros(n_samples)
-        for peak_time in peak_times:
-            peak_idx = int(peak_time * sampling_rate)
-            if peak_idx < n_samples:
-                # QRS complex
-                width = int(0.1 * sampling_rate)
-                start = max(0, peak_idx - width//2)
-                end = min(n_samples, peak_idx + width//2)
-                ecg[start:end] += np.exp(-((np.arange(len(ecg[start:end])) - width//2)**2) / (width/6)**2)
-        
-        # Add noise
-        ecg += 0.05 * np.random.randn(n_samples)
-        
-        return ecg
-    
-    @staticmethod
-    def generate_cortisol(time_of_day: int = 9) -> float:
-        """
-        Generate simulated cortisol level
-        
-        Args:
-            time_of_day: Hour of day (0-23)
+    def connect(self) -> bool:
+        """Connect to Bluetooth heart rate monitor"""
+        try:
+            from bleak import BleakScanner, BleakClient
+            import asyncio
             
-        Returns:
-            Cortisol level in ng/mL
-        """
-        # Cortisol follows circadian rhythm
-        # Peak in morning (6-8 AM), low in evening
-        if 6 <= time_of_day <= 8:
-            base = 400
-        elif 9 <= time_of_day <= 12:
-            base = 300
-        elif 13 <= time_of_day <= 17:
-            base = 150
-        else:
-            base = 75
-        
-        # Add random variation
-        noise = np.random.normal(0, base * 0.2)
-        return max(10, base + noise)
-    
-    @staticmethod
-    def generate_gsr(duration: float = 10.0,
-                    sampling_rate: int = 10,
-                    arousal_level: str = "normal") -> np.ndarray:
-        """
-        Generate simulated GSR signal
-        
-        Args:
-            duration: Duration in seconds
-            sampling_rate: Sampling rate in Hz
-            arousal_level: Level of arousal
+            async def scan_hr_device():
+                print("[INFO] Scanning for heart rate monitor...")
+                devices = await BleakScanner.discover()
+                hr_devices = [d for d in devices if 'heart' in d.name.lower() or 'hrm' in d.name.lower()]
+                
+                if not hr_devices:
+                    print("[ERROR] No heart rate monitor found")
+                    return None
+                
+                device = hr_devices[0]
+                client = BleakClient(device.address)
+                await client.connect()
+                
+                if client.is_connected:
+                    print(f"[OK] Connected to {device.name}")
+                    return client
+                
+                return None
             
-        Returns:
-            GSR signal array
-        """
-        n_samples = int(duration * sampling_rate)
-        t = np.linspace(0, duration, n_samples)
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            self.device = loop.run_until_complete(scan_hr_device())
+            
+            return self.device is not None
+            
+        except ImportError:
+            print("[ERROR] bleak not installed. Run: pip install bleak")
+            return False
+        except Exception as e:
+            print(f"[ERROR] HRV connection failed: {e}")
+            return False
+    
+    def read_hr_data(self, duration: float = 10.0) -> np.ndarray:
+        """Read RR intervals from heart rate monitor"""
+        import asyncio
         
-        # Base conductance depends on arousal
-        base_levels = {
-            "low": 2.0,
-            "normal": 5.0,
-            "high": 10.0,
-            "very_high": 15.0,
-        }
-        base = base_levels.get(arousal_level, 5.0)
+        # Standard Bluetooth Heart Rate Service UUID
+        HR_SERVICE_UUID = "0000180D-0000-1000-8000-00805F9B34FB"
+        HR_MEASUREMENT_UUID = "00002A37-0000-1000-8000-00805F9B34FB"
         
-        # Slow drift
-        drift = base + 0.5 * np.sin(2 * np.pi * 0.05 * t)
+        rr_intervals = []
         
-        # Add random arousal events
-        signal = drift.copy()
-        n_events = np.random.randint(0, 3)
-        for _ in range(n_events):
-            event_time = np.random.uniform(0, duration)
-            event_idx = int(event_time * sampling_rate)
-            if event_idx < n_samples:
-                # Add SCR (Skin Conductance Response)
-                width = int(2 * sampling_rate)  # 2 second response
-                start = event_idx
-                end = min(n_samples, event_idx + width)
-                signal[start:end] += np.exp(-np.arange(len(signal[start:end])) / (sampling_rate * 0.5))
+        async def read_hr():
+            if not self.device or not self.device.is_connected:
+                raise RuntimeError("Device not connected")
+            
+            def hr_callback(sender, data):
+                # Parse Bluetooth HRM data format
+                flags = data[0]
+                hr_value = data[1]
+                
+                # Check if RR intervals present (bit 4 of flags)
+                if flags & 0x10:
+                    # RR intervals are 16-bit values in 1/1024 second units
+                    idx = 2
+                    while idx + 1 < len(data):
+                        rr = int.from_bytes(data[idx:idx+2], 'little')
+                        rr_ms = (rr / 1024.0) * 1000
+                        rr_intervals.append(rr_ms)
+                        idx += 2
+            
+            await self.device.start_notify(HR_MEASUREMENT_UUID, hr_callback)
+            await asyncio.sleep(duration)
+            await self.device.stop_notify(HR_MEASUREMENT_UUID)
         
-        # Add noise
-        signal += 0.1 * np.random.randn(n_samples)
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(read_hr())
         
-        return signal
+        return np.array(rr_intervals)
+
+
+class CortisolHardware:
+    """Real cortisol sensor via electrochemical biosensor"""
+    
+    def __init__(self):
+        self.sensor = None
+        
+    def connect(self) -> bool:
+        """Connect to cortisol biosensor via USB/Serial"""
+        try:
+            import serial
+            import serial.tools.list_ports
+            
+            ports = list(serial.tools.list_ports.comports())
+            for port in ports:
+                if 'cortisol' in port.description.lower() or 'biosensor' in port.description.lower():
+                    self.sensor = serial.Serial(port.device, 115200, timeout=1)
+                    print(f"[OK] Connected to cortisol sensor on {port.device}")
+                    return True
+            
+            print("[ERROR] No cortisol sensor found")
+            return False
+            
+        except ImportError:
+            print("[ERROR] pyserial not installed. Run: pip install pyserial")
+            return False
+        except Exception as e:
+            print(f"[ERROR] Cortisol sensor connection failed: {e}")
+            return False
+    
+    def read_level(self) -> float:
+        """Read cortisol level from electrochemical sensor"""
+        if not self.sensor:
+            raise RuntimeError("Sensor not connected")
+        
+        # Send read command
+        self.sensor.write(b'READ\n')
+        response = self.sensor.readline().decode('utf-8').strip()
+        
+        # Parse response (format: "CORTISOL:xxx.xx ng/mL")
+        if response.startswith('CORTISOL:'):
+            value_str = response.split(':')[1].replace(' ng/mL', '')
+            return float(value_str)
+        
+        raise ValueError(f"Invalid sensor response: {response}")
+
+
+class GSRHardware:
+    """Real GSR sensor via galvanic skin response device"""
+    
+    def __init__(self, sampling_rate: int = 10):
+        self.sampling_rate = sampling_rate
+        self.sensor = None
+        
+    def connect(self) -> bool:
+        """Connect to GSR sensor via USB"""
+        try:
+            import serial
+            import serial.tools.list_ports
+            
+            ports = list(serial.tools.list_ports.comports())
+            for port in ports:
+                if 'gsr' in port.description.lower() or 'galvanic' in port.description.lower():
+                    self.sensor = serial.Serial(port.device, 9600, timeout=1)
+                    print(f"[OK] Connected to GSR sensor on {port.device}")
+                    return True
+            
+            print("[ERROR] No GSR sensor found")
+            return False
+            
+        except ImportError:
+            print("[ERROR] pyserial not installed. Run: pip install pyserial")
+            return False
+        except Exception as e:
+            print(f"[ERROR] GSR connection failed: {e}")
+            return False
+    
+    def read_signal(self, duration: float = 10.0) -> np.ndarray:
+        """Read GSR signal from sensor"""
+        if not self.sensor:
+            raise RuntimeError("Sensor not connected")
+        
+        n_samples = int(duration * self.sampling_rate)
+        samples = []
+        
+        for _ in range(n_samples):
+            self.sensor.write(b'R\n')
+            response = self.sensor.readline().decode('utf-8').strip()
+            
+            try:
+                # Parse microsiemens value
+                value = float(response)
+                samples.append(value)
+            except ValueError:
+                print(f"[WARN] Invalid GSR reading: {response}")
+                samples.append(samples[-1] if samples else 0.0)
+            
+            time.sleep(1.0 / self.sampling_rate)
+        
+        return np.array(samples)
