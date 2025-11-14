@@ -83,11 +83,11 @@ class SystemConfig:
     # System settings
     sampling_rate: int = 256  # Hz for EEG
     buffer_size: int = 512
-    update_interval: float = 0.02  # 50ms = 20 Hz update rate
+    update_interval: float = 1.0  # 1 second update rate (faster in production)
     
     # AI settings
     model_path: Optional[str] = None
-    confidence_threshold: float = 0.75
+    confidence_threshold: float = 0.20  # Lower for simulated data (0.75 for production)
     
     # Data storage
     data_path: str = "./data"

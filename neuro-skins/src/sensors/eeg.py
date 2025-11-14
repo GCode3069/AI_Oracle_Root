@@ -62,11 +62,16 @@ class EEGProcessor:
         Returns:
             Preprocessed signal
         """
+        # Check if signal is long enough for filtering
+        if len(raw_signal) < 20:
+            # For very short signals, just return as-is
+            return raw_signal
+        
         # Apply notch filter
-        filtered = signal.filtfilt(*self.notch_filter, raw_signal)
+        filtered = signal.filtfilt(*self.notch_filter, raw_signal, padlen=min(9, len(raw_signal)//3))
         
         # Apply bandpass filter
-        filtered = signal.filtfilt(*self.bandpass_filter, filtered)
+        filtered = signal.filtfilt(*self.bandpass_filter, filtered, padlen=min(9, len(filtered)//3))
         
         return filtered
     
@@ -236,12 +241,12 @@ class EEGSimulator:
         t = np.linspace(self.time, self.time + duration, n_samples)
         self.time += duration
         
-        # State-dependent frequency compositions
+        # State-dependent frequency compositions (increased amplitudes)
         state_profiles = {
-            "relaxed": {'alpha': 3.0, 'theta': 1.0, 'beta': 0.5},
-            "focused": {'beta': 3.0, 'gamma': 1.5, 'alpha': 0.5},
-            "stressed": {'beta': 4.0, 'gamma': 2.0, 'alpha': 0.3},
-            "meditation": {'theta': 3.0, 'alpha': 2.0, 'delta': 1.0},
+            "relaxed": {'alpha': 8.0, 'theta': 3.0, 'beta': 1.5, 'delta': 2.0},
+            "focused": {'beta': 6.0, 'gamma': 4.0, 'alpha': 2.0, 'theta': 1.0},
+            "stressed": {'beta': 8.0, 'gamma': 5.0, 'alpha': 1.0, 'theta': 0.5},
+            "meditation": {'theta': 7.0, 'alpha': 5.0, 'delta': 3.0, 'beta': 0.5},
         }
         
         profile = state_profiles.get(state, state_profiles["relaxed"])
@@ -249,25 +254,25 @@ class EEGSimulator:
         # Generate signal with multiple frequency components
         signal_data = np.zeros(n_samples)
         
-        # Add frequency components
+        # Add frequency components with phase variation
         if 'delta' in profile:
-            signal_data += profile['delta'] * np.sin(2 * np.pi * 2 * t)
+            signal_data += profile['delta'] * np.sin(2 * np.pi * 2 * t + np.random.random())
         if 'theta' in profile:
-            signal_data += profile['theta'] * np.sin(2 * np.pi * 6 * t)
+            signal_data += profile['theta'] * np.sin(2 * np.pi * 6 * t + np.random.random())
         if 'alpha' in profile:
-            signal_data += profile['alpha'] * np.sin(2 * np.pi * 10 * t)
+            signal_data += profile['alpha'] * np.sin(2 * np.pi * 10 * t + np.random.random())
         if 'beta' in profile:
-            signal_data += profile['beta'] * np.sin(2 * np.pi * 20 * t)
+            signal_data += profile['beta'] * np.sin(2 * np.pi * 20 * t + np.random.random())
         if 'gamma' in profile:
-            signal_data += profile['gamma'] * np.sin(2 * np.pi * 40 * t)
+            signal_data += profile['gamma'] * np.sin(2 * np.pi * 40 * t + np.random.random())
         
-        # Add noise
-        signal_data += 0.5 * np.random.randn(n_samples)
+        # Add realistic noise
+        signal_data += 1.0 * np.random.randn(n_samples)
         
         # Simulate multiple channels with slight variations
         channels = {}
         for channel in ['Fp1', 'Fp2', 'F3', 'F4', 'C3', 'C4', 'P3', 'P4']:
-            noise = 0.2 * np.random.randn(n_samples)
+            noise = 0.5 * np.random.randn(n_samples)
             channels[channel] = signal_data + noise
         
         return channels
