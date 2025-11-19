@@ -1,3 +1,4 @@
+# Core dependencies
 librosa
 fastapi
 uvicorn
@@ -13,12 +14,37 @@ slack-sdk
 pandas
 psutil
 watchdog
-# Additional production dependencies for video processing, monitoring, and notifications
+
+# Video/Image Processing
 opencv-python
 requests
 scikit-learn
 imageio
 ffmpeg-python
+moviepy==1.0.3
+Pillow==10.1.0
+
+# YouTube API
+google-auth-oauthlib
+google-auth-httplib2
+google-api-python-client
+
+# TikTok Automation
+playwright==1.40.0
+selenium==4.15.2
+
+# AI APIs
+anthropic==0.7.7
+elevenlabs==0.2.27
+openai
+
+# Browser Automation
+undetected-chromedriver
+
+# Utilities
 pyyaml
 setuptools
+beautifulsoup4
+gtts
+
 # Add any other required packages here
