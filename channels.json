@@ -1,0 +1,540 @@
+{
+  "channels": [
+    {
+      "id": "horror_en_0",
+      "name": "Dark Truth",
+      "niche": "horror",
+      "language": "en",
+      "platforms": [
+        "youtube",
+        "tiktok"
+      ],
+      "brand_identity": {
+        "colors": [
+          "#8B0000",
+          "#000000",
+          "#FFFFFF"
+        ],
+        "fonts": [
+          "Creepster",
+          "Nosifer"
+        ],
+        "style": "dark_ominous",
+        "visual_effects": [
+          "VHS_glitch",
+          "red_black_filter",
+          "scanlines"
+        ]
+      },
+      "voice_id": "pNInz6obpgDQGcFmaJgB",
+      "posting_schedule": {
+        "times": [
+          "09:00",
+          "12:00",
+          "15:00",
+          "18:00",
+          "21:00"
+        ],
+        "timezone_offset": 0,
+        "max_daily_posts": 5,
+        "spacing_hours": 2
+      },
+      "monetization": {
+        "affiliate_categories": [
+          "horror_books",
+          "horror_movies",
+          "streaming_services"
+        ],
+        "email_capture": true,
+        "digital_products": [
+          "horror_script_pack",
+          "horror_editing_templates"
+        ]
+      },
+      "youtube_channel_id": null,
+      "created_at": "2025-11-20T20:25:50.397855"
+    },
+    {
+      "id": "horror_es_1",
+      "name": "Verdades Oscuras",
+      "niche": "horror",
+      "language": "es",
+      "platforms": [
+        "youtube",
+        "tiktok"
+      ],
+      "brand_identity": {
+        "colors": [
+          "#8B0000",
+          "#000000",
+          "#FFFFFF"
+        ],
+        "fonts": [
+          "Creepster",
+          "Nosifer"
+        ],
+        "style": "dark_ominous",
+        "visual_effects": [
+          "VHS_glitch",
+          "red_black_filter",
+          "scanlines"
+        ]
+      },
+      "voice_id": "pNInz6obpgDQGcFmaJgB",
+      "posting_schedule": {
+        "times": [
+          "09:00",
+          "12:00",
+          "15:00",
+          "18:00",
+          "21:00"
+        ],
+        "timezone_offset": -6,
+        "max_daily_posts": 5,
+        "spacing_hours": 2
+      },
+      "monetization": {
+        "affiliate_categories": [
+          "horror_books",
+          "horror_movies",
+          "streaming_services"
+        ],
+        "email_capture": true,
+        "digital_products": [
+          "horror_script_pack",
+          "horror_editing_templates"
+        ]
+      },
+      "youtube_channel_id": null,
+      "created_at": "2025-11-20T20:25:50.401964"
+    },
+    {
+      "id": "horror_fr_2",
+      "name": "V\u00e9rit\u00e9s Sombres",
+      "niche": "horror",
+      "language": "fr",
+      "platforms": [
+        "youtube"
+      ],
+      "brand_identity": {
+        "colors": [
+          "#8B0000",
+          "#000000",
+          "#FFFFFF"
+        ],
+        "fonts": [
+          "Creepster",
+          "Nosifer"
+        ],
+        "style": "dark_ominous",
+        "visual_effects": [
+          "VHS_glitch",
+          "red_black_filter",
+          "scanlines"
+        ]
+      },
+      "voice_id": "pNInz6obpgDQGcFmaJgB",
+      "posting_schedule": {
+        "times": [
+          "09:00",
+          "12:00",
+          "15:00",
+          "18:00",
+          "21:00"
+        ],
+        "timezone_offset": 1,
+        "max_daily_posts": 5,
+        "spacing_hours": 2
+      },
+      "monetization": {
+        "affiliate_categories": [
+          "horror_books",
+          "horror_movies",
+          "streaming_services"
+        ],
+        "email_capture": true,
+        "digital_products": [
+          "horror_script_pack",
+          "horror_editing_templates"
+        ]
+      },
+      "youtube_channel_id": null,
+      "created_at": "2025-11-20T20:25:50.402960"
+    },
+    {
+      "id": "education_en_3",
+      "name": "Quick Facts Daily",
+      "niche": "education",
+      "language": "en",
+      "platforms": [
+        "youtube",
+        "instagram"
+      ],
+      "brand_identity": {
+        "colors": [
+          "#1E90FF",
+          "#FFFFFF",
+          "#2F4F4F"
+        ],
+        "fonts": [
+          "Roboto",
+          "Open Sans"
+        ],
+        "style": "clean_professional",
+        "visual_effects": [
+          "clean_transitions",
+          "text_overlays",
+          "diagrams"
+        ]
+      },
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "posting_schedule": {
+        "times": [
+          "09:00",
+          "12:00",
+          "15:00",
+          "18:00",
+          "21:00"
+        ],
+        "timezone_offset": 0,
+        "max_daily_posts": 5,
+        "spacing_hours": 2
+      },
+      "monetization": {
+        "affiliate_categories": [
+          "online_courses",
+          "educational_books",
+          "learning_tools"
+        ],
+        "email_capture": true,
+        "digital_products": [
+          "study_guides",
+          "course_templates"
+        ]
+      },
+      "youtube_channel_id": null,
+      "created_at": "2025-11-20T20:25:50.404046"
+    },
+    {
+      "id": "education_es_4",
+      "name": "Datos R\u00e1pidos",
+      "niche": "education",
+      "language": "es",
+      "platforms": [
+        "youtube"
+      ],
+      "brand_identity": {
+        "colors": [
+          "#1E90FF",
+          "#FFFFFF",
+          "#2F4F4F"
+        ],
+        "fonts": [
+          "Roboto",
+          "Open Sans"
+        ],
+        "style": "clean_professional",
+        "visual_effects": [
+          "clean_transitions",
+          "text_overlays",
+          "diagrams"
+        ]
+      },
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "posting_schedule": {
+        "times": [
+          "09:00",
+          "12:00",
+          "15:00",
+          "18:00",
+          "21:00"
+        ],
+        "timezone_offset": -6,
+        "max_daily_posts": 5,
+        "spacing_hours": 2
+      },
+      "monetization": {
+        "affiliate_categories": [
+          "online_courses",
+          "educational_books",
+          "learning_tools"
+        ],
+        "email_capture": true,
+        "digital_products": [
+          "study_guides",
+          "course_templates"
+        ]
+      },
+      "youtube_channel_id": null,
+      "created_at": "2025-11-20T20:25:50.405017"
+    },
+    {
+      "id": "gaming_en_5",
+      "name": "Game Breakdown",
+      "niche": "gaming",
+      "language": "en",
+      "platforms": [
+        "youtube",
+        "tiktok"
+      ],
+      "brand_identity": {
+        "colors": [
+          "#FF1744",
+          "#00E676",
+          "#2979FF"
+        ],
+        "fonts": [
+          "Orbitron",
+          "Press Start 2P"
+        ],
+        "style": "energetic_bold",
+        "visual_effects": [
+          "gameplay_overlay",
+          "bold_text",
+          "colorful_transitions"
+        ]
+      },
+      "voice_id": "TX3LPaxmHKxFdv7VOQHJ",
+      "posting_schedule": {
+        "times": [
+          "09:00",
+          "12:00",
+          "15:00",
+          "18:00",
+          "21:00"
+        ],
+        "timezone_offset": 0,
+        "max_daily_posts": 5,
+        "spacing_hours": 2
+      },
+      "monetization": {
+        "affiliate_categories": [
+          "gaming_gear",
+          "games",
+          "streaming_equipment"
+        ],
+        "email_capture": false,
+        "digital_products": [
+          "gaming_tips_guide",
+          "streaming_setup_guide"
+        ]
+      },
+      "youtube_channel_id": null,
+      "created_at": "2025-11-20T20:25:50.406213"
+    },
+    {
+      "id": "gaming_es_6",
+      "name": "An\u00e1lisis Gaming",
+      "niche": "gaming",
+      "language": "es",
+      "platforms": [
+        "tiktok"
+      ],
+      "brand_identity": {
+        "colors": [
+          "#FF1744",
+          "#00E676",
+          "#2979FF"
+        ],
+        "fonts": [
+          "Orbitron",
+          "Press Start 2P"
+        ],
+        "style": "energetic_bold",
+        "visual_effects": [
+          "gameplay_overlay",
+          "bold_text",
+          "colorful_transitions"
+        ]
+      },
+      "voice_id": "TX3LPaxmHKxFdv7VOQHJ",
+      "posting_schedule": {
+        "times": [
+          "09:00",
+          "12:00",
+          "15:00",
+          "18:00",
+          "21:00"
+        ],
+        "timezone_offset": -6,
+        "max_daily_posts": 5,
+        "spacing_hours": 2
+      },
+      "monetization": {
+        "affiliate_categories": [
+          "gaming_gear",
+          "games",
+          "streaming_equipment"
+        ],
+        "email_capture": false,
+        "digital_products": [
+          "gaming_tips_guide",
+          "streaming_setup_guide"
+        ]
+      },
+      "youtube_channel_id": null,
+      "created_at": "2025-11-20T20:25:50.407333"
+    },
+    {
+      "id": "tech_en_7",
+      "name": "Tech Insights",
+      "niche": "tech",
+      "language": "en",
+      "platforms": [
+        "youtube"
+      ],
+      "brand_identity": {
+        "colors": [
+          "#00BCD4",
+          "#FFC107",
+          "#212121"
+        ],
+        "fonts": [
+          "Rajdhani",
+          "IBM Plex Mono"
+        ],
+        "style": "modern_sleek",
+        "visual_effects": [
+          "tech_overlay",
+          "smooth_transitions",
+          "code_visualization"
+        ]
+      },
+      "voice_id": "VR6AewLTigWG4xSOukaG",
+      "posting_schedule": {
+        "times": [
+          "09:00",
+          "12:00",
+          "15:00",
+          "18:00",
+          "21:00"
+        ],
+        "timezone_offset": 0,
+        "max_daily_posts": 5,
+        "spacing_hours": 2
+      },
+      "monetization": {
+        "affiliate_categories": [
+          "tech_products",
+          "software",
+          "courses"
+        ],
+        "email_capture": true,
+        "digital_products": [
+          "tech_reviews",
+          "setup_guides"
+        ]
+      },
+      "youtube_channel_id": null,
+      "created_at": "2025-11-20T20:25:50.411542"
+    },
+    {
+      "id": "news_en_8",
+      "name": "News Flash",
+      "niche": "news",
+      "language": "en",
+      "platforms": [
+        "youtube",
+        "twitter"
+      ],
+      "brand_identity": {
+        "colors": [
+          "#1565C0",
+          "#D32F2F",
+          "#FFFFFF"
+        ],
+        "fonts": [
+          "Merriweather",
+          "PT Serif"
+        ],
+        "style": "authoritative_serious",
+        "visual_effects": [
+          "news_banner",
+          "professional_overlay",
+          "breaking_news_sting"
+        ]
+      },
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "posting_schedule": {
+        "times": [
+          "09:00",
+          "12:00",
+          "15:00",
+          "18:00",
+          "21:00"
+        ],
+        "timezone_offset": 0,
+        "max_daily_posts": 5,
+        "spacing_hours": 2
+      },
+      "monetization": {
+        "affiliate_categories": [
+          "news_subscriptions",
+          "books",
+          "documentaries"
+        ],
+        "email_capture": true,
+        "digital_products": [
+          "newsletter",
+          "analysis_reports"
+        ]
+      },
+      "youtube_channel_id": null,
+      "created_at": "2025-11-20T20:25:50.418019"
+    },
+    {
+      "id": "news_es_9",
+      "name": "Noticias Flash",
+      "niche": "news",
+      "language": "es",
+      "platforms": [
+        "youtube"
+      ],
+      "brand_identity": {
+        "colors": [
+          "#1565C0",
+          "#D32F2F",
+          "#FFFFFF"
+        ],
+        "fonts": [
+          "Merriweather",
+          "PT Serif"
+        ],
+        "style": "authoritative_serious",
+        "visual_effects": [
+          "news_banner",
+          "professional_overlay",
+          "breaking_news_sting"
+        ]
+      },
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "posting_schedule": {
+        "times": [
+          "09:00",
+          "12:00",
+          "15:00",
+          "18:00",
+          "21:00"
+        ],
+        "timezone_offset": -6,
+        "max_daily_posts": 5,
+        "spacing_hours": 2
+      },
+      "monetization": {
+        "affiliate_categories": [
+          "news_subscriptions",
+          "books",
+          "documentaries"
+        ],
+        "email_capture": true,
+        "digital_products": [
+          "newsletter",
+          "analysis_reports"
+        ]
+      },
+      "youtube_channel_id": null,
+      "created_at": "2025-11-20T20:25:50.422065"
+    }
+  ],
+  "last_updated": "2025-11-20T20:25:50.423122"
+}
