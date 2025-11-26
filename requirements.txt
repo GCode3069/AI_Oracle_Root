@@ -21,4 +21,17 @@ imageio
 ffmpeg-python
 pyyaml
 setuptools
+
+# Drepseek MCP Server dependencies
+mcp>=1.0.0
+aiofiles>=23.2.1
+aiosqlite>=0.20.0
+prometheus-client>=0.20.0
+python-json-logger>=2.0.7
+click>=8.1.7
+rich>=13.7.0
+cryptography>=42.0.0
+python-dotenv>=1.0.0
+
 # Add any other required packages here
+
