@@ -1,0 +1,51 @@
+{
+  "llm_name": "TEST",
+  "competition_id": "test_001",
+  "start_time": "2025-12-26T18:54:18.466706",
+  "end_time": "2025-12-29T18:54:18.466706",
+  "status": "ACTIVE",
+  "errors": {
+    "code_errors": 1,
+    "system_errors": 0,
+    "business_errors": 0,
+    "placeholder_errors": 0,
+    "total": 1
+  },
+  "revenue": {
+    "bitcoin_donations": 0.0,
+    "youtube_ads": 0.0,
+    "tiktok_fund": 0.0,
+    "rumble": 0.0,
+    "affiliates": 0.0,
+    "products": 0.0,
+    "other": 0.0,
+    "total": 0.0
+  },
+  "innovations": {
+    "tier_1": [],
+    "tier_2": [],
+    "tier_3": [],
+    "tier_4": [],
+    "total_bonus": 0.0
+  },
+  "metrics": {
+    "videos_generated": 0,
+    "videos_uploaded": 0,
+    "total_views": 0,
+    "total_engagement": 0
+  },
+  "error_log": [
+    {
+      "timestamp": "2025-12-26T18:54:18.467123",
+      "type": "TestError",
+      "severity": "code_error",
+      "weight": 1,
+      "message": "Test message",
+      "file": "",
+      "line": 0,
+      "handled": true
+    }
+  ],
+  "revenue_log": [],
+  "innovation_log": []
+}
