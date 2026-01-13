@@ -17,7 +17,7 @@ import subprocess
 # Import generator
 sys.path.insert(0, str(Path(__file__).parent))
 
-BASE_DIR = Path("F:/AI_Oracle_Root/scarify/abraham_horror")
+BASE_DIR = Path(__file__).parent / "output"
 
 # ============================================================================
 # REGION-BASED HEADLINES & LANGUAGES
@@ -329,15 +329,19 @@ class AbrahamStudio(tk.Tk):
             self.log(f"Upload: {upload}\n")
             
             # Import the generator
-            generator_path = Path(__file__).parent / "ABRAHAM_AI_HORROR.ps1"
-            
+            generator_path = Path(__file__).parent / "ABRAHAM_REAL_DEAL.py"
+
+            self.log(f"Generator path: {generator_path}")
+            self.log(f"Generator exists: {generator_path.exists()}")
+
             if not generator_path.exists():
                 self.log("❌ Generator script not found!")
                 return
-            
+
             # Build command
-            cmd = f'powershell -ExecutionPolicy Bypass -File "{generator_path}" -Count {count}'
-            
+            cmd = f'python "{generator_path}" {count}'
+
+            self.log(f"Command: {cmd}")
             self.log("Starting generation...")
             self.log("=" * 50)
             

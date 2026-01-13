@@ -10,12 +10,20 @@ from datetime import datetime
 import random
 import xml.etree.ElementTree as ET
 
-ELEVENLABS_API_KEY = "3e27b6a9ea9e01667912a50c1912ab917271127c6ff0ea951669a7a257e0bdfa"
-PEXELS_API_KEY = "RgE9Mdn3ToSQhn2RiLJ4mPMISjj参考资料uLVtKkPCibUPUDGh"
-POLLO_API_KEY = "pollo_5EW9VjxB2eAUknmhd9vb9F2OJFDjPVVZttOQJRaaQ248"
+ELEVENLABS_API_KEY = os.environ.get('ELEVENLABS_API_KEY')
+if not ELEVENLABS_API_KEY:
+    raise ValueError("ELEVENLABS_API_KEY environment variable not set")
+
+PEXELS_API_KEY = os.environ.get('PEXELS_API_KEY')
+if not PEXELS_API_KEY:
+    raise ValueError("PEXELS_API_KEY environment variable not set")
+
+POLLO_API_KEY = os.environ.get('POLLO_API_KEY')
+if not POLLO_API_KEY:
+    raise ValueError("POLLO_API_KEY environment variable not set")
 
 VOICE_ID = '21m00Tcm4TlvDq8ikWAM'
-BASE_DIR = Path("F:/AI_Oracle_Root/scarify/abraham_horror")
+BASE_DIR = Path(__file__).parent / "output"
 
 for d in ['audio', 'videos', 'youtube_ready', 'temp', 'images']:
     (BASE_DIR / d).mkdir(parents=True, exist_ok=True)
