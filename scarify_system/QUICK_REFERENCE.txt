@@ -1,0 +1,189 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║                    SCARIFY QUICK REFERENCE                        ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📦 DEPLOYMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Run this ONE command in PowerShell:
+    .\DEPLOY_SCARIFY.ps1
+
+This deploys all 6 scripts to:
+    D:\AI_Oracle_Projects\Active\Scripts\
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚙️ SETUP (Do once)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Edit API keys:
+   notepad D:\AI_Oracle_Projects\Active\Scripts\API_KEYS.py
+
+2. Install dependencies:
+   pip install requests numpy scipy elevenlabs
+
+3. Install FFmpeg:
+   choco install ffmpeg
+
+4. Add portraits (5-10 images):
+   D:\AI_Oracle_Projects\Assets\Portraits\
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎬 GENERATE VIDEOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Generate 1 video:
+    cd D:\AI_Oracle_Projects\Active\Scripts
+    python -c "from SCARIFY_COMPLETE import generate_complete_video; generate_complete_video()"
+
+Generate 10 videos:
+    python -c "from SCARIFY_COMPLETE import generate_batch; generate_batch(10)"
+
+Generate 25 videos (daily batch):
+    python -c "from SCARIFY_COMPLETE import generate_batch; generate_batch(25)"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THE 6 SCRIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. DUAL_STYLE_GENERATOR.py
+   ✅ 70% WARNING format (Education/Military/Government/Economy)
+   ✅ 30% COMEDY format
+   ✅ Weighted topic distribution
+
+2. KLING_CLIENT.py
+   ✅ Kling AI API integration
+   ✅ Lip-sync video generation
+   ✅ 10-second polling
+   ✅ Auto-download results
+
+3. KLING_CACHE.py
+   ✅ MD5-based caching
+   ✅ Saves $0.04 per reuse
+   ✅ CRITICAL: Always check cache BEFORE API call!
+
+4. SUBLIMINAL_AUDIO.py
+   ✅ Binaural beat (10Hz alpha wave, -20dB)
+   ✅ Attention tone (528Hz Solfeggio, -25dB)
+   ✅ VHS hiss (-30dB)
+   ✅ FFmpeg mixing
+
+5. VIDEO_LAYOUT.py
+   ✅ 1080x1920 vertical canvas (YouTube Shorts)
+   ✅ 720x1280 centered video
+   ✅ Title overlay (44px WARNING / 42px COMEDY)
+   ✅ VHS effects (noise + vignette)
+
+6. SCARIFY_COMPLETE.py
+   ✅ Complete 9-step pipeline
+   ✅ 70/30 enforcement
+   ✅ Cache-first approach
+   ✅ Portrait reuse (80%)
+   ✅ Auto output sorting
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📁 OUTPUT LOCATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WARNING videos:
+    D:\AI_Oracle_Projects\Output\Generated\Winners\
+
+COMEDY videos:
+    D:\AI_Oracle_Projects\Output\Generated\Comedy\
+
+Cache:
+    D:\AI_Oracle_Projects\Assets\Kling_Cache\
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 COST TRACKING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Check cache stats:
+    python -c "from KLING_CACHE import KlingCache; c = KlingCache(); s = c.get_stats(); print(f'Entries: {s[\"entries\"]}'); print(f'Reuses: {s[\"reuses\"]}'); print(f'Saved: ${s[\"cost_saved\"]:.2f}')"
+
+Expected costs:
+    - First video: $0.04 (no cache)
+    - With 50% cache: $0.02 per video
+    - With 80% reuse: $0.009 per video
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🧪 TESTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Test concept generator:
+    python DUAL_STYLE_GENERATOR.py
+
+Test cache system:
+    python KLING_CACHE.py
+
+Test Kling client:
+    python KLING_CLIENT.py
+
+Test audio mixer:
+    python SUBLIMINAL_AUDIO.py
+
+Test layout creator:
+    python VIDEO_LAYOUT.py
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔧 TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+"ModuleNotFoundError: No module named 'X'":
+    → pip install requests numpy scipy elevenlabs
+
+"FFmpeg not found":
+    → choco install ffmpeg
+    → Add to PATH
+    → Restart terminal
+
+"No portraits found":
+    → Add .jpg files to D:\AI_Oracle_Projects\Assets\Portraits\
+
+"API key error":
+    → Edit API_KEYS.py with your actual keys
+    → Get Kling key: https://klingai.com/
+    → Get ElevenLabs key: https://elevenlabs.io/
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 CRITICAL FEATURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ 70/30 WARNING/COMEDY split (ENFORCED)
+✅ Cache checked BEFORE every Kling API call (saves $0.04)
+✅ Portrait reuse 80% of time (increases cache hits)
+✅ 1080x1920 vertical (YouTube Shorts optimized)
+✅ 25-45 second duration
+✅ Subliminal audio layers included
+✅ VHS aesthetic effects
+✅ Automatic output sorting
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 DAILY WORKFLOW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Morning:
+    python -c "from SCARIFY_COMPLETE import generate_batch; generate_batch(25)"
+
+Check output:
+    dir D:\AI_Oracle_Projects\Output\Generated\Winners
+    dir D:\AI_Oracle_Projects\Output\Generated\Comedy
+
+Upload to YouTube Shorts
+
+Monitor cache stats:
+    python -c "from KLING_CACHE import KlingCache; print(KlingCache().get_stats())"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ SYSTEM STATUS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Status: PRODUCTION READY ✅
+All scripts: 6/6 complete ✅
+Cost target: $0.02-0.03 per video ✅
+Output format: 1080x1920 (YouTube Shorts) ✅
+Content split: 70% WARNING, 30% COMEDY ✅
+
+Deploy now: .\DEPLOY_SCARIFY.ps1
+
+╚═══════════════════════════════════════════════════════════════════╝
