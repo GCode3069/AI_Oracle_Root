@@ -1,0 +1,99 @@
+# Cursor ignore file - speeds up indexing
+# Exclude all output and media files
+
+# Output directories
+output/
+outputs/
+videos/
+audio/
+images/
+temp/
+tmp/
+cache/
+uploaded/
+generated_videos/
+batch_upload/
+
+# Channel-specific outputs
+channels/*/videos/
+channels/*/audio/
+channels/*/scripts/
+channels/*/analytics/
+channels/*/assets/
+channels/*/uploaded/
+
+# Project-specific outputs
+abraham_horror/videos/
+abraham_horror/audio/
+abraham_horror/images/
+abraham_horror/batch_upload/
+abraham_horror/temp/
+tiktok/generated_videos/
+tiktok/upload_queue/
+tiktok/analytics/
+
+# Media files
+*.mp4
+*.mp3
+*.wav
+*.avi
+*.mov
+*.mkv
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+
+# Cache and temp
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Git and version control
+.git/
+.gitignore
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Large ML models and checkpoints
+Wav2Lip/
+checkpoints/
+*.pth
+*.ckpt
+*.h5
+*.pb
+
+# Logs and data
+*.log
+*.sqlite
+*.db
+logs/
+
+# Documentation (optional - uncomment if you want to exclude)
+# *.md
+# *.txt
+# *.html
+
+# Config files that change frequently (optional)
+# channels.json
+# production_log.json

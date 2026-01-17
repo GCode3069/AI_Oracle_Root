@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCARIFY System Map</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #ff0000;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .module {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        
+        .module.new {
+            border-color: #00ff00;
+            background: rgba(0, 255, 0, 0.05);
+        }
+        
+        .module h2 {
+            color: #ff0000;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .module.new h2 {
+            color: #00ff00;
+        }
+        
+        .module ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .module li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .module li:last-child {
+            border-bottom: none;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .status.active {
+            background: #00ff00;
+            color: #000;
+        }
+        
+        .status.pending {
+            background: #ffaa00;
+            color: #000;
+        }
+        
+        .status.inactive {
+            background: #ff0000;
+            color: #fff;
+        }
+        
+        .flow {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .flow-step {
+            padding: 10px;
+            margin: 10px 0;
+            background: rgba(255, 0, 0, 0.1);
+            border-left: 4px solid #ff0000;
+            border-radius: 4px;
+        }
+        
+        .arrow {
+            text-align: center;
+            font-size: 2em;
+            color: #ff0000;
+            margin: 10px 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 2px solid rgba(255, 0, 0, 0.3);
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 SCARIFY SYSTEM MAP</h1>
+        <p style="text-align: center; margin-bottom: 30px; color: #aaa;">
+            Multi-Platform AI Content Automation System<br>
+            Last Updated: <span id="date"></span>
+        </p>
+        
+        <!-- Content Generation Module -->
+        <div class="module">
+            <h2>📝 Content Generation</h2>
+            <ul>
+                <li>Script Generator (Claude API) <span class="status active">ACTIVE</span></li>
+                <li>Topic Selection (Google Sheets Integration)</li>
+                <li>Template Fallback System</li>
+                <li>Dark Satirical Business Horror Voice</li>
+            </ul>
+        </div>
+        
+        <!-- Video Production Module -->
+        <div class="module">
+            <h2>🎥 Video Production</h2>
+            <ul>
+                <li>Audio Generation (ElevenLabs TTS) <span class="status active">ACTIVE</span></li>
+                <li>Image Generation (Stability AI) <span class="status active">ACTIVE</span></li>
+                <li>Video Assembly (FFmpeg) <span class="status active">ACTIVE</span></li>
+                <li>Image Optimization (Prevents Timeout) <span class="status active">ACTIVE</span></li>
+                <li>Max Headroom Glitch Aesthetic</li>
+                <li>VHS Degradation Effects</li>
+            </ul>
+        </div>
+        
+        <!-- YouTube Module -->
+        <div class="module">
+            <h2>📺 YouTube System</h2>
+            <ul>
+                <li>Enhanced Uploader (Multiple Fallback Methods) <span class="status active">ACTIVE</span></li>
+                <li>Method 1: YouTube Data API v3</li>
+                <li>Method 2: yt-uploader Library</li>
+                <li>Method 3: Manual Instructions Generator</li>
+                <li>OAuth 2.0 Authentication</li>
+                <li>Metadata Optimization (Title, Description, Tags)</li>
+                <li>Channel: JiminexCult</li>
+            </ul>
+        </div>
+        
+        <!-- TikTok Module -->
+        <div class="module new">
+            <h2>🎵 TikTok System (@nunyabeznes2)</h2>
+            <ul>
+                <li>Video Optimizer (YouTube → TikTok) <span class="status active">ACTIVE</span></li>
+                <li>Format Conversion (9:16, 15-30s) <span class="status active">ACTIVE</span></li>
+                <li>Browser Automation (Playwright) <span class="status active">ACTIVE</span></li>
+                <li>Brand Integration (Dark Satirical Business Horror) <span class="status active">ACTIVE</span></li>
+                <li>Caption Generator (Hook + Hashtags) <span class="status active">ACTIVE</span></li>
+                <li>Watermark Overlay (@nunyabeznes2) <span class="status active">ACTIVE</span></li>
+                <li>Red/Black Color Filter <span class="status active">ACTIVE</span></li>
+                <li>Posting Scheduler (5 posts/day) <span class="status pending">PENDING</span></li>
+                <li>Analytics Dashboard <span class="status pending">PENDING</span></li>
+            </ul>
+        </div>
+        
+        <!-- Master Generator -->
+        <div class="module">
+            <h2>🚀 Master Generator Pipeline</h2>
+            <ul>
+                <li>ABE_MASTER_GENERATOR.py <span class="status active">ACTIVE</span></li>
+                <li>Complete End-to-End Pipeline</li>
+                <li>Batch Processing Support</li>
+                <li>Multi-Platform Upload Integration</li>
+                <li>Error Handling & Recovery</li>
+            </ul>
+        </div>
+        
+        <!-- Production Flow -->
+        <div class="flow">
+            <h2>🔄 Production Flow</h2>
+            
+            <div class="flow-step">
+                <strong>STEP 1: CONTENT GENERATION</strong><br>
+                Select topic → Generate script (Claude API) → Template fallback
+            </div>
+            
+            <div class="arrow">↓</div>
+            
+            <div class="flow-step">
+                <strong>STEP 2: AUDIO PRODUCTION</strong><br>
+                ElevenLabs TTS → Voice: Jiminex → Audio file (.mp3)
+            </div>
+            
+            <div class="arrow">↓</div>
+            
+            <div class="flow-step">
+                <strong>STEP 3: IMAGE PRODUCTION</strong><br>
+                Stability AI → Max Headroom aesthetic → Optimize image → Image file (.png)
+            </div>
+            
+            <div class="arrow">↓</div>
+            
+            <div class="flow-step">
+                <strong>STEP 4: VIDEO ASSEMBLY</strong><br>
+                FFmpeg → Combine audio + image → Add effects → Final video (.mp4)
+            </div>
+            
+            <div class="arrow">↓</div>
+            
+            <div class="flow-step">
+                <strong>STEP 5: PLATFORM OPTIMIZATION</strong><br>
+                YouTube: Direct upload (9:16 vertical)<br>
+                TikTok: Optimize (trim, crop, brand) → Ready for upload
+            </div>
+            
+            <div class="arrow">↓</div>
+            
+            <div class="flow-step">
+                <strong>STEP 6: AUTOMATED UPLOAD</strong><br>
+                YouTube: Enhanced uploader (multiple methods)<br>
+                TikTok: Browser automation (Playwright) → @nunyabeznes2
+            </div>
+            
+            <div class="arrow">↓</div>
+            
+            <div class="flow-step">
+                <strong>STEP 7: ANALYTICS TRACKING</strong><br>
+                Log uploads → Track performance → Generate reports
+            </div>
+        </div>
+        
+        <!-- Brand Configuration -->
+        <div class="module">
+            <h2>🎨 Brand Configuration</h2>
+            <ul>
+                <li><strong>YouTube:</strong> JiminexCult channel</li>
+                <li><strong>TikTok:</strong> @nunyabeznes2</li>
+                <li><strong>Brand Voice:</strong> Dark Satirical Business Horror</li>
+                <li><strong>Color Scheme:</strong> Red (#FF0000) + Black (#000000)</li>
+                <li><strong>Hashtags:</strong> #nunyabeznes #businesshorror #corporatenightmare</li>
+                <li><strong>Content Themes:</strong> Corporate horror, Profit over people, Business nightmares</li>
+            </ul>
+        </div>
+        
+        <!-- File Structure -->
+        <div class="module">
+            <h2>📁 Key Files</h2>
+            <ul>
+                <li><code>ABE_MASTER_GENERATOR.py</code> - Master generator</li>
+                <li><code>upload/youtube_upload_enhanced.py</code> - YouTube uploader</li>
+                <li><code>TIKTOK_AUTOMATION_SYSTEM.py</code> - TikTok automation</li>
+                <li><code>abraham_horror/</code> - Generated content directory</li>
+                <li><code>tiktok_content/</code> - TikTok optimized videos</li>
+                <li><code>config/credentials/</code> - API keys & credentials</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>SCARIFY System - Production Ready</p>
+            <p>Status: All systems operational</p>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('date').textContent = new Date().toLocaleDateString();
+    </script>
+</body>
+</html>
