@@ -1,0 +1,42 @@
+{
+  "content_log": [
+    {
+      "tracking_id": "TEST_001",
+      "timestamp": "2026-01-01T20:56:58.991288",
+      "neural_fingerprint": "test topic_test_[8]_0.7",
+      "content": {
+        "title": "Test Content",
+        "emotional_valence_score": 0.5,
+        "content_type": "test",
+        "prefrontal_activation_level": "medium",
+        "presentation_style": "thematic_presentation",
+        "mirror_neuron_correlation": 0.4,
+        "version": "standard",
+        "limbic_engagement_percentage": 0.7,
+        "topic": "test topic",
+        "amygdala_response_prediction": 0.6,
+        "circadian_optimization_score": 0.9,
+        "content_location": "",
+        "platform_url": "",
+        "platforms": [
+          "YouTube"
+        ]
+      },
+      "performance": {
+        "views": 0,
+        "engagement_rate": 0.0,
+        "view_duration": 0,
+        "attention_network_correlation": 0.0,
+        "dopamine_response_estimate": 0.0,
+        "theta_coherence_measurement": 0.0
+      },
+      "neural_settings": {
+        "gamma_spikes": [
+          8
+        ],
+        "limbic_engagement": 0.7
+      }
+    }
+  ],
+  "performance_updates": []
+}
