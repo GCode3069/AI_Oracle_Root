@@ -1,0 +1,52 @@
+FROM python:3.11-slim
+
+LABEL maintainer="Drepseek MCP Server"
+LABEL description="Drepseek Model Context Protocol Server"
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    gcc \
+    g++ \
+    make \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements first for better caching
+COPY requirements.txt requirements.drepseek.txt* ./
+
+# Install Python dependencies
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt && \
+    if [ -f requirements.drepseek.txt ]; then \
+        pip install --no-cache-dir -r requirements.drepseek.txt; \
+    fi
+
+# Copy application code
+COPY mcp_server/ ./mcp_server/
+COPY config/ ./config/
+
+# Create necessary directories
+RUN mkdir -p logs /app/data
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV LOG_FILE_PATH=/app/logs/drepseek_mcp.log
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:8080/health || exit 1
+
+# Run as non-root user for security
+RUN useradd -m -u 1000 drepseek && \
+    chown -R drepseek:drepseek /app
+USER drepseek
+
+# Expose port
+EXPOSE 8080
+
+# Run the MCP server
+CMD ["python", "-u", "mcp_server/drepseek_mcp_server.py"]

@@ -1,0 +1,163 @@
+{
+  "drepseek": {
+    "api_key": "${DREPSEEK_API_KEY}",
+    "base_url": "https://api.drepseek.com",
+    "network": "mainnet",
+    "timeout": 30,
+    "max_retries": 3,
+    "rate_limit": {
+      "requests_per_minute": 60,
+      "burst_limit": 10
+    }
+  },
+  "mcp": {
+    "server": {
+      "name": "drepseek-mcp",
+      "version": "1.0.0",
+      "description": "Drepseek MCP Server for Drep governance and analytics"
+    },
+    "resources": [
+      {
+        "name": "drep_proposals",
+        "description": "Access Drep governance proposals",
+        "uri": "drepseek://proposals",
+        "mimeType": "application/json"
+      },
+      {
+        "name": "drep_voting",
+        "description": "Drep voting power and history",
+        "uri": "drepseek://voting",
+        "mimeType": "application/json"
+      },
+      {
+        "name": "drep_metrics",
+        "description": "Network metrics and analytics",
+        "uri": "drepseek://metrics",
+        "mimeType": "application/json"
+      },
+      {
+        "name": "drep_delegations",
+        "description": "Delegation tracking and statistics",
+        "uri": "drepseek://delegations",
+        "mimeType": "application/json"
+      }
+    ],
+    "tools": [
+      {
+        "name": "query_drep_metrics",
+        "description": "Query Drep network metrics and analytics",
+        "parameters": {
+          "metric_type": {
+            "type": "string",
+            "enum": ["voting_power", "proposals", "delegations", "participation"],
+            "required": true
+          },
+          "time_range": {
+            "type": "string",
+            "enum": ["24h", "7d", "30d", "90d", "all"],
+            "default": "7d"
+          }
+        }
+      },
+      {
+        "name": "get_proposal_details",
+        "description": "Retrieve detailed information about a specific proposal",
+        "parameters": {
+          "proposal_id": {
+            "type": "string",
+            "required": true
+          }
+        }
+      },
+      {
+        "name": "calculate_voting_power",
+        "description": "Calculate voting power for a given Drep address",
+        "parameters": {
+          "drep_address": {
+            "type": "string",
+            "required": true
+          },
+          "epoch": {
+            "type": "integer",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "track_delegation_changes",
+        "description": "Track delegation changes over time",
+        "parameters": {
+          "drep_address": {
+            "type": "string",
+            "required": false
+          },
+          "limit": {
+            "type": "integer",
+            "default": 100
+          }
+        }
+      },
+      {
+        "name": "analyze_governance_participation",
+        "description": "Analyze governance participation rates and trends",
+        "parameters": {
+          "analysis_type": {
+            "type": "string",
+            "enum": ["overall", "by_proposal", "by_drep", "by_epoch"],
+            "default": "overall"
+          }
+        }
+      }
+    ],
+    "prompts": [
+      {
+        "name": "proposal_summary",
+        "description": "Generate a summary of recent governance proposals",
+        "arguments": [
+          {
+            "name": "proposal_count",
+            "description": "Number of recent proposals to summarize",
+            "required": false
+          }
+        ]
+      },
+      {
+        "name": "voting_analysis",
+        "description": "Analyze voting patterns and participation",
+        "arguments": [
+          {
+            "name": "time_period",
+            "description": "Time period for analysis",
+            "required": false
+          }
+        ]
+      }
+    ]
+  },
+  "features": {
+    "governance": {
+      "enabled": true,
+      "auto_refresh": true,
+      "refresh_interval": 300
+    },
+    "voting": {
+      "enabled": true,
+      "track_changes": true
+    },
+    "analytics": {
+      "enabled": true,
+      "cache_results": true,
+      "cache_ttl": 600
+    },
+    "notifications": {
+      "enabled": false,
+      "channels": ["console", "webhook"]
+    }
+  },
+  "logging": {
+    "level": "info",
+    "format": "json",
+    "output": ["console", "file"],
+    "file_path": "logs/drepseek_mcp.log"
+  }
+}
