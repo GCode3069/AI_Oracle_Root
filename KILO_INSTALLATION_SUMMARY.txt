@@ -1,0 +1,171 @@
+╔══════════════════════════════════════════════════════════════════╗
+║                                                                  ║
+║           KILO CODE AI AGENT - zED IDE INTEGRATION              ║
+║                                                                  ║
+║               Installation Package v1.0.0                        ║
+║               Best Free Model with Most Context                 ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
+
+📦 PACKAGE CONTENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Setup-KiloCode.ps1        [13 KB]  Main installer script
+  Kilo-Utils.ps1            [12 KB]  Utilities & quick commands
+  Start-KiloCode.bat         [3 KB]  Interactive launcher menu
+  KILO_SETUP_README.md      [8 KB]   Full documentation
+  KILO_QUICK_REFERENCE.md   [8 KB]   Cheat sheet & commands
+  INTEGRATION_MANIFEST.md   [7 KB]   Integration metadata
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 QUICK START
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1. Run as Administrator:
+     .\Setup-KiloCode.ps1
+
+  2. Restart PowerShell
+
+  3. Launch Kilo:
+     kilo
+
+  Or use the interactive menu:
+     .\Start-KiloCode.bat
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 OPTIMIZED CONFIGURATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Primary Model:   inclusionAI Ling-2.6-1T (FREE)
+  Context Window:  262,144 tokens (256K) ← MAXIMUM FREE
+  Code Rank:       #9  (best free coding model)
+  Debug Rank:      #3  (best free debug model)
+  Cost:            $0.00 per 1M tokens (completely free)
+
+  Fallback:        kilo-auto/free (auto-selects best available)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⭐ BEST FREE MODELS (256K CONTEXT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Rank  Model                              Context    Cost
+  ─────────────────────────────────────────────────────────────
+  #9    inclusionAI Ling-2.6-1T             256K       FREE ⭐
+  #17   Tencent Hy3 Preview                 256K       FREE
+  #85   NVIDIA Nemotron 3 Super             256K       FREE
+  N/A   Google Gemma 4 26B                  256K       FREE
+  #81   StepFun Step 3.5 Flash              256K       $0.10/1M
+
+  Change model in-chat: /model inclusionai/ling-2.6-1t:free
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔧 WHAT GETS INSTALLED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✓ Kilo CLI (global npm install)
+  ✓ Configuration: %USERPROFILE%\.config\kilo\config.json
+  ✓ VS Code Extension (if VS Code installed)
+  ✓ Desktop shortcuts (Kilo CLI, VS Code + Kilo)
+  ✓ Project context generator
+  ✓ Quick command aliases (k, kcode, kdebug, etc.)
+  ✓ Integration with existing MCP servers
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 DAILY USAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Interactive Mode:
+    kilo                              Start chat
+    @src/file.ts                      Attach file to next message
+    /code                             Switch to coding agent
+    /debug                            Switch to debug agent
+    /model inclusionai/ling-2.6-1t:free  Explicitly select model
+
+  Quick Aliases:
+    k                                 Shorthand for kilo
+    kcode                             Force Ling-2.6-1T model
+    kdebug                            Debug agent mode
+    kauto                             Auto-free tier
+
+  Utilities Menu:
+    .\Kilo-Utils.ps1                  Interactive options menu
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 COST COMPARISON
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Model               Cost per 1M tokens   Annual (1M/day)
+  ─────────────────────────────────────────────────────────────
+  Claude Opus 4.6     $5.00 / $15 output   ~$5,500
+  GPT-5.4             $2.50 / $10 output   ~$2,750
+  Claude Sonnet 4.6   $3.00 / $15 output   ~$3,300
+  Step 3.5 Flash      $0.10 / $0.30 output ~$110
+  Ling-2.6-1T (OURS)  $0.00 / $0.00        **$0** ✅
+
+  YEARLY SAVINGS: $2,750 - $5,500+ by using free model!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎓 AGENT TYPES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  code (default)  Full read/write/execute - implementation
+  ask             Read-only - explanations, investigation
+  plan            Read + plan files - architecture, design
+  debug           Full access - systematic troubleshooting
+
+  Switch: /agents dropdown or Ctrl+. hotkey
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📁 INTEGRATION WITH zED WORKSPACE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Existing components hooked into:
+    • MCP servers in ./mcp_server/ (oracle, voice-control)
+    • Python virtual environment (scarify_venv/)
+    • Project scripts & automation
+    • GitHub workflows
+    • Existing configuration files
+
+  Auto-generated context file:
+    • kilo_context.md - project metadata, file inventory
+    • Reference with @kilo_context.md
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🆘 SUPPORT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Docs:    https://kilo.ai/docs
+  Models:  https://kilo.ai/models (live leaderboard)
+  Discord: https://kilo.ai/discord
+  GitHub:  https://github.com/Kilo-Org/kilocode
+
+  Local docs:
+    KILO_SETUP_README.md - complete guide
+    KILO_QUICK_REFERENCE.md - cheat sheet
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ READY TO INSTALL?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Run as Administrator:
+
+    PowerShell:
+      .\Setup-KiloCode.ps1
+
+  Or use the menu launcher after install:
+
+    .\Start-KiloCode.bat
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Generated: 2026-05-06  |  Package: v1.0.0  |  Model: Ling-2.6-1T (256K FREE)
