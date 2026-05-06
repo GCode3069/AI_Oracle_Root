@@ -1,0 +1,215 @@
+═══════════════════════════════════════════════════════════════════
+  KILO CODE AI FOR ZED EDITOR - INSTALLATION SUMMARY
+═══════════════════════════════════════════════════════════════════
+
+📦 PACKAGE: Zed Edition v1.0.0
+───────────────────────────────────────────────────────────────────
+
+  Files Created:
+    Setup-KiloCode-Zed.ps1      13 KB   Zed-specific installer
+    Kilo-Utils.ps1              12 KB   Utilities (model switch, diag)
+    Start-KiloCode-Zed.bat       3 KB   Interactive launcher
+    KILO_FOR_ZED_QUICKREF.md     8 KB   Zed-specific cheat sheet
+    zed_settings_kilo.json      0.3 KB  Zed custom commands template
+    KILO_SETUP_README.md         8 KB   Full documentation
+    KILO_QUICK_REFERENCE.md      8 KB   General cheat sheet
+    README_KILO.md               2 KB   Quick overview
+
+═══════════════════════════════════════════════════════════════════
+
+🚀 INSTALL (2 STEPS):
+───────────────────────────────────────────────────────────────────
+
+  Step 1: Run installer as Administrator
+    PowerShell> .\Setup-KiloCode-Zed.ps1
+
+  Step 2: Restart Zed Editor
+    (Close all Zed windows, reopen)
+
+═══════════════════════════════════════════════════════════════════
+
+🎯 IN ZED EDITOR - HOW TO USE:
+───────────────────────────────────────────────────────────────────
+
+  METHOD 1: Terminal Panel ⭐ EASIEST
+  ────────────────────────────────────
+    1. Press: Ctrl+` (backtick) → opens terminal
+    2. Type:  kilo
+    3. Chat with AI directly
+
+    Tip: Split terminal (Cmd+K → →) to have code on left, Kilo on right
+
+  METHOD 2: Command Palette
+  ──────────────────────────
+    1. Press: Cmd+Shift+P (Mac) or Ctrl+Shift+P (Win/Linux)
+    2. Type "Kilo:"
+    3. Select:
+         • Kilo: Start AI Chat
+         • Kilo: Ask Question
+         • Kilo: Debug Issue
+         • Kilo: Code Task
+
+  METHOD 3: Desktop Shortcuts
+  ────────────────────────────
+    • "Kilo (Terminal)" → Opens PowerShell with Kilo
+    • "Zed + Kilo" → Launches Zed editor
+
+═══════════════════════════════════════════════════════════════════
+
+⚡ ZED-SPECIFIC COMMANDS:
+───────────────────────────────────────────────────────────────────
+
+  In Kilo terminal:
+    @src/App.tsx                    Attach current file
+    @git-changes                    Show uncommitted changes
+    /code                           Switch to coding agent
+    /debug                          Switch to debug agent
+    /model inclusionai/ling-2.6-1t:free   Best model
+
+  Quick aliases (in PowerShell):
+    k        = kilo
+    kcode    = force Ling-2.6-1T (256K)
+    kdebug   = debug mode
+    kask     = read-only Q&A
+
+═══════════════════════════════════════════════════════════════════
+
+📊 MODEL: inclusionAI Ling-2.6-1T ⭐ DEFAULT
+───────────────────────────────────────────────────────────────────
+
+  Context:  262,144 tokens (256K)  ← Largest free context
+  Code Rank: #9 out of all free models
+  Debug Rank:#3 out of all free models
+  Cost:      $0.00 per 1M tokens (FREE)
+  Annual:    $0  (vs $2,750-$5,500 for paid)
+
+  Alternative free models (also 256K):
+    tencent/hy3-preview:free
+    nvidia/nemotron-3-super-120b-a12b:free
+    google/gemma-4-26b-a4b-it:free
+
+═══════════════════════════════════════════════════════════════════
+
+🔧 WHAT THIS SCRIPT DOES:
+───────────────────────────────────────────────────────────────────
+
+  ✓ Installs Kilo CLI globally (npm install -g @kilocode/cli)
+  ✓ Configures default model to Ling-2.6-1T (256K, free)
+  ✓ Creates Zed custom commands in %APPDATA%\zed\settings\
+  ✓ Adds desktop shortcuts (Kilo terminal, Zed+Kilo)
+  ✓ Generates project context file (kilo_context.md)
+  ✓ Sets up PowerShell aliases (k, kcode, kdebug, kask)
+  ✓ Creates full documentation suite
+
+═══════════════════════════════════════════════════════════════════
+
+📁 FILES CREATED:
+───────────────────────────────────────────────────────────────────
+
+  Session Folder (current):
+    Setup-KiloCode-Zed.ps1         ← Run this first
+    Start-KiloCode-Zed.bat         ← Interactive menu
+    Kilo-Utils.ps1                 ← Utilities
+    KILO_FOR_ZED_QUICKREF.md       ← Zed-specific guide
+    zed_settings_kilo.json         ← Zed commands template
+    KILO_SETUP_README.md           ← Full docs
+    README_KILO.md                 ← Overview
+
+  System Locations (created by installer):
+    %USERPROFILE%\.config\kilo\config.json     ← Kilo config
+    %APPDATA%\zed\settings\kilo_commands.json  ← Zed integration
+    %USERPROFILE%\Desktop\Kilo*.lnk            ← Shortcuts
+
+═══════════════════════════════════════════════════════════════════
+
+💡 EXAMPLE ZED WORKFLOWS:
+───────────────────────────────────────────────────────────────────
+
+  WORKFLOW 1: New Feature
+  ───────────────────────────────────────────────────────────────
+    Terminal:  kcode "Create a user profile page with edit form"
+    → Kilo generates files, you review in editor
+
+  WORKFLOW 2: Debug Error
+  ───────────────────────────────────────────────────────────────
+    1. Copy error from Zed Problems panel
+    2. Terminal: kdebug "paste error here"
+    3. Attach file: @src/reducer.ts
+    4. Kilo identifies issue, suggests fix
+    5. Apply changes
+
+  WORKFLOW 3: Code Review
+  ───────────────────────────────────────────────────────────────
+    Terminal: kask "Review @src/auth.ts for security vulnerabilities"
+    → Read-only analysis, no file changes
+
+  WORKFLOW 4: Refactor
+  ───────────────────────────────────────────────────────────────
+    Terminal: kcode "Refactor @utils.ts: split into smaller modules"
+    → Kilo proposes changes, you approve
+
+═══════════════════════════════════════════════════════════════════
+
+🆘 TROUBLESHOOTING ZED-SPECIFIC ISSUES:
+───────────────────────────────────────────────────────────────────
+
+  Problem: Kilo command not found in Zed terminal
+  Fix:     Close Zed completely, reopen (inherits fresh PATH)
+           OR run in terminal: refreshenv (if using Chocolatey)
+
+  Problem: Custom commands don't appear in palette
+  Fix:     Copy zed_settings_kilo.json to %APPDATA%\zed\settings\
+           Restart Zed
+           Verify: Ctrl+Shift+P → type "Kilo:"
+
+  Problem: Model switching doesn't persist
+  Fix:     Edit config manually: %USERPROFILE%\.config\kilo\config.json
+           Set "model": "inclusionai/ling-2.6-1t:free"
+
+  Problem: High memory usage in Zed
+  Fix:     Close unused tabs/terminals
+           Use auto-balanced: Set-KiloModel -Model auto-balanced
+           256K context needs ~1-2GB RAM for complex tasks
+
+  Problem: Rate limited (free model cap)
+  Fix:     Switch: /model tencent/hy3-preview:free
+           Wait 5-10 minutes
+           Add your own API key (see docs)
+
+═══════════════════════════════════════════════════════════════════
+
+🔗 RESOURCES:
+───────────────────────────────────────────────────────────────────
+
+  Kilo Docs:     https://kilo.ai/docs
+  Model Leaderboard: https://kilo.ai/models
+  Zed Editor:    https://zed.dev/docs
+  Discord:       https://kilo.ai/discord
+  GitHub:        https://github.com/Kilo-Org/kilocode
+
+  Local Docs:
+    KILO_FOR_ZED_QUICKREF.md  ← Read after install
+    KILO_SETUP_README.md      ← Full guide
+
+═══════════════════════════════════════════════════════════════════
+
+✨ READY TO INSTALL?
+───────────────────────────────────────────────────────────────────
+
+  Run as Administrator:
+
+    .\Setup-KiloCode-Zed.ps1
+
+  Then:
+
+    1. Restart Zed
+    2. Open terminal: Ctrl+`
+    3. Type: kilo
+
+═══════════════════════════════════════════════════════════════════
+
+  Model: inclusionAI Ling-2.6-1T (256K tokens, FREE) ⭐
+  Rank:   #9 Code / #3 Debug (best free models)
+  Cost:   $0.00
+
+═══════════════════════════════════════════════════════════════════

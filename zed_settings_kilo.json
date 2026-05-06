@@ -1,0 +1,34 @@
+{
+  "commands": [
+    {
+      "name": "kilo: chat",
+      "caption": "Kilo: Start AI Chat",
+      "category": "Kilo Code",
+      "run": "powershell.exe -NoExit -Command \"kilo\""
+    },
+    {
+      "name": "kilo: ask",
+      "caption": "Kilo: Ask Question",
+      "category": "Kilo Code",
+      "run": "powershell.exe -NoExit -Command \"kilo --agent ask\""
+    },
+    {
+      "name": "kilo: debug",
+      "caption": "Kilo: Debug Issue",
+      "category": "Kilo Code",
+      "run": "powershell.exe -NoExit -Command \"kilo --agent debug\""
+    },
+    {
+      "name": "kilo: code",
+      "caption": "Kilo: Code Task",
+      "category": "Kilo Code",
+      "run": "powershell.exe -NoExit -Command \"kilo --agent code\""
+    },
+    {
+      "name": "kilo: quick fix",
+      "caption": "Kilo: Fix Selected Code",
+      "category": "Kilo Code",
+      "run": "powershell.exe -Command \"kilo --agent code 'Fix: ${selected_text}'\""
+    }
+  ]
+}
