@@ -1,0 +1,37 @@
+{
+  "topic": "AI workplace surveillance, algorithmic management, and self-fulfilling termination decisions",
+  "source_type": "editorial_research",
+  "captured_at": "2026-07-14T00:00:00Z",
+  "sources": [
+    {
+      "title": "Explainer: Algorithmic Management in the Workplace",
+      "publisher": "Data & Society",
+      "url": "https://datasociety.net/wp-content/uploads/2019/02/DS_Algorithmic_Management_Explainer.pdf",
+      "notes": "Defines algorithmic management through pervasive worker data collection, real-time decision-making, automated evaluation, ratings, nudges, and penalties. This supports the episode's premise that a workplace system can monitor employees, score behavior, and shape conduct rather than merely observe it."
+    },
+    {
+      "title": "Regulation (EU) 2024/1689 — Artificial Intelligence Act",
+      "publisher": "Official Journal of the European Union",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "notes": "The EU AI Act treats certain AI systems used for employment, worker management, and access to self-employment as high-risk, reflecting the potential for automated systems to affect hiring, task allocation, monitoring, evaluation, promotion, and termination."
+    },
+    {
+      "title": "Algorithms Need Management Training, Too",
+      "publisher": "WIRED",
+      "url": "https://www.wired.com/story/platform-work-labor-economy-ai/",
+      "notes": "Documents the spread of algorithmic management beyond gig platforms into warehouses, call centers, retail, manufacturing, professional work, and public services. It describes workplace monitoring, automated discipline, and reported algorithm-driven firing, while arguing that crucial employment decisions should retain human judgment."
+    },
+    {
+      "title": "Regulating Algorithmic Management: A Multi-Stakeholder Study of Challenges in Aligning Software and the Law for Workplace Scheduling",
+      "publisher": "arXiv",
+      "url": "https://arxiv.org/abs/2505.02329",
+      "notes": "A 2025 multi-stakeholder study based on interviews with regulators, advocates, attorneys, managers, and workers. It finds that algorithmic scheduling systems influence legal compliance and worker well-being, supporting the story mechanism in which software does not simply predict outcomes but changes the organizational conditions that produce them."
+    },
+    {
+      "title": "NLRB ruling on worker camera surveillance was 'nonsense,' DC Circuit says",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/legal/government/nlrb-ruling-worker-camera-surveillance-was-nonsense-dc-circuit-says-2024-03-26/",
+      "notes": "Reports a real dispute over constant workplace camera monitoring and references a National Labor Relations Board general counsel position that electronic monitoring, including cameras and GPS, can chill protected worker activity. This grounds the episode's surveillance layer in an existing labor-law conflict."
+    }
+  ]
+}
