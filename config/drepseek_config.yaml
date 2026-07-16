@@ -1,0 +1,120 @@
+drepseek:
+  api_key: "${DREPSEEK_API_KEY}"
+  base_url: "https://api.drepseek.com"
+  network: "mainnet"  # Options: mainnet, testnet
+  timeout: 30
+  max_retries: 3
+  
+  # API endpoint configurations
+  endpoints:
+    proposals: "/api/v1/proposals"
+    voting: "/api/v1/voting"
+    metrics: "/api/v1/metrics"
+    delegations: "/api/v1/delegations"
+  
+  # Rate limiting configuration
+  rate_limiting:
+    requests_per_minute: 60
+    burst_limit: 10
+    retry_after: 60
+
+mcp:
+  server:
+    name: "drepseek-mcp"
+    version: "1.0.0"
+    description: "Drepseek MCP Server for Cardano Drep governance"
+    
+  transport:
+    type: "stdio"  # Options: stdio, sse, ws
+    host: "localhost"
+    port: 8080
+  
+  # Feature flags
+  features:
+    - "governance"
+    - "voting"
+    - "analytics"
+    - "delegation_tracking"
+  
+  # Cache configuration
+  cache:
+    enabled: true
+    backend: "memory"  # Options: memory, redis, file
+    ttl: 600  # seconds
+    max_size: 1000  # entries
+  
+  # Security settings
+  security:
+    require_auth: false
+    allowed_origins: ["*"]
+    api_key_header: "X-API-Key"
+
+# Database configuration for caching and persistence
+database:
+  type: "sqlite"  # Options: sqlite, postgresql, mysql
+  path: "mcp_server/drepseek_data.db"
+  # For PostgreSQL/MySQL:
+  # host: "localhost"
+  # port: 5432
+  # name: "drepseek_mcp"
+  # user: "${DB_USER}"
+  # password: "${DB_PASSWORD}"
+  
+  tables:
+    proposals: "drep_proposals"
+    voting_history: "voting_history"
+    metrics: "network_metrics"
+    delegations: "delegations"
+
+# Monitoring and observability
+monitoring:
+  enabled: true
+  prometheus:
+    enabled: false
+    port: 9090
+    path: "/metrics"
+  
+  health_check:
+    enabled: true
+    interval: 60
+    endpoint: "/health"
+
+# Notification configuration
+notifications:
+  enabled: false
+  providers:
+    slack:
+      webhook_url: "${SLACK_WEBHOOK_URL}"
+      channel: "#drepseek-alerts"
+    
+    email:
+      smtp_host: "${SMTP_HOST}"
+      smtp_port: 587
+      from_address: "alerts@drepseek.com"
+      to_addresses: []
+    
+    webhook:
+      url: "${WEBHOOK_URL}"
+      headers:
+        Authorization: "Bearer ${WEBHOOK_TOKEN}"
+
+# Logging configuration
+logging:
+  level: "info"  # Options: debug, info, warning, error, critical
+  format: "json"  # Options: json, text
+  outputs:
+    - type: "console"
+      level: "info"
+    - type: "file"
+      level: "debug"
+      path: "logs/drepseek_mcp.log"
+      rotation: "daily"
+      max_size: "100MB"
+      backup_count: 7
+
+# Development settings
+development:
+  debug: false
+  hot_reload: false
+  mock_data: false
+  verbose_errors: true

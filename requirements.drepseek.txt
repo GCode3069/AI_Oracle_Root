@@ -1,0 +1,45 @@
+# Drepseek MCP Server Requirements
+# Core MCP dependencies
+mcp>=1.0.0
+anthropic-mcp>=0.1.0
+
+# HTTP client for API calls
+httpx>=0.27.0
+httpx[http2]>=0.27.0
+
+# Configuration management
+pyyaml>=6.0.1
+
+# Async support
+aiofiles>=23.2.1
+asyncio>=3.4.3
+
+# Database
+aiosqlite>=0.20.0
+
+# Caching (optional backends)
+redis>=5.0.0
+python-memcached>=1.59
+
+# Monitoring and observability
+prometheus-client>=0.20.0
+python-json-logger>=2.0.7
+
+# CLI tools
+click>=8.1.7
+rich>=13.7.0
+
+# Testing (optional)
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0
+
+# Development tools (optional)
+black>=24.0.0
+ruff>=0.1.0
+mypy>=1.8.0
+
+# Security
+cryptography>=42.0.0
+python-dotenv>=1.0.0
