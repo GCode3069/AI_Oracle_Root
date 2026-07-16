@@ -1,0 +1,39 @@
+# API Keys and Credentials
+API_KEYS.py
+*.env
+.env.local
+credentials/
+
+# Cache and temporary files
+kling_cache/
+temp/
+temp_*/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Output directories
+scarify_output/
+output/
+*.mp4
+*.mp3
+*.wav
+*.jpg
+*.jpeg
+*.png
+
+# System files
+.DS_Store
+Thumbs.db
+*.log
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test files
+test_*/
