@@ -1,0 +1,23 @@
+Claude Code Extension Successfully Installed!
+
+Installation Details:
+- Extension: Claude Code for VS Code
+- Publisher: Anthropic
+- Version: 2.0.75
+- Location: ~/.cursor-server/extensions/anthropic.claude-code-2.0.75
+
+Next Steps:
+1. Reload Cursor/VS Code window to activate the extension
+   - Press Ctrl+Shift+P (or Cmd+Shift+P on Mac)
+   - Type "Reload Window" and select it
+
+2. Authenticate with Anthropic API:
+   - Get your API key from: https://console.anthropic.com/
+   - Use Command Palette (Ctrl+Shift+P) → "Claude: Sign In"
+   - Enter your API key when prompted
+
+3. Start using Claude Code:
+   - The extension should now be available in your editor
+   - Look for Claude Code features in the sidebar or command palette
+
+Installation completed on: $(date)

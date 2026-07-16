@@ -1,0 +1,30 @@
+{
+  "performance_data_file": "performance_data.json",
+  "direct_input_file": "direct_input_topics.json",
+  "tracking_file": "neuro_performance_tracking.json",
+  "learning_data_file": "neural_learning_data.json",
+  "history_file": "content_history.json",
+  "output_directory": "neuro_content_output",
+  "default_quantity": 50,
+  "modes": {
+    "neuro_automated": true,
+    "neuro_direct_input": true,
+    "neuro_platform_focus": true,
+    "neuro_performance_focus": true
+  },
+  "neural_settings": {
+    "default_gamma_spikes": [8, 12],
+    "default_theta_undertone": 6.0,
+    "default_prefrontal_activation": "high",
+    "default_limbic_engagement": 0.75
+  },
+  "habituation_prevention": {
+    "similarity_threshold": 0.3,
+    "decay_window_days": 7,
+    "max_recent_memory": 50
+  },
+  "platforms": {
+    "primary": ["YouTube"],
+    "secondary": ["TikTok", "Instagram", "Facebook"]
+  }
+}
