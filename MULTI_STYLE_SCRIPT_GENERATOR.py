@@ -39,47 +39,69 @@ class ScriptStyleGenerator:
         return random.choice(templates)
     
     # ------------------------------------------------------------------------
-    # CHATGPT STYLE - Poetic, Memorable, Quality (12-18% CTR)
+    # MODERN COMEDY STYLE - Actually Funny (15-25% CTR)
     # ------------------------------------------------------------------------
     
     def chatgpt_style(self, headline):
-        """ChatGPT's poetic, memorable approach WITH MORE EDGE"""
+        """Modern comedy approach - genuinely funny, not just edgy"""
         
-        # Import edgy scripts for more variety
+        # Import new comedy generator for better humor
         try:
-            from SCRIPTS_WITH_REAL_EDGE import generate_edgy_script
-            # 50% chance to use edgy script for variety
-            if random.random() < 0.5:
-                return generate_edgy_script(headline)
+            from COMEDY_SCRIPTS_REWRITTEN import ModernComedyGenerator
+            comedy_gen = ModernComedyGenerator()
+            # Use variety of comedy styles
+            styles = ['observational', 'absurdist', 'dry_wit', 'relatable', 'deadpan']
+            chosen_style = random.choice(styles)
+            script, _ = comedy_gen.generate(headline, chosen_style, word_limit=100)
+            return script
         except:
             pass
         
-        # Extract topic
+        # Fallback to simpler funny approach
         topic = headline.split(':')[0] if ':' in headline else headline[:40]
         
-        poetic_templates = [
-            {
-                'hook': "Stop scrolling. You need to hear this...",
-                'revelation': f"{topic}? Every headline feeds the machine that measures your attention in ad seconds.",
-                'payoff': "You think you consume it—truth is, it consumes you.",
-                'cta': "Support truth. Bitcoin below."
-            },
-            {
-                'hook': "Listen carefully...",
-                'revelation': f"They're not reporting {topic.lower()}—they're performing it. Each fear, each outrage, another coin in their slot machine.",
-                'payoff': "The news doesn't inform you. It trains you.",
-                'cta': "Break free. Bitcoin below."
-            },
-            {
-                'hook': "Stop. This matters.",
-                'revelation': f"{topic}... another ghost coded for engagement. Your panic is their profit margin.",
-                'payoff': "What if the crisis isn't the story—it's the business model?",
-                'cta': "Think different. Bitcoin below."
-            }
+        funny_templates = [
+            f"""So {topic.lower()} is happening. Cool. Cool cool cool.
+            
+            Meanwhile I'm over here trying to figure out why my phone autocorrects "duck" but not actual curse words.
+            
+            Priorities, am I right?
+            
+            The world's ending but at least we're documenting it in 4K.
+            
+            Future archaeologists will be so confused.
+            "They knew exactly what was happening and did... nothing?"
+            "Yep, but check out these sick memes they made."
+            
+            Bitcoin below. It's like money but with more anxiety.""",
+            
+            f"""{topic}? In THIS economy?
+            
+            That's like announcing a swimming pool on the Titanic.
+            
+            "Great news everyone! The deck chairs are now ergonomic!"
+            
+            We're really good at solving the wrong problems.
+            It's almost a talent at this point.
+            
+            I'd be impressed if I wasn't so disappointed.
+            
+            Bitcoin address below. At least it's honest about being volatile.""",
+            
+            f"""Breaking: {topic.lower()}.
+            
+            In related news, I still don't understand how planes stay up.
+            
+            You're telling me we put metal in the sky and it just... stays there?
+            Based on MATH? Suspicious.
+            
+            But sure, let's worry about {topic.lower()}.
+            Not the gravity-defying metal birds.
+            
+            Bitcoin below. Also defies logic but at least it stays on the ground."""
         ]
         
-        template = random.choice(poetic_templates)
-        return f"{template['hook']} {template['revelation']} {template['payoff']} {template['cta']}"
+        return random.choice(funny_templates)
     
     # ------------------------------------------------------------------------
     # GROK STYLE - Controversial, Trend-Jacking (10-25% CTR, HIGH RISK)
