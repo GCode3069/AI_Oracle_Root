@@ -6,8 +6,17 @@
 param(
     [switch]$Test,
     [switch]$Force,
-    [string]$InstallPath = "D:\AI_Oracle_Root\scarify"
+    [string]$InstallPath = ""
 )
+
+# Determine default install path based on platform
+if ([string]::IsNullOrEmpty($InstallPath)) {
+    if ($IsWindows -or $env:OS -eq "Windows_NT") {
+        $InstallPath = "D:\AI_Oracle_Root\scarify"
+    } else {
+        $InstallPath = Join-Path (Get-Location) "scarify_installation"
+    }
+}
 
 Write-Host "💿 SCARIFY Complete Installer v1.0" -ForegroundColor Magenta
 Write-Host "Installing to: $InstallPath" -ForegroundColor Cyan
@@ -65,6 +74,20 @@ objShortcut.Save
 $lightningStrikeShortcut | Out-File -FilePath "$InstallPath\temp\create_lightning_strike.vbs" -Encoding ASCII
 cscript //nologo "$InstallPath\temp\create_lightning_strike.vbs"
 
+# SCARIFY Desktop Launcher shortcut
+$launcherShortcut = @"
+Set objShell = CreateObject("WScript.Shell")
+Set objShortcut = objShell.CreateShortcut("$desktop\SCARIFY Desktop Launcher.lnk")
+objShortcut.TargetPath = "powershell.exe"
+objShortcut.Arguments = "-ExecutionPolicy Bypass -File \"$InstallPath\SCARIFY-Desktop-Launcher.ps1\""
+objShortcut.WorkingDirectory = "$InstallPath"
+objShortcut.IconLocation = "shell32.dll,21"
+objShortcut.Save
+"@
+
+$launcherShortcut | Out-File -FilePath "$InstallPath\temp\create_launcher.vbs" -Encoding ASCII
+cscript //nologo "$InstallPath\temp\create_launcher.vbs"
+
 # SCARIFY Automation shortcut
 $automationShortcut = @"
 Set objShell = CreateObject("WScript.Shell")
@@ -82,6 +105,7 @@ cscript //nologo "$InstallPath\temp\create_automation.vbs"
 Write-Host "🖥️ Desktop shortcuts created:" -ForegroundColor Yellow
 Write-Host "   🎬 SCARIFY Master Studio" -ForegroundColor Green
 Write-Host "   ⚡ Lightning Strike Protocol" -ForegroundColor Green  
+Write-Host "   🖥️ SCARIFY Desktop Launcher" -ForegroundColor Green
 Write-Host "   🤖 SCARIFY Automation" -ForegroundColor Green
 
 # Create system registry for file associations
@@ -94,12 +118,17 @@ if ($Force) {
 if ($Test) {
     Write-Host "🧪 Testing installation..." -ForegroundColor Yellow
     
-    # Test each component
-    $components = @("MasterLaunch.ps1", "MasterControl.ps1", "Advanced-SCARIFY-Features.ps1")
+    # Test each component (look in parent directory for scripts)
+    $components = @("MasterLaunch.ps1", "MasterControl.ps1", "Advanced-SCARIFY-Features.ps1", "SCARIFY-Desktop-Launcher.ps1", "SCARIFY-Master.ps1", "scarify_complete_video_production.ps1", "YouTube-Algorithm-Optimizer.ps1")
     foreach ($component in $components) {
+        # Check in installation path first, then parent directory
         $componentPath = Join-Path $InstallPath $component
+        $parentPath = Join-Path (Split-Path $InstallPath -Parent) $component
+        
         if (Test-Path $componentPath) {
-            Write-Host "   ✅ $component found" -ForegroundColor Green
+            Write-Host "   ✅ $component found in installation directory" -ForegroundColor Green
+        } elseif (Test-Path $parentPath) {
+            Write-Host "   ✅ $component found in source directory" -ForegroundColor Green
         } else {
             Write-Host "   ❌ $component missing" -ForegroundColor Red
         }
@@ -116,5 +145,6 @@ Write-Host "   🖥️ Desktop shortcuts created" -ForegroundColor Cyan
 Write-Host "   🚀 Ready to launch SCARIFY ecosystem!" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Yellow
-Write-Host "1. Double-click 'SCARIFY Master Studio' on your desktop" -ForegroundColor White
-Write-Host "2. Or run: & '$InstallPath\MasterLaunch.ps1' -Setup -Launch" -ForegroundColor White
+Write-Host "1. Double-click 'SCARIFY Desktop Launcher' on your desktop for the main GUI" -ForegroundColor White
+Write-Host "2. Or run: & '$InstallPath\SCARIFY-Desktop-Launcher.ps1' -Setup" -ForegroundColor White
+Write-Host "3. For advanced users: & '$InstallPath\MasterLaunch.ps1' -Setup -Launch" -ForegroundColor White
